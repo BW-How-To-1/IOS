@@ -16,6 +16,7 @@
 		1D565AC62478BAA3007DD5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D565AC42478BAA3007DD5EC /* LaunchScreen.storyboard */; };
 		1D565AD12478BAA3007DD5EC /* HowToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565AD02478BAA3007DD5EC /* HowToTests.swift */; };
 		1D565ADC2478BAA3007DD5EC /* HowToUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565ADB2478BAA3007DD5EC /* HowToUITests.swift */; };
+		1D565AF02478BB8E007DD5EC /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565AEF2478BB8E007DD5EC /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		1D565AD72478BAA3007DD5EC /* HowToUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HowToUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D565ADB2478BAA3007DD5EC /* HowToUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUITests.swift; sourceTree = "<group>"; };
 		1D565ADD2478BAA3007DD5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D565AEF2478BB8E007DD5EC /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				1D565ABF2478BAA2007DD5EC /* HowTo.xcdatamodeld */,
+				1D565AEF2478BB8E007DD5EC /* CoreDataStack.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D565AF02478BB8E007DD5EC /* CoreDataStack.swift in Sources */,
 				1D565ABB2478BAA2007DD5EC /* ViewController.swift in Sources */,
 				1D565AB72478BAA2007DD5EC /* AppDelegate.swift in Sources */,
 				1D565AB92478BAA2007DD5EC /* SceneDelegate.swift in Sources */,
