@@ -44,12 +44,15 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             frame.size = scrollView.frame.size
             // intialize image view
             let imageView = UIImageView(frame: frame)
+            // images are named to match the index number
             imageView.image = UIImage(named: images[index])
-            // add it to scroll view
+            // add it to scroll view, set content to aspect fill and clip it to bounds
+            imageView.contentMode = .scaleAspectFill
+            imageView.layer.masksToBounds = true
             self.scrollView.addSubview(imageView)
         }
-        // set the scroll view to 3x as wide because there are 3 images, height stays constant
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width * CGFloat(images.count), height: scrollView.frame.size.height)
+        // set the scroll view to 3x as wide because there are 3 images, height stays so you can't scroll vertically
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width * CGFloat(images.count), height: 0)
         scrollView.delegate = self
     }
     

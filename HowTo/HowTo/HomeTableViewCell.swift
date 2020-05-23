@@ -33,6 +33,9 @@ class HomeTableViewCell: UITableViewCell {
     }
 
     private func updateViews() {
+        // adds cell border
+        layer.borderWidth = 0.3
+        layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 0.85)
     // TODO: unwrap injected object and assign it all it's properties
     }
     
