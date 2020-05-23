@@ -20,7 +20,7 @@
         <!--Home-->
         <scene sceneID="6ye-Rr-MnX">
             <objects>
-                <viewController id="Z9Y-K9-B6g" customClass="HomeViewController" customModule="HowTo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="Z9Y-K9-B6g" customClass="HomeViewController" customModule="HowTo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ueJ-Ec-fd6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -197,11 +197,6 @@
                         <viewLayoutGuide key="safeArea" id="UEC-MX-yKe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="0Od-3l-N8f">
-                        <barButtonItem key="leftBarButtonItem" title="Onboarding (Temporary Button)" id="3In-SW-uM1">
-                            <connections>
-                                <segue destination="ErQ-Qt-ysb" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="lbu-Bo-L3V"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="NKL-Qm-w7u">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -212,6 +207,7 @@
                     <connections>
                         <outlet property="searchControl" destination="yzc-hw-7d0" id="WlB-Eu-DED"/>
                         <outlet property="tableView" destination="Iop-4K-baP" id="K4j-De-BgJ"/>
+                        <segue destination="ErQ-Qt-ysb" kind="presentation" identifier="ShowOnboarding" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="lYe-mU-qaO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ma2-BS-wH8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

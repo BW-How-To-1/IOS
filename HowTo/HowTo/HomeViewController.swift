@@ -20,12 +20,12 @@ class HomeViewController: UIViewController {
     let menuListController = MenuListController()
     // this is temporary and should be deleted
     var dummyCells = ["First", "Second", "Third"]
-    private let cellReuseId = "HomeTableViewCell"
     
     // MARK: - Lifecycle & init's
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        menuListController.menuListDelegate = self
     }
         
     // MARK: - Actions & Methods
@@ -54,7 +54,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId, for: indexPath) as! HomeTableViewCell // FIXME: - crash this with a print or log if it fails
+        let cell = tableView.dequeueReusableCell(withIdentifier: .homeTableViewCellId, for: indexPath) as! HomeTableViewCell // FIXME: - crash this with a print or log if it fails
         cell.titleLabel.text = dummyCells[indexPath.row]
         cell.imageView1.image = UIImage(named: String(indexPath.row))
         return cell
@@ -63,3 +63,15 @@ extension HomeViewController: UITableViewDataSource {
     
 }
 
+extension HomeViewController: MenuListDelegate {
+    func menuItemPressed(buttonNumber: Int) {
+        switch buttonNumber {
+        case 0:
+            // login / signup
+            self.performSegue(withIdentifier: .showOnboardingSegueId, sender: self)
+        default:
+            print("error: default case in menuItemPressed() was triggered")
+        }
+    }
+    
+}
