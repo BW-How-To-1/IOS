@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         updateViews()
         menuListController.menuListDelegate = self
+        onboardTheUserIfFirstLaunch()
     }
         
     // MARK: - Actions & Methods
@@ -44,6 +45,12 @@ class HomeViewController: UIViewController {
         // add ability to swipe side menu open and closed
         SideMenuManager.default.rightMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
+    }
+    
+    private func onboardTheUserIfFirstLaunch() {
+        guard UserDefaults.standard.bool(forKey: .firstLaunchKey) == false else { return }
+        performSegue(withIdentifier: .showOnboardingSegueId, sender: self)
+        UserDefaults.standard.set(true, forKey: .firstLaunchKey)
     }
 
 }

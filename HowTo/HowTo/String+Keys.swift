@@ -10,6 +10,9 @@ import Foundation
 
 extension String {
     // user defaults keys
+    /// bool that determines whether this is the first time the app has been launched
+    static let firstLaunchKey = "firstLanch"
+    /// bool that determines whether the user is loggedIn or using the app as a guest
     static let isLoggedInKey = "isLoggedIn"
     // tableViewCell id keys
     static let homeTableViewCellId = "HomeTableViewCell"
