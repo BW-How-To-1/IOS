@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  IOS - How-To
+//  HowTo
 //
 //  Created by Shawn James on 5/22/20.
 //  Copyright © 2020 Shawn James. All rights reserved.
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "IOS___How_To")
+        let container = NSPersistentContainer(name: "HowTo")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

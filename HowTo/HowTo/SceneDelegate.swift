@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  IOS - How-To
+//  HowTo
 //
 //  Created by Shawn James on 5/22/20.
 //  Copyright © 2020 Shawn James. All rights reserved.
