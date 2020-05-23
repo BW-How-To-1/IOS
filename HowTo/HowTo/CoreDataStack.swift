@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
+    
     // create singleton
     static let shared = CoreDataStack()
     

@@ -1,0 +1,65 @@
+//
+//  HomeViewController.swift
+//  HowTo
+//
+//  Created by Shawn James on 5/22/20.
+//  Copyright © 2020 Shawn James. All rights reserved.
+//
+
+import UIKit
+import SideMenu
+
+class HomeViewController: UIViewController {
+    
+    // MARK: - Outlets & Properties
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchControl: UISearchBar!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    var menu: SideMenuNavigationController?
+    let menuListController = MenuListController()
+    // this is temporary and should be deleted
+    var dummyCells = ["First", "Second", "Third"]
+    private let cellReuseId = "HomeTableViewCell"
+    
+    // MARK: - Lifecycle & init's
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+    }
+        
+    // MARK: - Actions & Methods
+    @IBAction func menuButtonTapped() {
+        // presents the side menu
+        present(menu!, animated: true)
+    }
+    
+    private func updateViews() {
+        tableView.dataSource = self
+        // nav bar
+        self.title = ""
+        navigationController?.navigationBar.barTintColor = .systemBlue
+        // add side menu to VC
+        menu = SideMenuNavigationController(rootViewController: menuListController)
+        // add ability to swipe side menu open and closed
+        SideMenuManager.default.rightMenuNavigationController = menu
+        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
+    }
+
+}
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        dummyCells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseId, for: indexPath) as! HomeTableViewCell // FIXME: - crash this with a print or log if it fails
+        cell.titleLabel.text = dummyCells[indexPath.row]
+        cell.imageView1.image = UIImage(named: String(indexPath.row))
+        return cell
+    }
+    
+    
+}
+
