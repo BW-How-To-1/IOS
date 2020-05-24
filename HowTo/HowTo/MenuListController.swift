@@ -65,7 +65,9 @@ class MenuListController: UITableViewController {
     
     // MARK: - Methods
     private func updateViews() {
-        self.title = "Not Logged In / Logged in as Username"
+        let username = UserDefaults.standard.string(forKey: .usernameKey) ?? ""
+        let isLoggedIn = UserDefaults.standard.bool(forKey: .isLoggedInKey)
+        self.title = isLoggedIn == false ? "Using as Guest" : "Logged in as" + " " + username
         updateMenuLabels()
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
                                                             NSAttributedString.Key.font: UIFont(name: "Avenir Next", size: 17)!]

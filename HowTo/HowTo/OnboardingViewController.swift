@@ -26,6 +26,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         
     // MARK: - Actions & Methods
     @IBAction func continueAsGuestButtonTapped(_ sender: UIButton) {
+        UserDefaults.standard.set(false, forKey: .isLoggedInKey)
         dismiss(animated: true, completion: nil)
     }
     

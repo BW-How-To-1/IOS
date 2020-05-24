@@ -15,7 +15,7 @@ class LoginSignupViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var rememberMeButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
-    
+        
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,9 @@ class LoginSignupViewController: UIViewController {
     
     // MARK: - Actions & Methods
     @IBAction func submitButtonPressed(_ sender: UIButton) {
+        // if login was successful then run the following. Otherwise, present error to user
+        UserDefaults.standard.set(true, forKey: .isLoggedInKey)
+        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func rememberMeButtonPressed(_ sender: UIButton) {
         // save username and pass
@@ -80,5 +83,5 @@ class LoginSignupViewController: UIViewController {
         print("Keyboard will show: \(notification.name.rawValue)")
         view.frame.origin.y = -100
     }
-
+    
 }
