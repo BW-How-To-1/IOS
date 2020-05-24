@@ -28,6 +28,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func continueAsGuestButtonTapped(_ sender: UIButton) {
         UserDefaults.standard.set(false, forKey: .isLoggedInKey)
         dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: notificationToUpdateViews, object: nil)
     }
     
     

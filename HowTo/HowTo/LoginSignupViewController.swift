@@ -35,6 +35,7 @@ class LoginSignupViewController: UIViewController {
         // if login was successful then run the following. Otherwise, present error to user
         UserDefaults.standard.set(true, forKey: .isLoggedInKey)
         presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: notificationToUpdateViews, object: nil)
     }
     @IBAction func rememberMeButtonPressed(_ sender: UIButton) {
         // save username and pass

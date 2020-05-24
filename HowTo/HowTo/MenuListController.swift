@@ -12,6 +12,8 @@ protocol MenuListDelegate {
     func menuItemPressed(buttonNumber: Int)
 }
 
+let notificationToUpdateViews = NSNotification.Name(rawValue: "updateViews")
+
 class MenuListController: UITableViewController {
     
     // MARK: - Properties
@@ -23,6 +25,11 @@ class MenuListController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: .menuListControllerCellId)
         updateViews()
+        initObservers()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: notificationToUpdateViews, object: nil)
     }
     
     // MARK: - Table view data source
@@ -64,10 +71,10 @@ class MenuListController: UITableViewController {
     }
     
     // MARK: - Methods
-    private func updateViews() {
+    @objc private func updateViews() {
         let username = UserDefaults.standard.string(forKey: .usernameKey) ?? ""
         let isLoggedIn = UserDefaults.standard.bool(forKey: .isLoggedInKey)
-        self.title = isLoggedIn == false ? "Using as Guest" : "Logged in as" + " " + username
+        self.title = isLoggedIn == false ? "Using as Guest" : "Hello" + " " + username + "!"
         updateMenuLabels()
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
                                                             NSAttributedString.Key.font: UIFont(name: "Avenir Next", size: 17)!]
@@ -76,12 +83,18 @@ class MenuListController: UITableViewController {
     }
     
     private func updateMenuLabels() {
+        menuLabels = []
         // menuLabel 1
-        menuLabels.append(UserDefaults.standard.bool(forKey: .isLoggedInKey) == true ? "Logout" : "Login / Signup")
+        menuLabels.append(UserDefaults.standard.bool(forKey: .isLoggedInKey) == true ? "Logout" : "Create Account")
         // menuLabel 2
         // menuLabel 3
         // menuLabel 4
         // menuLabel 5
+        tableView.reloadData()
+    }
+    
+    private func initObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: notificationToUpdateViews, object: nil)
     }
     
 }
