@@ -20,12 +20,21 @@ class LoginSignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        createObservers()
+    }
+    
+    deinit {
+        // stop listening to keyboard events
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     // MARK: - Actions & Methods
     @IBAction func submitButtonPressed(_ sender: UIButton) {
     }
     @IBAction func rememberMeButtonPressed(_ sender: UIButton) {
+        // save username and pass
         UserDefaults.standard.set(username.text, forKey: .usernameKey)
         UserDefaults.standard.set(password.text, forKey: .passwordKey)
     }
@@ -57,6 +66,18 @@ class LoginSignupViewController: UIViewController {
         } else {
             rememberMeButton.setImage(UIImage(systemName: "square"), for: .normal)
         }
+    }
+    
+    func createObservers() {
+        // listen for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc func keyboardWillChange(notification: Notification) {
+        print("Keyboard will show: \(notification.name.rawValue)")
+        view.frame.origin.y = -100
     }
 
 }
