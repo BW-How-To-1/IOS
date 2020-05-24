@@ -16,6 +16,7 @@ extension String {
     static let isLoggedInKey = "isLoggedIn"
     /// holds the username as a string
     static let usernameKey = "username"
+    static let passwordKey = "password"
     // tableViewCell id keys
     static let homeTableViewCellId = "HomeTableViewCell"
     static let menuListControllerCellId = "cell"
