@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
     
     // MARK: - Acitons & Methods
     @IBAction func editPostButtonTapped(_ sender: UIButton) {
+        // TODO: guard to make sure user = author, otherwise they can't use or see this button
         self.view.addSubview(editPostPopOver)
         editPostPopOver.center = editPostButton.center
         editPostPopOver.center.y = editPostButton.center.y + 71
@@ -33,6 +34,7 @@ class DetailViewController: UIViewController {
     
     private func updateViews() {
         self.editPostPopOver.layer.cornerRadius = 10
+        // TODO: if user == author, then show edit post button, otherwise hide it
     }
     /*
     // MARK: - Navigation
