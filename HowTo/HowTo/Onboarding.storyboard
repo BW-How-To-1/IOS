@@ -133,7 +133,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skL-6Y-fGC">
                                                 <rect key="frame" x="0.0" y="0.0" width="178" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="username"/>
                                                 <connections>
                                                     <action selector="textWasEdited:" destination="M6F-YD-2U2" eventType="editingChanged" id="Unk-kv-oIf"/>
                                                 </connections>
@@ -141,7 +141,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="luC-Hw-6HJ">
                                                 <rect key="frame" x="0.0" y="42" width="178" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <connections>
                                                     <action selector="textWasEdited:" destination="M6F-YD-2U2" eventType="editingDidEnd" id="P4H-Kh-Kjp"/>
                                                 </connections>
@@ -177,7 +177,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="0.78645188737623761" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="vYm-VU-j4m" firstAttribute="top" secondItem="3XS-al-e7g" secondAttribute="bottom" constant="13" id="Jve-kB-qpU"/>
                                     <constraint firstItem="3XS-al-e7g" firstAttribute="centerY" secondItem="1tQ-0a-pzY" secondAttribute="centerY" constant="-130" id="gBS-hQ-g13"/>
