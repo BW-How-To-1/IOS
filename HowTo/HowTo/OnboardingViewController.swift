@@ -48,7 +48,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             self.scrollView.addSubview(imageView)
         }
         // set the scroll view to 3x as wide because there are 3 images, height stays so you can't scroll vertically
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width * CGFloat(images.count), height: 0)
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width * CGFloat(images.count), height: scrollView.frame.size.height)
         scrollView.delegate = self
     }
     

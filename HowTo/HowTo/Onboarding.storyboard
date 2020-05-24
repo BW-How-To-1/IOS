@@ -10,15 +10,13 @@
         <!--Onboarding View Controller-->
         <scene sceneID="ao7-mg-ce1">
             <objects>
-                <viewController id="mwA-is-ZQF" customClass="OnboardingViewController" customModule="HowTo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="mwA-is-ZQF" customClass="OnboardingViewController" customModule="HowTo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mEz-BQ-NNh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" ambiguous="YES" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cck-0d-RuV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="735"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="N3w-MQ-qP5"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="fq5-Nr-JBD"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cck-0d-RuV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="717"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mgB-sL-cSi">
                                 <rect key="frame" x="20" y="725" width="374" height="132"/>
@@ -89,13 +87,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Cck-0d-RuV" firstAttribute="top" secondItem="mEz-BQ-NNh" secondAttribute="top" id="Fs1-zD-PaH"/>
                             <constraint firstItem="mgB-sL-cSi" firstAttribute="leading" secondItem="f14-Rc-LJF" secondAttribute="leading" constant="20" id="NbF-z5-Iy5"/>
                             <constraint firstItem="mgB-sL-cSi" firstAttribute="top" secondItem="Cck-0d-RuV" secondAttribute="bottom" constant="8" id="Vxm-T5-0eR"/>
-                            <constraint firstItem="Cck-0d-RuV" firstAttribute="top" secondItem="mEz-BQ-NNh" secondAttribute="top" id="Ysg-I9-NDD"/>
                             <constraint firstItem="f14-Rc-LJF" firstAttribute="bottom" secondItem="mgB-sL-cSi" secondAttribute="bottom" constant="5" id="bZC-mm-oAW"/>
                             <constraint firstItem="f14-Rc-LJF" firstAttribute="trailing" secondItem="mgB-sL-cSi" secondAttribute="trailing" constant="20" id="do5-52-TcS"/>
-                            <constraint firstItem="Cck-0d-RuV" firstAttribute="leading" secondItem="f14-Rc-LJF" secondAttribute="leading" id="flz-CM-OA9"/>
-                            <constraint firstItem="Cck-0d-RuV" firstAttribute="trailing" secondItem="f14-Rc-LJF" secondAttribute="trailing" id="uIE-il-VMy"/>
+                            <constraint firstItem="Cck-0d-RuV" firstAttribute="leading" secondItem="mEz-BQ-NNh" secondAttribute="leading" id="flz-CM-OA9"/>
+                            <constraint firstItem="Cck-0d-RuV" firstAttribute="trailing" secondItem="mEz-BQ-NNh" secondAttribute="trailing" id="uIE-il-VMy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f14-Rc-LJF"/>
                     </view>
@@ -222,10 +220,10 @@
         <!--Navigation Controller-->
         <scene sceneID="pdZ-pc-f7U">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sIQ-4K-FfE" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="sIQ-4K-FfE" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OJ6-aX-bYH">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

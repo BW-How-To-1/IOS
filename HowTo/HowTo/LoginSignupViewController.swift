@@ -44,6 +44,7 @@ class LoginSignupViewController: UIViewController {
     }
     
     private func updateViews() {
+        navigationController?.isNavigationBarHidden = true
         autofillTextFields()
         updateRememberMeButton()
         guard let logoImage = UIImage(named: "0") else { return }
