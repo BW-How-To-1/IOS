@@ -25,10 +25,6 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     }
         
     // MARK: - Actions & Methods
-    @IBAction func signUpButtonTapped(_ sender: UIButton) {
-    }
-    @IBAction func signInButtonTapped(_ sender: UIButton) {
-    }
     @IBAction func continueAsGuestButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -62,4 +58,15 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = Int(pageNumber)
     }
 
+}
+
+extension OnboardingViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == .goToSignUpSegueId {
+            
+        } else if segue.identifier == String.goToLoginSegueId {
+            
+        }
+    }
+    
 }
