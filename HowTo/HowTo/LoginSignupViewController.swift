@@ -41,6 +41,7 @@ class LoginSignupViewController: UIViewController {
         // save username and pass
         UserDefaults.standard.set(username.text, forKey: .usernameKey)
         UserDefaults.standard.set(password.text, forKey: .passwordKey)
+        rememberMeButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
     }
     
     @IBAction func textWasEdited(_ sender: UITextField) {
