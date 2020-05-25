@@ -15,6 +15,7 @@ class LoginSignupViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var rememberMeButton: UIButton!
+    @IBOutlet weak var textFieldBackgroundView: UIView!
     // keep updating this text with errors or successes for the user to see what's going on
     @IBOutlet weak var statusLabel: UILabel!
         
@@ -57,7 +58,11 @@ class LoginSignupViewController: UIViewController {
         guard let logoImage = UIImage(named: "monkey") else { return }
         imageView.image = logoImage.roundedImage
         submitButton.layer.cornerRadius = 5
-        
+        textFieldBackgroundView.layer.cornerRadius = 5
+        textFieldBackgroundView.layer.shadowColor = UIColor.black.cgColor
+        textFieldBackgroundView.layer.shadowOpacity = 1
+        textFieldBackgroundView.layer.shadowOffset = .zero
+        textFieldBackgroundView.layer.shadowRadius = 10
     }
     
     private func autofillTextFields() {
