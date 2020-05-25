@@ -15,7 +15,15 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GR4-uP-S1I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1959" y="-263"/>
+            <point key="canvasLocation" x="2488" y="-153"/>
+        </scene>
+        <!--NewPost-->
+        <scene sceneID="JHw-O1-KjI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewPost" id="C7j-4k-3R7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QVP-FY-g0h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2548" y="-129"/>
         </scene>
         <!--Home-->
         <scene sceneID="6ye-Rr-MnX">
@@ -199,7 +207,7 @@
                         <viewLayoutGuide key="safeArea" id="UEC-MX-yKe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="0Od-3l-N8f">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis" catalog="system" id="NKL-Qm-w7u">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="text.justifyright" catalog="system" id="NKL-Qm-w7u">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="menuButtonTapped" destination="Z9Y-K9-B6g" id="Z9V-CJ-uA3"/>
@@ -207,16 +215,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="menuButton" destination="NKL-Qm-w7u" id="8Ej-AQ-lNu"/>
                         <outlet property="searchControl" destination="yzc-hw-7d0" id="WlB-Eu-DED"/>
                         <outlet property="tableView" destination="Iop-4K-baP" id="K4j-De-BgJ"/>
                         <segue destination="ErQ-Qt-ysb" kind="presentation" identifier="ShowOnboarding" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="lYe-mU-qaO"/>
+                        <segue destination="C7j-4k-3R7" kind="presentation" identifier="ShowNewPost" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="Jmu-hB-7UD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ma2-BS-wH8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="138.61607142857142"/>
         </scene>
-        <!--How To Cook Pasta-->
+        <!--Detail View Controller-->
         <scene sceneID="N87-l6-aUW">
             <objects>
                 <viewController id="1Ls-ZK-sMN" customClass="DetailViewController" customModule="HowTo" customModuleProvider="target" sceneMemberID="viewController">
@@ -331,6 +341,9 @@
                                 <state key="normal" image="paperplane.fill" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendCommentButtonTapped:" destination="1Ls-ZK-sMN" eventType="touchUpInside" id="XCQ-HH-FmH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -378,7 +391,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3sO-hj-2ER"/>
                     </view>
-                    <navigationItem key="navigationItem" title="How To Cook Pasta" id="K2S-WS-78D"/>
+                    <navigationItem key="navigationItem" id="K2S-WS-78D"/>
                     <connections>
                         <outlet property="deleteButton" destination="sEB-Uz-Afs" id="x9I-fY-LTt"/>
                         <outlet property="editContentButton" destination="8nu-w7-41X" id="axD-RJ-Kzd"/>
@@ -445,7 +458,7 @@
                     <viewLayoutGuide key="safeArea" id="Df8-vQ-q8S"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2762.3188405797105" y="138.61607142857142"/>
+            <point key="canvasLocation" x="3232" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fqo-5Z-z2o">
@@ -470,10 +483,10 @@
     <resources>
         <image name="arrow.down" catalog="system" width="120" height="128"/>
         <image name="clock.fill" catalog="system" width="128" height="121"/>
-        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="124"/>
         <image name="makingPasta" width="6000" height="4000"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="paperplane.fill" catalog="system" width="128" height="121"/>
+        <image name="text.justifyright" catalog="system" width="128" height="100"/>
     </resources>
 </document>

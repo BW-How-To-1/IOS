@@ -49,22 +49,33 @@ class MenuListController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // what should be done with user selection when pressed?
+        // FIXME: - this should all be refactored. it doesn't need a switch statement, it just needs to pass the index path.row into the buttonNumber parameter
         switch indexPath.row {
         case 0:
-            // login / signup button
+            // sort by...
             dismiss(animated: true) {
                 self.menuListDelegate?.menuItemPressed(buttonNumber: 0)
             }
         case 1:
-            print("SignUp")
+            // filter by...
+            dismiss(animated: true) {
+                self.menuListDelegate?.menuItemPressed(buttonNumber: 1)
+            }
         case 2:
-            print("Filter")
+            // nothing yet...
+            dismiss(animated: true) {
+                self.menuListDelegate?.menuItemPressed(buttonNumber: 2)
+            }
         case 3:
-            print("+ New Post")
+            // login / logout button
+            dismiss(animated: true) {
+                self.menuListDelegate?.menuItemPressed(buttonNumber: 3)
+            }
         case 4:
-            print("Logout")
-        case 5:
-            print("etc...")
+            // create a new tutorial post
+            dismiss(animated: true) {
+                self.menuListDelegate?.menuItemPressed(buttonNumber: 4)
+            }
         default:
             print("There is a menu item that does not do anything")
         }
@@ -77,21 +88,28 @@ class MenuListController: UITableViewController {
         self.title = isLoggedIn == false ? "Using as Guest" : "Hello" + " " + username + "!"
         updateMenuLabels()
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
-                                                            NSAttributedString.Key.font: UIFont(name: "Avenir Next", size: 17)!]
+                                                            NSAttributedString.Key.font: UIFont(name: "Avenir Next", size: 21)!]
         tableView.backgroundColor = .systemBlue
         navigationController?.navigationBar.barTintColor = .systemBlue
     }
     
     private func updateMenuLabels() {
         menuLabels = []
+        // menuLabel 0
+        menuLabels.append("Sort By...") // most commented / most liked etc...
         // menuLabel 1
-        menuLabels.append(UserDefaults.standard.bool(forKey: .isLoggedInKey) == true ? "Logout" : "Create Account")
+        menuLabels.append("Filter By...")
         // menuLabel 2
+        menuLabels.append("Placeholder...")
         // menuLabel 3
-        // menuLabel 4
-        // menuLabel 5
+        menuLabels.append(UserDefaults.standard.bool(forKey: .isLoggedInKey) == true ? "Logout" : "Create an Account")
+        // last (optional) menu label #4 - if logged in
+        if UserDefaults.standard.bool(forKey: .isLoggedInKey) { menuLabels.append("Create a New Post") }
+        
+        
         tableView.reloadData()
     }
+
     
     private func initObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateViews), name: notificationToUpdateViews, object: nil)

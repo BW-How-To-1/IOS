@@ -25,6 +25,7 @@
 		1DC4D6CD2479C3F100E7BA74 /* String+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4D6CC2479C3F100E7BA74 /* String+Keys.swift */; };
 		1DC4D6D32479EFA500E7BA74 /* LoginSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4D6D22479EFA500E7BA74 /* LoginSignupViewController.swift */; };
 		1DC4D6D52479F39D00E7BA74 /* UIImage+RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4D6D42479F39D00E7BA74 /* UIImage+RoundedImage.swift */; };
+		1DD132CC247B68A400F8B83A /* NewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD132CB247B68A400F8B83A /* NewPost.storyboard */; };
 		1DDC460E247AE26F0081133D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC460D247AE26F0081133D /* DetailViewController.swift */; };
 		9C135BF949731A78D7380221 /* Pods_HowTo_HowToUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */; };
 		EC45C767E70E23CF66CA5D4C /* Pods_HowTo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217BBB3EFA2D8C26D9D41E7D /* Pods_HowTo.framework */; };
@@ -73,6 +74,7 @@
 		1DC4D6CC2479C3F100E7BA74 /* String+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Keys.swift"; sourceTree = "<group>"; };
 		1DC4D6D22479EFA500E7BA74 /* LoginSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupViewController.swift; sourceTree = "<group>"; };
 		1DC4D6D42479F39D00E7BA74 /* UIImage+RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+RoundedImage.swift"; sourceTree = "<group>"; };
+		1DD132CB247B68A400F8B83A /* NewPost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPost.storyboard; sourceTree = "<group>"; };
 		1DDC460D247AE26F0081133D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		217BBB3EFA2D8C26D9D41E7D /* Pods_HowTo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowTo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowTo_HowToUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +182,7 @@
 			children = (
 				1D565ABC2478BAA2007DD5EC /* Main.storyboard */,
 				1D565AF12478C05F007DD5EC /* Onboarding.storyboard */,
+				1DD132CB247B68A400F8B83A /* NewPost.storyboard */,
 				1D565AC42478BAA3007DD5EC /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
@@ -379,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DD132CC247B68A400F8B83A /* NewPost.storyboard in Resources */,
 				1D565AC62478BAA3007DD5EC /* LaunchScreen.storyboard in Resources */,
 				1D565AC32478BAA3007DD5EC /* Assets.xcassets in Resources */,
 				1D565ABE2478BAA2007DD5EC /* Main.storyboard in Resources */,

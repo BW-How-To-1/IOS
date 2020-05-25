@@ -15,6 +15,7 @@ class LoginSignupViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var rememberMeButton: UIButton!
+    // keep updating this text with errors or successes for the user to see what's going on
     @IBOutlet weak var statusLabel: UILabel!
         
     // MARK: - Lifecycle

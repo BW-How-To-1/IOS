@@ -22,6 +22,7 @@ extension String {
     static let menuListControllerCellId = "cell"
     // segueId keys
     static let showOnboardingSegueId = "ShowOnboarding"
+    static let showNewPostSegueId = "ShowNewPost"
     static let goToSignUpSegueId = "GoToSignUp"
     static let goToLoginSegueId = "GoToLogin"
 }
