@@ -20,6 +20,7 @@ extension String {
     // tableViewCell id keys
     static let homeTableViewCellId = "HomeTableViewCell"
     static let menuListControllerCellId = "cell"
+    static let commentTableViewCellId = "CommentCell"
     // segueId keys
     static let showOnboardingSegueId = "ShowOnboarding"
     static let showNewPostSegueId = "ShowNewPost"

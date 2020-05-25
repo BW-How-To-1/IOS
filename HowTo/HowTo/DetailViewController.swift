@@ -13,11 +13,20 @@ class DetailViewController: UIViewController {
     // MARK: - Outlets & properties
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageBlur: UIVisualEffectView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var commentCountOrDescriptionLabel: UILabel!
+    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var sendCommentButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tutorialTextView: UITextView!
     // popover
     @IBOutlet var editPostPopOver: UIView!
     @IBOutlet weak var editPostButton: UIButton!
     @IBOutlet weak var editContentButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    
+    var dummyComments = ["I burned my finger", "Nice tutorial, thanks!", "I couldn't figure out how to boil the water"]
+    var dummyUserNames = ["Billybob321", "Sallysprinkles", "Smartpants87"]
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -63,6 +72,22 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @IBAction func toggleSegmentedControl(_ sender: UISegmentedControl) {
+        // FIXME: - would be nice to replace the views rather than just pop the tutorial view on top and move it back to the background
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            setUpTutorialView()
+        case 1:
+            // comments view
+            tutorialTextView.alpha = 0
+            tutorialTextView.text = ""
+            tutorialTextView.superview?.sendSubviewToBack(tutorialTextView)
+            // format this with comment count
+            commentCountOrDescriptionLabel.text = "382 Comments"
+        default:
+            print("error: default value was triggered in toggleSegmentedControl() switch statement and shouldn't have been")
+        }
+    }
     
     private func updateViews() {
         self.editPostPopOver.layer.cornerRadius = 10
@@ -73,6 +98,26 @@ class DetailViewController: UIViewController {
             // TODO: if user == author, then show edit post button, otherwise hide it. add && author = author above
             editPostButton.alpha = 1
         }
+        setUpTutorialView()
+        tableView.dataSource = self
+    }
+    
+    private func setUpTutorialView() {
+        // tutorial view
+        tutorialTextView.alpha = 1
+        tutorialTextView.text = """
+        This will be built out with the description text and the steps text. It is a placeholder for now to show a description that somebody would have typed in. You should be sure to not cook the pasta too long or it won't taste good. Don't forget to use non stick pans. Don't use metal because it will scratch the pans.
+        
+        Steps:
+        1. Boil the water
+        2. Put the pasta in the water
+        3. Cook it the right time
+        4. Do a dance
+        5. Add some delicious sauce
+        6. Enjoy!
+        """
+        tutorialTextView.superview?.bringSubviewToFront(tutorialTextView)
+        commentCountOrDescriptionLabel.text = "Description"
     }
     /*
      // MARK: - Navigation
@@ -83,5 +128,19 @@ class DetailViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+}
+
+extension DetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        dummyComments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: .commentTableViewCellId, for: indexPath)
+        cell.textLabel?.text = dummyComments[indexPath.row]
+        cell.detailTextLabel?.text = dummyUserNames[indexPath.row]
+        return cell
+    }
     
 }

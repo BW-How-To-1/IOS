@@ -234,6 +234,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gR2-kZ-RiG">
+                                <rect key="frame" x="20" y="172" width="374" height="226"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uvT-EC-pmD">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="226"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isu-vm-YjK">
+                                            <rect key="frame" x="0.0" y="0.0" width="134" height="98"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GYx-3a-GhH">
+                                                <rect key="frame" x="0.0" y="0.0" width="134" height="98"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="regular"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ynM-v5-myk">
+                                <rect key="frame" x="20" y="476.5" width="374" height="405.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Cook Pasta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4NX-e7-Zv0">
                                 <rect key="frame" x="20" y="108" width="374" height="30.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
@@ -265,6 +293,9 @@
                                     <segment title="Read The Comments"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="toggleSegmentedControl:" destination="1Ls-ZK-sMN" eventType="valueChanged" id="6pX-6V-NAP"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHX-BF-waj">
                                 <rect key="frame" x="115" y="146.5" width="51" height="17.5"/>
@@ -274,32 +305,11 @@
                                     <action selector="editPostButtonTapped:" destination="1Ls-ZK-sMN" eventType="touchUpInside" id="6eD-34-tx5"/>
                                 </connections>
                             </button>
-                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gR2-kZ-RiG">
-                                <rect key="frame" x="20" y="172" width="374" height="226"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uvT-EC-pmD">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="226"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isu-vm-YjK">
-                                            <rect key="frame" x="0.0" y="0.0" width="134" height="98"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GYx-3a-GhH">
-                                                <rect key="frame" x="0.0" y="0.0" width="134" height="98"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                            <vibrancyEffect>
-                                                <blurEffect style="regular"/>
-                                            </vibrancyEffect>
-                                        </visualEffectView>
-                                    </subviews>
-                                </view>
-                                <blurEffect style="regular"/>
-                            </visualEffectView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qFz-Ya-WV9">
                                 <rect key="frame" x="20" y="518.5" width="374" height="345.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="sTo-1x-LPX" detailTextLabel="2a7-AK-lJe" style="IBUITableViewCellStyleSubtitle" id="vBj-uD-yLY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCell" textLabel="sTo-1x-LPX" detailTextLabel="2a7-AK-lJe" style="IBUITableViewCellStyleSubtitle" id="vBj-uD-yLY">
                                         <rect key="frame" x="0.0" y="28" width="374" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vBj-uD-yLY" id="UW7-9y-uOB">
@@ -349,6 +359,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qrg-a1-Kgk" firstAttribute="trailing" secondItem="Lo1-8w-rPA" secondAttribute="trailing" id="2cL-CD-AQW"/>
+                            <constraint firstItem="ynM-v5-myk" firstAttribute="leading" secondItem="3sO-hj-2ER" secondAttribute="leading" constant="20" id="2tg-0x-LQo"/>
                             <constraint firstItem="gR2-kZ-RiG" firstAttribute="bottom" secondItem="qrg-a1-Kgk" secondAttribute="bottom" id="5nr-15-umT"/>
                             <constraint firstItem="gR2-kZ-RiG" firstAttribute="trailing" secondItem="qrg-a1-Kgk" secondAttribute="trailing" id="7Bl-9D-Jwg"/>
                             <constraint firstItem="3sO-hj-2ER" firstAttribute="trailing" secondItem="qFz-Ya-WV9" secondAttribute="trailing" constant="20" id="7l7-vs-dTb"/>
@@ -357,6 +368,7 @@
                             <constraint firstItem="qrg-a1-Kgk" firstAttribute="leading" secondItem="b4P-ad-b6v" secondAttribute="leadingMargin" id="AUE-tn-uqG"/>
                             <constraint firstItem="mI6-1J-fxe" firstAttribute="top" secondItem="Lo1-8w-rPA" secondAttribute="bottom" constant="8" id="BMF-1e-ZEr"/>
                             <constraint firstItem="qrg-a1-Kgk" firstAttribute="top" secondItem="LJM-c1-Ybc" secondAttribute="bottom" constant="8" id="C1S-Zb-OYi"/>
+                            <constraint firstItem="ynM-v5-myk" firstAttribute="bottom" secondItem="3sO-hj-2ER" secondAttribute="bottom" constant="20" id="Fam-y1-bYh"/>
                             <constraint firstItem="qrg-a1-Kgk" firstAttribute="trailing" secondItem="HhO-Qf-bSg" secondAttribute="trailing" id="Guc-dk-9fW"/>
                             <constraint firstItem="qFz-Ya-WV9" firstAttribute="bottom" secondItem="3sO-hj-2ER" secondAttribute="bottom" constant="2" id="Irw-s2-xC2"/>
                             <constraint firstItem="gR2-kZ-RiG" firstAttribute="leading" secondItem="HhO-Qf-bSg" secondAttribute="leading" id="JOi-KJ-dPT"/>
@@ -368,11 +380,13 @@
                             <constraint firstItem="LJM-c1-Ybc" firstAttribute="top" secondItem="4NX-e7-Zv0" secondAttribute="bottom" constant="8" id="RWS-nj-Arx"/>
                             <constraint firstItem="qFz-Ya-WV9" firstAttribute="leading" secondItem="3sO-hj-2ER" secondAttribute="leading" constant="20" id="SFb-wh-mCQ"/>
                             <constraint firstItem="gu6-CY-iGe" firstAttribute="leading" secondItem="mI6-1J-fxe" secondAttribute="trailing" id="SgT-mB-ljv"/>
+                            <constraint firstItem="3sO-hj-2ER" firstAttribute="trailing" secondItem="ynM-v5-myk" secondAttribute="trailing" constant="20" id="U0d-cX-W18"/>
                             <constraint firstItem="qrg-a1-Kgk" firstAttribute="leading" secondItem="Lo1-8w-rPA" secondAttribute="leading" id="UT0-Ir-xF5"/>
                             <constraint firstItem="gR2-kZ-RiG" firstAttribute="centerX" secondItem="qrg-a1-Kgk" secondAttribute="centerX" id="W1t-tp-2d2"/>
                             <constraint firstItem="gR2-kZ-RiG" firstAttribute="centerY" secondItem="qrg-a1-Kgk" secondAttribute="centerY" id="XGT-vh-UFh"/>
                             <constraint firstItem="gR2-kZ-RiG" firstAttribute="leading" secondItem="qrg-a1-Kgk" secondAttribute="leading" id="Xkr-bN-lMl"/>
                             <constraint firstItem="qrg-a1-Kgk" firstAttribute="top" secondItem="LJM-c1-Ybc" secondAttribute="bottom" constant="8" id="YHw-By-bRr"/>
+                            <constraint firstItem="ynM-v5-myk" firstAttribute="top" secondItem="Lo1-8w-rPA" secondAttribute="bottom" constant="8" id="ake-1j-YgZ"/>
                             <constraint firstItem="HhO-Qf-bSg" firstAttribute="top" secondItem="gR2-kZ-RiG" secondAttribute="bottom" constant="8" id="az5-4h-fgS"/>
                             <constraint firstItem="qrg-a1-Kgk" firstAttribute="top" secondItem="b4P-ad-b6v" secondAttribute="top" constant="172" id="h2O-Js-N5v"/>
                             <constraint firstItem="qFz-Ya-WV9" firstAttribute="top" secondItem="mI6-1J-fxe" secondAttribute="bottom" constant="8" id="h6S-Ny-7uX"/>
@@ -393,12 +407,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="K2S-WS-78D"/>
                     <connections>
+                        <outlet property="commentCountOrDescriptionLabel" destination="Lo1-8w-rPA" id="SWn-AM-HTF"/>
+                        <outlet property="commentTextField" destination="mI6-1J-fxe" id="j4h-cv-LpX"/>
                         <outlet property="deleteButton" destination="sEB-Uz-Afs" id="x9I-fY-LTt"/>
                         <outlet property="editContentButton" destination="8nu-w7-41X" id="axD-RJ-Kzd"/>
                         <outlet property="editPostButton" destination="gHX-BF-waj" id="6Bn-cB-V1x"/>
                         <outlet property="editPostPopOver" destination="DRp-5E-uLL" id="Ygt-Cp-dTU"/>
                         <outlet property="imageBlur" destination="gR2-kZ-RiG" id="z75-SQ-2gS"/>
                         <outlet property="imageView" destination="qrg-a1-Kgk" id="lkw-7D-8ud"/>
+                        <outlet property="segmentedControl" destination="HhO-Qf-bSg" id="WKu-Cb-HUG"/>
+                        <outlet property="sendCommentButton" destination="gu6-CY-iGe" id="7jZ-Wi-8Bo"/>
+                        <outlet property="tableView" destination="qFz-Ya-WV9" id="BQD-qy-6g0"/>
+                        <outlet property="tutorialTextView" destination="ynM-v5-myk" id="Ihq-sG-HjE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74I-UO-j3j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -458,7 +478,7 @@
                     <viewLayoutGuide key="safeArea" id="Df8-vQ-q8S"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="3232" y="139"/>
+            <point key="canvasLocation" x="3231.884057971015" y="138.61607142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fqo-5Z-z2o">
