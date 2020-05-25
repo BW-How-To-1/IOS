@@ -27,6 +27,8 @@
 		1DC4D6D52479F39D00E7BA74 /* UIImage+RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4D6D42479F39D00E7BA74 /* UIImage+RoundedImage.swift */; };
 		1DD132CC247B68A400F8B83A /* NewPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD132CB247B68A400F8B83A /* NewPost.storyboard */; };
 		1DDC460E247AE26F0081133D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC460D247AE26F0081133D /* DetailViewController.swift */; };
+		1DDD263F247C564400D53CC4 /* AddStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDD263E247C564400D53CC4 /* AddStepsViewController.swift */; };
+		1DDD2641247C5DE100D53CC4 /* AddDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDD2640247C5DE100D53CC4 /* AddDescriptionViewController.swift */; };
 		9C135BF949731A78D7380221 /* Pods_HowTo_HowToUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */; };
 		EC45C767E70E23CF66CA5D4C /* Pods_HowTo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217BBB3EFA2D8C26D9D41E7D /* Pods_HowTo.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +78,8 @@
 		1DC4D6D42479F39D00E7BA74 /* UIImage+RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+RoundedImage.swift"; sourceTree = "<group>"; };
 		1DD132CB247B68A400F8B83A /* NewPost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPost.storyboard; sourceTree = "<group>"; };
 		1DDC460D247AE26F0081133D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1DDD263E247C564400D53CC4 /* AddStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepsViewController.swift; sourceTree = "<group>"; };
+		1DDD2640247C5DE100D53CC4 /* AddDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionViewController.swift; sourceTree = "<group>"; };
 		217BBB3EFA2D8C26D9D41E7D /* Pods_HowTo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowTo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowTo_HowToUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9223E716FC53A0AC440D82D2 /* Pods-HowTo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowTo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HowTo/Pods-HowTo.release.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 			children = (
 				1D565AF52478C533007DD5EC /* Onboarding */,
 				1D90C0B72478E40800CB3A67 /* Home */,
+				1DDD263D247C55E600D53CC4 /* NewPost */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -248,6 +253,15 @@
 				1DC4D6D42479F39D00E7BA74 /* UIImage+RoundedImage.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		1DDD263D247C55E600D53CC4 /* NewPost */ = {
+			isa = PBXGroup;
+			children = (
+				1DDD2640247C5DE100D53CC4 /* AddDescriptionViewController.swift */,
+				1DDD263E247C564400D53CC4 /* AddStepsViewController.swift */,
+			);
+			name = NewPost;
 			sourceTree = "<group>";
 		};
 		490FC4AE4E97BBE52D787B49 /* Frameworks */ = {
@@ -507,9 +521,11 @@
 				1D565AF02478BB8E007DD5EC /* CoreDataStack.swift in Sources */,
 				1D565ABB2478BAA2007DD5EC /* HomeViewController.swift in Sources */,
 				1D565AB72478BAA2007DD5EC /* AppDelegate.swift in Sources */,
+				1DDD263F247C564400D53CC4 /* AddStepsViewController.swift in Sources */,
 				1DDC460E247AE26F0081133D /* DetailViewController.swift in Sources */,
 				1D90C0B92478E44C00CB3A67 /* MenuListController.swift in Sources */,
 				1D565AB92478BAA2007DD5EC /* SceneDelegate.swift in Sources */,
+				1DDD2641247C5DE100D53CC4 /* AddDescriptionViewController.swift in Sources */,
 				1DC4D6D52479F39D00E7BA74 /* UIImage+RoundedImage.swift in Sources */,
 				1D565AC12478BAA2007DD5EC /* HowTo.xcdatamodeld in Sources */,
 				1D034C302478EFCC007589EA /* HomeTableViewCell.swift in Sources */,
