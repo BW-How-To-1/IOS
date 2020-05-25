@@ -210,6 +210,7 @@
                         <outlet property="password" destination="luC-Hw-6HJ" id="hww-kB-9Tc"/>
                         <outlet property="rememberMeButton" destination="Ev0-aj-WL4" id="8Hy-ny-k3x"/>
                         <outlet property="statusLabel" destination="ogE-Ge-yjo" id="fxg-5M-8ha"/>
+                        <outlet property="submitButton" destination="bzL-mq-qmR" id="etj-LY-GQW"/>
                         <outlet property="username" destination="skL-6Y-fGC" id="fcU-s9-WsB"/>
                     </connections>
                 </viewController>

@@ -13,6 +13,7 @@ class LoginSignupViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var rememberMeButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
         
@@ -54,6 +55,8 @@ class LoginSignupViewController: UIViewController {
         updateRememberMeButton()
         guard let logoImage = UIImage(named: "0") else { return }
         imageView.image = logoImage.roundedImage
+        submitButton.layer.cornerRadius = 5
+        
     }
     
     private func autofillTextFields() {

@@ -9,10 +9,15 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
     // MARK: - Outlets & properties
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageBlur: UIVisualEffectView!
+    // popover
     @IBOutlet var editPostPopOver: UIView!
     @IBOutlet weak var editPostButton: UIButton!
+    @IBOutlet weak var editContentButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -24,26 +29,42 @@ class DetailViewController: UIViewController {
     @IBAction func editPostButtonTapped(_ sender: UIButton) {
         // TODO: guard to make sure user = author, otherwise they can't use or see this button
         self.view.addSubview(editPostPopOver)
+        // fade in
+        editPostPopOver.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            self.editPostPopOver.alpha = 1
+            self.imageBlur.alpha = 1
+        }
+        // set location
         editPostPopOver.center = editPostButton.center
         editPostPopOver.center.y = editPostButton.center.y + 71
     }
     
-    @IBAction func editPostPopOverBackButtonPressed(_ sender: UIButton) {
+    @IBAction func closeButtonPressed(_ sender: UIButton) {
         self.editPostPopOver.removeFromSuperview()
+        self.imageBlur.alpha = 0
+    }
+    
+    @IBAction func editContentButtonPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: UIButton) {
     }
     
     private func updateViews() {
         self.editPostPopOver.layer.cornerRadius = 10
+        self.editContentButton.layer.cornerRadius = 5
+        self.deleteButton.layer.cornerRadius = 5
         // TODO: if user == author, then show edit post button, otherwise hide it
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
