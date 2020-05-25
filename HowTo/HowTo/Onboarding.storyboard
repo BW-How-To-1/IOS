@@ -112,7 +112,7 @@
         <scene sceneID="0NP-Jm-SL9">
             <objects>
                 <viewController id="M6F-YD-2U2" customClass="LoginSignupViewController" customModule="HowTo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G0U-CA-hS0">
+                    <view key="view" contentMode="scaleAspectFill" id="G0U-CA-hS0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -194,7 +194,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92407947779999999" green="0.1108545437" blue="0.13942053909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FYK-dx-h6u" firstAttribute="trailing" secondItem="c8P-3q-h8a" secondAttribute="trailing" constant="53" id="gBx-Uz-bVi"/>
                             <constraint firstItem="1tQ-0a-pzY" firstAttribute="centerY" secondItem="G0U-CA-hS0" secondAttribute="centerY" id="j9R-Dq-eJc"/>

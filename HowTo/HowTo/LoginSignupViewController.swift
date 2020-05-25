@@ -54,7 +54,7 @@ class LoginSignupViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         autofillTextFields()
         updateRememberMeButton()
-        guard let logoImage = UIImage(named: "0") else { return }
+        guard let logoImage = UIImage(named: "monkey") else { return }
         imageView.image = logoImage.roundedImage
         submitButton.layer.cornerRadius = 5
         
