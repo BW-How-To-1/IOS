@@ -51,4 +51,25 @@ class HowToUITests: XCTestCase {
         XCTAssert(howToTitleLabel.exists)
     }
     
+    func testOnboardingCanBeReturnedToFromMenu() {
+        // launch application
+        let application = XCUIApplication()
+        application.launch()
+        // check to see if on homeScreen <-- this will fail if it can't get to the screen and test will need to be added to so it can get here.
+        XCTAssertEqual(application.navigationBars.element.identifier, "Home")
+        // press menu button
+        let menuButton = application.buttons["menuButton"]
+        XCTAssert(menuButton.exists)
+        menuButton.tap()
+        // select the 4th cell, which should be logout, or create account button.
+        let menuTableViewCells = application.tables.cells.count
+        XCTAssertNotEqual(menuTableViewCells, 0)
+        let fourthCell = application.tables.cells.element(boundBy: 3)
+        XCTAssert(fourthCell.exists)
+        fourthCell.tap()
+        // check to see if the onboarding scene has been returned to
+        let signInButton = application.buttons["SignUpButton"]
+        XCTAssert(signInButton.exists)
+    }
+    
 }
