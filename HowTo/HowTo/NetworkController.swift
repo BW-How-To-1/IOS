@@ -27,7 +27,7 @@ class NetworkController {
     }
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-    typealias HowToHandler = (Result<[HowTo], NetworkError>) -> Void
+//    typealias HowToHandler = (Result<[HowTo], NetworkError>) -> Void
     
     //MARK: - Properties -
     lazy var bearer: Bearer? = LoginSignupController.bearer
