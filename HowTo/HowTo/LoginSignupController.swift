@@ -22,13 +22,21 @@ class LoginSignupController {
         case connect = "CONNECT"
     }
     
+    enum NetworkError: Error {
+        case badResponse
+        case noEncode
+        case otherError
+    }
+    
+    typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
+    
     
     //MARK: - Properties -
     var bearer: Bearer?
     
     private var baseURL = URL(string: "www.google.com/")! //TODO: Add baseURL from back-end or firebase DB here.
-    private lazy var loginURL = baseURL.appendPathComponent("login") //TODO: Add correct path component
-    private lazy var signupURL = baseURL.appendPathComponent("signup") //TODO: Add correct path component.
+    private lazy var loginURL = baseURL.appendingPathComponent("login") //TODO: Add correct path component
+    private lazy var signupURL = baseURL.appendingPathComponent("signup") //TODO: Add correct path component.
     
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
@@ -36,7 +44,39 @@ class LoginSignupController {
     
     //MARK: - Actions -
     /// login and signup actions go here
+    func signUp(as user: User, completion: @escaping CompletionHandler) {
+        var request = URLRequest(url: signupURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            let encodedUser = try jsonEncoder.encode(user)
+            request.httpBody = encodedUser
+        } catch {
+            NSLog("Error encoding user info: \(error) \(error.localizedDescription)")
+            completion(.failure(.noEncode))
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error signing in: \(error) \(error.localizedDescription)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error: Bad or no response from remote host. Sign up failed.")
+                    completion(.failure(.badResponse))
+                    return
+            }
+            
+            completion(.success(true))
+        }.resume()
+    }
     
+    func logIn() {
+        
+    }
     
     
     

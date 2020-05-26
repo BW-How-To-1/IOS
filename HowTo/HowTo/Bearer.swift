@@ -2,7 +2,7 @@
 //  Bearer.swift
 //  HowTo
 //
-//  Created by Bling Morley on 5/26/20.
+//  Created by Cody Morley on 5/26/20.
 //  Copyright © 2020 Shawn James. All rights reserved.
 //
 
