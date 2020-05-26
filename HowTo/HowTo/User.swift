@@ -9,13 +9,6 @@
 import Foundation
 
 struct User: Codable {
-    let username: String
-    let password: String
-    
-    init(username: String,
-         password: String) {
-        
-        self.username = username
-        self.password = password
-    }
+    let username =  UserDefaults.standard.string(forKey: .usernameKey)
+    let password =  UserDefaults.standard.string(forKey: .passwordKey)
 }
