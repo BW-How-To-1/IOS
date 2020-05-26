@@ -147,6 +147,7 @@
 				1D565AED2478BB36007DD5EC /* ViewControllers */,
 				1D565AEC2478BB2C007DD5EC /* Storyboards */,
 				1DC4D6CA247904DA00E7BA74 /* Model */,
+				5E399FB4247D70900081C3EA /* Services */,
 				1DC4D6CB2479C3C100E7BA74 /* Helpers */,
 			);
 			path = HowTo;
@@ -272,6 +273,21 @@
 				1B6D8B6AB06D53CCA5DFC0F3 /* Pods_HowToTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E399FB4247D70900081C3EA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5E399FB5247D70A70081C3EA /* Networking */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		5E399FB5247D70A70081C3EA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		E31C2B5E4063F11DEA5AEA56 /* Pods */ = {
