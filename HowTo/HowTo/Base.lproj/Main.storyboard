@@ -83,7 +83,7 @@
                                                                                     </constraints>
                                                                                     <state key="normal" title="Button" image="hand.thumbsup.fill" catalog="system"/>
                                                                                     <connections>
-                                                                                        <action selector="likeButtonPressed:" destination="anZ-P0-cmh" eventType="touchUpInside" id="YZJ-ua-Axf"/>
+                                                                                        <action selector="likeButtonPressed:" destination="anZ-P0-cmh" eventType="touchUpInside" id="pEd-gT-X7I"/>
                                                                                     </connections>
                                                                                 </button>
                                                                             </subviews>

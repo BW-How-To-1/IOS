@@ -70,6 +70,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: .homeTableViewCellId, for: indexPath) as! HomeTableViewCell // FIXME: - crash this with a print or log if it fails
         cell.titleLabel.text = dummyCells[indexPath.row]
         cell.imageView1.image = UIImage(named: String(indexPath.row))
+        cell.alertControllerDelegate = self
         return cell
     }
     
@@ -99,6 +100,15 @@ extension HomeViewController: MenuListDelegate {
         default:
             print("error: default case in menuItemPressed() was triggered")
         }
+    }
+    
+}
+
+extension HomeViewController: AlertControllerDelegate {
+    func presentAlert(with text: String) {
+        let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     
 }
