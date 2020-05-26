@@ -27,11 +27,12 @@ class NetworkController {
     }
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-    
+    typealias HowToHandler = (Result<[HowTo], NetworkError>) -> Void
     
     //MARK: - Properties -
-    var bearer = LoginSignupController.bearer
+    lazy var bearer: Bearer? = LoginSignupController.bearer
     
+    let baseURL = URL(string: "www.google.com")! //TODO: Add real URL from back-end
     
     
     
@@ -41,6 +42,7 @@ class NetworkController {
     func postHowTo() {
         
     }
+    
     ///get and sort all relevant how-to articles from back-end
     func getHowTo() {
         
@@ -67,7 +69,26 @@ class NetworkController {
     }
     
     ///create methods helpers
+    private func getRequest(for url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
     
+    private func postRequest(for url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
+
+    private func deleteRequest(for url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
     
     
 }
