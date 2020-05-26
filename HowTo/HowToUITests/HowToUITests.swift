@@ -35,7 +35,7 @@ class HowToUITests: XCTestCase {
         XCTAssertNotEqual(menuTableViewCells, 0)
     }
     
-    func testDetailViewOpensForTappedCell {
+    func testDetailViewOpensForTappedCell() {
         // launch application
         let application = XCUIApplication()
         application.launch()
@@ -47,7 +47,7 @@ class HowToUITests: XCTestCase {
         let firstCell = application.tables.cells.element(boundBy: 0)
         XCTAssert(firstCell.exists)
         firstCell.tap()
-        let howToTitleLabel = application.buttons["howToTitleLabel"]
+        let howToTitleLabel = application.staticTexts["howToTitleLabel"]
         XCTAssert(howToTitleLabel.exists)
     }
     
