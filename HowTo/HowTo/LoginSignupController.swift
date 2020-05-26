@@ -46,7 +46,6 @@ class LoginSignupController {
     
     
     //MARK: - Actions -
-    /// login and signup actions go here
     func signUp(as user: User, completion: @escaping CompletionHandler) {
         var request = URLRequest(url: signupURL)
         request.httpMethod = HTTPMethod.post.rawValue
@@ -118,13 +117,11 @@ class LoginSignupController {
                 completion(.failure(.noDecode))
                 return
             }
+            
             completion(.success(true))
+            
         }.resume()
     }
     
-    
-    
-    //MARK: - Methods -
-    ///URLHandlers, decoding helpers, etc. go here.
     
 }
