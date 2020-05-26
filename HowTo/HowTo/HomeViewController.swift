@@ -48,6 +48,9 @@ class HomeViewController: UIViewController {
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
         menu?.presentationStyle = .viewSlideOutMenuOut
         menu?.statusBarEndAlpha = 0
+        // acessibility ID's
+        menuButton.accessibilityIdentifier = "menuButton"
+        menu?.accessibilityLabel = "menu"
     }
     
     private func onboardTheUserIfFirstLaunch() {
