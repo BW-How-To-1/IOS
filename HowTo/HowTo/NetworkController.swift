@@ -27,10 +27,10 @@ class NetworkController {
     }
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-    typealias HowToHandler = (Result<[HowTo], NetworkError>) -> Void
+    //typealias HowToHandler = (Result<[HowTo], NetworkError>) -> Void
     
     //MARK: - Properties -
-    lazy var bearer: Bearer? = LoginSignupController.bearer
+    lazy var bearer: Bearer? = LoginSignupController.shared.bearer
     
     let baseURL = URL(string: "www.google.com")! //TODO: Add real URL from back-end
     

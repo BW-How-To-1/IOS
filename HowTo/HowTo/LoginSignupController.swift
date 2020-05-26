@@ -34,7 +34,8 @@ class LoginSignupController {
     
     
     //MARK: - Properties -
-    static var bearer: Bearer?
+    var bearer: Bearer?
+    static let shared = LoginSignupController()
     
     private var baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")! //TODO: Add baseURL from back-end or firebase DB here.
     private lazy var loginURL = baseURL.appendingPathComponent("auth/login/") //TODO: Add correct path component
@@ -111,7 +112,7 @@ class LoginSignupController {
             }
             
             do {
-                LoginSignupController.self.bearer = try self.jsonDecoder.decode(Bearer.self, from: tokenData)
+                self.bearer = try self.jsonDecoder.decode(Bearer.self, from: tokenData)
             } catch {
                 NSLog("Error decoding token from server.")
                 completion(.failure(.noDecode))
