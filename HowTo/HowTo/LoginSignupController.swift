@@ -27,8 +27,8 @@ class LoginSignupController {
     var bearer: Bearer?
     
     private var baseURL = URL(string: "www.google.com/")! //TODO: Add baseURL from back-end or firebase DB here.
-    private var loginURL = baseURL.appendPathComponent("login") //TODO: Add correct path component
-    private var signupURL = baseURL.appendPathComponent("signup") //TODO: Add correct path component.
+    private lazy var loginURL = baseURL.appendPathComponent("login") //TODO: Add correct path component
+    private lazy var signupURL = baseURL.appendPathComponent("signup") //TODO: Add correct path component.
     
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
