@@ -34,7 +34,7 @@ class LoginSignupController {
     
     
     //MARK: - Properties -
-    var bearer: Bearer?
+    static var bearer: Bearer?
     
     private var baseURL = URL(string: "www.google.com/")! //TODO: Add baseURL from back-end or firebase DB here.
     private lazy var loginURL = baseURL.appendingPathComponent("login") //TODO: Add correct path component
@@ -111,7 +111,7 @@ class LoginSignupController {
             }
             
             do {
-                self.bearer = try self.jsonDecoder.decode(Bearer.self, from: tokenData)
+                LoginSignupController.self.bearer = try self.jsonDecoder.decode(Bearer.self, from: tokenData)
             } catch {
                 NSLog("Error decoding token from server.")
                 completion(.failure(.noDecode))
