@@ -35,4 +35,20 @@ class HowToUITests: XCTestCase {
         XCTAssertNotEqual(menuTableViewCells, 0)
     }
     
+    func testDetailViewOpensForTappedCell {
+        // launch application
+        let application = XCUIApplication()
+        application.launch()
+        // check to see if on homeScreen <-- this will fail if it can't get to the screen and test will need to be added to so it can get here.
+        XCTAssertEqual(application.navigationBars.element.identifier, "Home")
+        let homeTableViewCellsCount = application.tables.cells.count
+        XCTAssertNotEqual(homeTableViewCellsCount, 0)
+        // go to detail of first cell
+        let firstCell = application.tables.cells.element(boundBy: 0)
+        XCTAssert(firstCell.exists)
+        firstCell.tap()
+        let howToTitleLabel = application.buttons["howToTitleLabel"]
+        XCTAssert(howToTitleLabel.exists)
+    }
+    
 }
