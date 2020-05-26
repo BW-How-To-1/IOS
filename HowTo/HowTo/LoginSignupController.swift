@@ -24,6 +24,8 @@ class LoginSignupController {
     
     enum NetworkError: Error {
         case badResponse
+        case noData
+        case noDecode
         case noEncode
         case otherError
     }
@@ -42,6 +44,7 @@ class LoginSignupController {
     private lazy var jsonDecoder = JSONDecoder()
     
     
+    
     //MARK: - Actions -
     /// login and signup actions go here
     func signUp(as user: User, completion: @escaping CompletionHandler) {
@@ -54,6 +57,7 @@ class LoginSignupController {
         } catch {
             NSLog("Error encoding user info: \(error) \(error.localizedDescription)")
             completion(.failure(.noEncode))
+            return
         }
         
         URLSession.shared.dataTask(with: request) { _, response, error in
@@ -74,8 +78,48 @@ class LoginSignupController {
         }.resume()
     }
     
-    func logIn() {
+    func logIn(as user: User, completion: @escaping CompletionHandler) {
+        var request = URLRequest(url: loginURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            let encodedUser = try jsonEncoder.encode(user)
+            request.httpBody = encodedUser
+        } catch {
+            NSLog("Error encoding user info: \(error) \(error.localizedDescription)")
+            completion(.failure(.noEncode))
+            return
+        }
         
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error logging in: \(error) \(error.localizedDescription)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error: Bad or no response from server when logging in.")
+                    completion(.failure(.badResponse))
+                    return
+            }
+            
+            guard let tokenData = data else {
+                NSLog("No token recieved from server.")
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                self.bearer = try self.jsonDecoder.decode(Bearer.self, from: tokenData)
+            } catch {
+                NSLog("Error decoding token from server.")
+                completion(.failure(.noDecode))
+                return
+            }
+            completion(.success(true))
+        }.resume()
     }
     
     
