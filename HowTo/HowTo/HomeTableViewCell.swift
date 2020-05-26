@@ -18,12 +18,14 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var ageOfPost: UILabel!
     @IBOutlet weak var authorlabel: UILabel!
     
+    // TODO: dependancy inject for HowTo object
+    
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         updateViews()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -37,6 +39,8 @@ class HomeTableViewCell: UITableViewCell {
         layer.borderWidth = 0.3
         layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 0.85)
     // TODO: unwrap injected object and assign it all it's properties
+//        guard let <#HowTo object name#> = <#HowTo object name#> else { return }
+//        ageOfPost.text = <#HowTo object name#>.datePosted.timeAgoDisplay()
     }
     
 }
