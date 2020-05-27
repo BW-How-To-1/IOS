@@ -65,9 +65,13 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
 extension OnboardingViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == .goToSignUpSegueId {
-            
+            if let signupVC = segue.destination as? LoginSignupViewController {
+                signupVC.isLoggingIn = false
+            }
         } else if segue.identifier == String.goToLoginSegueId {
-            
+            if let loginVC = segue.destination as? LoginSignupViewController {
+                loginVC.isLoggingIn = true
+            }
         }
     }
     
