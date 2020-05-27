@@ -44,6 +44,7 @@
 		5E399FBD247D8A8D0081C3EA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FBC247D8A8D0081C3EA /* User.swift */; };
 		5E399FBF247F0A870081C3EA /* Tutorial+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FBE247F0A870081C3EA /* Tutorial+Convenience.swift */; };
 		5E399FC1247F128C0081C3EA /* TutorialRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FC0247F128C0081C3EA /* TutorialRepresentation.swift */; };
+		5E399FC5247F25A90081C3EA /* Comment+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FC4247F25A90081C3EA /* Comment+Convenience.swift */; };
 		9C135BF949731A78D7380221 /* Pods_HowTo_HowToUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */; };
 		EC45C767E70E23CF66CA5D4C /* Pods_HowTo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217BBB3EFA2D8C26D9D41E7D /* Pods_HowTo.framework */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,7 @@
 		5E399FBC247D8A8D0081C3EA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5E399FBE247F0A870081C3EA /* Tutorial+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tutorial+Convenience.swift"; sourceTree = "<group>"; };
 		5E399FC0247F128C0081C3EA /* TutorialRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRepresentation.swift; sourceTree = "<group>"; };
+		5E399FC4247F25A90081C3EA /* Comment+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+Convenience.swift"; sourceTree = "<group>"; };
 		8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowTo_HowToUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9223E716FC53A0AC440D82D2 /* Pods-HowTo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowTo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HowTo/Pods-HowTo.release.xcconfig"; sourceTree = "<group>"; };
 		AE97AAE46CC4AE7DA3C49D6B /* Pods-HowToTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowToTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HowToTests/Pods-HowToTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -286,8 +288,8 @@
 				1D7DC634247E3E5A0001D01B /* Tutorial.swift */,
 				5E399FBA247D74350081C3EA /* Bearer.swift */,
 				5E399FBC247D8A8D0081C3EA /* User.swift */,
-				5E399FBE247F0A870081C3EA /* Tutorial+Convenience.swift */,
-				5E399FC0247F128C0081C3EA /* TutorialRepresentation.swift */,
+				5E399FC2247F25690081C3EA /* Convenience */,
+				5E399FC3247F25770081C3EA /* Representations */,
 				1D565AEE2478BB48007DD5EC /* CoreData */,
 			);
 			name = Model;
@@ -341,6 +343,23 @@
 				1D7DC63B247ED4680001D01B /* URLSession+NetworkDataLoader.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		5E399FC2247F25690081C3EA /* Convenience */ = {
+			isa = PBXGroup;
+			children = (
+				5E399FBE247F0A870081C3EA /* Tutorial+Convenience.swift */,
+				5E399FC4247F25A90081C3EA /* Comment+Convenience.swift */,
+			);
+			name = Convenience;
+			sourceTree = "<group>";
+		};
+		5E399FC3247F25770081C3EA /* Representations */ = {
+			isa = PBXGroup;
+			children = (
+				5E399FC0247F128C0081C3EA /* TutorialRepresentation.swift */,
+			);
+			name = Representations;
 			sourceTree = "<group>";
 		};
 		E31C2B5E4063F11DEA5AEA56 /* Pods */ = {
@@ -593,6 +612,7 @@
 				1D565AF02478BB8E007DD5EC /* CoreDataStack.swift in Sources */,
 				1D798C27247F35F000C14413 /* AddImageViewController.swift in Sources */,
 				1D565ABB2478BAA2007DD5EC /* HomeViewController.swift in Sources */,
+				5E399FC5247F25A90081C3EA /* Comment+Convenience.swift in Sources */,
 				1D565AB72478BAA2007DD5EC /* AppDelegate.swift in Sources */,
 				1DDD263F247C564400D53CC4 /* AddStepsViewController.swift in Sources */,
 				1D7DC63A247ED31E0001D01B /* NetworkDataLoader.swift in Sources */,
