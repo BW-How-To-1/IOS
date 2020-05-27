@@ -16,6 +16,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchControl: UISearchBar!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .systemBlue
+        refreshControl.addTarget(self, action: #selector(fetchNewPosts), for: .valueChanged)
+        return refreshControl
+    }()
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     var menu: SideMenuNavigationController?
     let menuListController = MenuListController()
@@ -38,6 +44,7 @@ class HomeViewController: UIViewController {
     
     private func updateViews() {
         tableView.dataSource = self
+        tableView.backgroundColor = .black
         // nav bar
 //        self.title = ""
         navigationController?.navigationBar.barTintColor = .systemBlue
@@ -51,12 +58,22 @@ class HomeViewController: UIViewController {
         // acessibility ID's
         menuButton.accessibilityIdentifier = "menuButton"
         menu?.accessibilityLabel = "menu"
+        // refreshControl
+        tableView.refreshControl = refreshControl
     }
     
     private func onboardTheUserIfFirstLaunch() {
         guard UserDefaults.standard.bool(forKey: .firstLaunchKey) == false else { return }
         performSegue(withIdentifier: .showOnboardingSegueId, sender: self)
         UserDefaults.standard.set(true, forKey: .firstLaunchKey)
+    }
+    
+    @objc private func fetchNewPosts() {
+        // TODO: delete the contents of this method. this is just a dummy setup for UI
+        print("User has pulled to refresh, fetchNewPosts() method has been called but does nothing yet")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.refreshControl.endRefreshing()
+        }
     }
     
 }
