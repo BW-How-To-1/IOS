@@ -12,7 +12,7 @@ import CoreData
 class NetworkController {
     //MARK: - Enums & Type Aliases -
     enum NetworkError: Error {
-        
+        case noEncode
     }
     
     enum HTTPMethod: String {
@@ -21,40 +21,53 @@ class NetworkController {
         case put = "PUT"
         case delete = "DELETE"
         case patch = "PATCH"
-        case head = "HEAD"
-        case options = "OPTIONS"
-        case connect = "CONNECT"
     }
     
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-//    typealias HowToHandler = (Result<[HowTo], NetworkError>) -> Void
+    typealias TutorialHandler = (Result<[Tutorial], NetworkError>) -> Void
     
     //MARK: - Properties -
     lazy var bearer: Bearer? = LoginSignupController.shared.bearer
     
     let baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")!
+    lazy var postURL = baseURL.appendingPathComponent("/posturl/") //TODO: NEEDS CORRECT ENDPOINT
+    
+    var jsonEncoder = JSONEncoder()
+    var jsonDecoder = JSONDecoder()
+    
     
     
     
     
     //MARK: - Actions -
     ///post how-to to server
-    func postHowTo() {
+    func postTutorial(for tutorial: Tutorial, completion: @escaping CompletionHandler) {
+        var request = postRequest(for: postURL)
+        
+        do {
+            let jsonRequest = try jsonEncoder.encode(tutorial)
+            request.httpBody = jsonRequest
+        } catch {
+            NSLog("Error encoding tutorial: \(error) \(error.localizedDescription)")
+            completion(.failure(.noEncode))
+        }
+        
+        
         
     }
     
     ///get and sort all relevant how-to articles from back-end
-    func getHowTo() {
+    func getTutorial() {
         
     }
     
     ///update local how-tos with server
-    func updateHowTos() {
+    func updateTutorials() {
         
     }
     
     ///delete how-to from server
-    func deleteHowTo() {
+    func deleteTutorials() {
         
     }
     
