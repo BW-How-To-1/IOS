@@ -22,5 +22,4 @@ struct CommentRepresentation: Codable {
     let author: String
     var title: String?
     var text: String
-    
 }

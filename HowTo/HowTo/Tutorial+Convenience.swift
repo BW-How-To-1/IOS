@@ -19,7 +19,6 @@ extension Tutorial {
             let dateCreated = dateCreated else {
                 return nil
         }
-        
         return TutorialRepresentation(id: identifier.uuidString,
                                       title: title,
                                       bodyText: bodyText,
@@ -28,7 +27,6 @@ extension Tutorial {
                                       author: author,
                                       dateCreated: dateCreated)
     }
-    
     
     
     //MARK: - Convenience Initializers -

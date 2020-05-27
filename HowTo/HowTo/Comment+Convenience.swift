@@ -26,7 +26,6 @@ extension Comment {
     }
     
     
-    
     //MARK: - Convenience Initializers -
     @discardableResult convenience init(id: UUID = UUID(),
                                         dateCreated: Date = Date(),
@@ -54,7 +53,6 @@ extension Comment {
                   title: representation.title,
                   context: context)
     }
-    
     
     
 }
