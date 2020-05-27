@@ -37,7 +37,12 @@ class LoginSignupController {
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
     
-    
+    var networkDataLoader: NetworkDataLoader
+
+    // MARK: - Lifecycle
+    init(networkDataLoader: NetworkDataLoader = URLSession.shared) {
+        self.networkDataLoader = networkDataLoader
+    }
     
     //MARK: - Actions -
     func signUp(as user: User, completion: @escaping CompletionHandler) {
