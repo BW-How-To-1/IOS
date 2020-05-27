@@ -16,6 +16,7 @@ class NetworkController {
         case noData
         case noDecode
         case noEncode
+        case noToken
         case otherError
     }
     
@@ -51,7 +52,13 @@ class NetworkController {
     //MARK: - Actions -
     ///post how-to to server
     func postTutorial(for tutorial: Tutorial, completion: @escaping CompletionHandler) {
-        var request = postRequest(for: postURL)
+        guard let bearer = bearer else {
+            NSLog("Error: No authentication token. Please log in.")
+            completion(.failure(.noToken))
+            return
+        }
+        
+        var request = postRequest(for: postURL, with: bearer)
         
         do {
             let jsonRequest = try jsonEncoder.encode(tutorial) //TODO: This will be a codable .rep
@@ -125,7 +132,13 @@ class NetworkController {
     
     ///delete how-to from server
     func deleteTutorial(_ tutorial: Tutorial, completion: @escaping CompletionHandler) {
-        let request = deleteRequest(for: tutorialURL)
+        guard let bearer = bearer else {
+            NSLog("Error when deleting tutorial: No authorization token, please log in.")
+            completion(.failure(.noToken))
+            return
+        }
+        
+        let request = deleteRequest(for: tutorialURL, with: bearer)
         
         URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
@@ -159,17 +172,19 @@ class NetworkController {
         return request
     }
     
-    private func postRequest(for url: URL) -> URLRequest {
+    private func postRequest(for url: URL, with bearer: Bearer) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(bearer.token)", forHTTPHeaderField: "Auth")
         return request
     }
 
-    private func deleteRequest(for url: URL) -> URLRequest {
+    private func deleteRequest(for url: URL, with bearer: Bearer) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(bearer.token)", forHTTPHeaderField: "Auth")
         return request
     }
     
