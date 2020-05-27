@@ -142,9 +142,6 @@ class NetworkController {
     }
     
     
-    
-    
-    
     //MARK: - Methods -
     ///update helper
     func update() {
