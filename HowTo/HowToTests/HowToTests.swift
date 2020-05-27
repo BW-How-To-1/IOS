@@ -23,21 +23,34 @@ class HowToTests: XCTestCase {
      Is the completion handler called when networking fails?
      
      */
+    
+    // MARK: - Live data
+    
+    func testLiveLogin() {
+        let loginSignupController = LoginSignupController()
+        let loginExpectation = XCTestExpectation(description: "Wait for login result")
+        let testUser = User(username: "Testing", password: "Testing")
         
-        // MARK: - Live data
-        
-        func testLiveLogin() {
+        loginSignupController.logIn(as: testUser) { _ in
+            print("The login responded with something.")
+            XCTAssertNotNil(loginSignupController.bearer?.token)
+            loginExpectation.fulfill()
+        }
+        wait(for: [loginExpectation], timeout: 5)
+        XCTAssertNotNil(loginSignupController.bearer?.token)
+    }
+    
+    func testLiveLoginSpeed() {
+        measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
             let loginSignupController = LoginSignupController()
             let loginExpectation = XCTestExpectation(description: "Wait for login result")
             let testUser = User(username: "Testing", password: "Testing")
             
-            loginSignupController.logIn(as: testUser) { (result) in
-                print("The login responded with something.")
-                XCTAssertNotNil(loginSignupController.bearer?.token)
+            startMeasuring()
+            loginSignupController.logIn(as: testUser) { _ in
                 loginExpectation.fulfill()
             }
             wait(for: [loginExpectation], timeout: 5)
-            XCTAssertNotNil(loginSignupController.bearer?.token)
         }
     }
 
