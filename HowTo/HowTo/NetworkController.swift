@@ -41,9 +41,12 @@ class NetworkController {
     var jsonEncoder = JSONEncoder()
     var jsonDecoder = JSONDecoder()
     
-    
-    
-    
+    var networkDataLoader: NetworkDataLoader
+
+    // MARK: - Lifecycle
+    init(networkDataLoader: NetworkDataLoader = URLSession.shared) {
+        self.networkDataLoader = networkDataLoader
+    }
     
     //MARK: - Actions -
     ///post how-to to server
