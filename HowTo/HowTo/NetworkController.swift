@@ -76,6 +76,7 @@ class NetworkController {
     }
     
     ///get and sort all relevant how-to articles from back-end
+    //TODO: REFACTOR FOR CORE DATA SUPPORT - update, sort, and save in the final do-block
     func getTutorials(completion: @ escaping TutorialHandler) {
         let request = getRequest(for: getURL)
         
@@ -100,7 +101,8 @@ class NetworkController {
             }
             
             do {
-                let 
+                let allTutorials = try self.jsonDecoder.decode([Tutorial].self, from: data)
+                completion(.success(allTutorials))
             } catch {
                 NSLog("Error decoding data from get request: \(error) \(error.localizedDescription)")
                 completion(.failure(.noDecode))
