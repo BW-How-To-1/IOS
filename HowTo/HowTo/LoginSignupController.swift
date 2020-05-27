@@ -37,9 +37,9 @@ class LoginSignupController {
     var bearer: Bearer?
     static let shared = LoginSignupController()
     
-    private var baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")! //TODO: Add baseURL from back-end or firebase DB here.
-    private lazy var loginURL = baseURL.appendingPathComponent("auth/login/") //TODO: Add correct path component
-    private lazy var signupURL = baseURL.appendingPathComponent("auth/register/") //TODO: Add correct path component.
+    private var baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")!
+    private lazy var loginURL = baseURL.appendingPathComponent("auth/login/")
+    private lazy var signupURL = baseURL.appendingPathComponent("auth/register/")
     
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
