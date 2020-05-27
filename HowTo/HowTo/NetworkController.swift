@@ -36,6 +36,7 @@ class NetworkController {
     let baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")!
     lazy var postURL = baseURL.appendingPathComponent("/posturl/") //TODO: NEEDS CORRECT ENDPOINT
     lazy var getURL = baseURL.appendingPathComponent("/geturl") //TODO: NEEDS CORRECT ENDPOINT
+    lazy var tutorialURL = baseURL.appendingPathComponent("/tutorialID/") //TODO: NEEDS CORRECT ENDPOINT
     
     var jsonEncoder = JSONEncoder()
     var jsonDecoder = JSONDecoder()
@@ -120,8 +121,24 @@ class NetworkController {
     }
     
     ///delete how-to from server
-    func deleteTutorials() {
+    func deleteTutorial(_ tutorial: Tutorial, completion: @escaping CompletionHandler) {
+        let request = deleteRequest(for: tutorialURL)
         
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error deleting task from server: \(error) \(error.localizedDescription)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else { //TODO: Make sure this is right
+                    NSLog("Error: Bad or no response when deleting task from server.")
+                    completion(.failure(.badResponse))
+                    return
+            }
+            completion(.success(true))
+        }.resume()
     }
     
     
