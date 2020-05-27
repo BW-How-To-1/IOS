@@ -66,7 +66,7 @@ class LoginSignupController {
             }
             
             guard let response = response as? HTTPURLResponse,
-                response.statusCode == 200 else {
+                response.statusCode == 201 else {
                     NSLog("Error: Bad or no response from remote host. Sign up failed.")
                     completion(.failure(.badResponse))
                     return

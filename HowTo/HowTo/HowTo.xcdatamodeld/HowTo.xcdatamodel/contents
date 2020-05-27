@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Comment" representedClassName="Comment" syncable="YES" codeGenerationType="class">
+        <attribute name="author" attributeType="String"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="text" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
@@ -18,6 +20,6 @@
     </entity>
     <elements>
         <element name="Tutorial" positionX="-54" positionY="-9" width="128" height="163"/>
-        <element name="Comment" positionX="174.89453125" positionY="178.14453125" width="128" height="103"/>
+        <element name="Comment" positionX="174.89453125" positionY="178.14453125" width="128" height="133"/>
     </elements>
 </model>

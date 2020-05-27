@@ -45,6 +45,7 @@
 		5E399FBF247F0A870081C3EA /* Tutorial+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FBE247F0A870081C3EA /* Tutorial+Convenience.swift */; };
 		5E399FC1247F128C0081C3EA /* TutorialRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FC0247F128C0081C3EA /* TutorialRepresentation.swift */; };
 		5E399FC5247F25A90081C3EA /* Comment+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FC4247F25A90081C3EA /* Comment+Convenience.swift */; };
+		5E399FC7247F2BC40081C3EA /* CommentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FC6247F2BC40081C3EA /* CommentRepresentation.swift */; };
 		9C135BF949731A78D7380221 /* Pods_HowTo_HowToUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */; };
 		EC45C767E70E23CF66CA5D4C /* Pods_HowTo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217BBB3EFA2D8C26D9D41E7D /* Pods_HowTo.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		5E399FBE247F0A870081C3EA /* Tutorial+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tutorial+Convenience.swift"; sourceTree = "<group>"; };
 		5E399FC0247F128C0081C3EA /* TutorialRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRepresentation.swift; sourceTree = "<group>"; };
 		5E399FC4247F25A90081C3EA /* Comment+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+Convenience.swift"; sourceTree = "<group>"; };
+		5E399FC6247F2BC40081C3EA /* CommentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepresentation.swift; sourceTree = "<group>"; };
 		8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowTo_HowToUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9223E716FC53A0AC440D82D2 /* Pods-HowTo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowTo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HowTo/Pods-HowTo.release.xcconfig"; sourceTree = "<group>"; };
 		AE97AAE46CC4AE7DA3C49D6B /* Pods-HowToTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowToTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HowToTests/Pods-HowToTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				5E399FC0247F128C0081C3EA /* TutorialRepresentation.swift */,
+				5E399FC6247F2BC40081C3EA /* CommentRepresentation.swift */,
 			);
 			name = Representations;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				5E399FC5247F25A90081C3EA /* Comment+Convenience.swift in Sources */,
 				1D565AB72478BAA2007DD5EC /* AppDelegate.swift in Sources */,
 				1DDD263F247C564400D53CC4 /* AddStepsViewController.swift in Sources */,
+				5E399FC7247F2BC40081C3EA /* CommentRepresentation.swift in Sources */,
 				1D7DC63A247ED31E0001D01B /* NetworkDataLoader.swift in Sources */,
 				1DDC460E247AE26F0081133D /* DetailViewController.swift in Sources */,
 				1D90C0B92478E44C00CB3A67 /* MenuListController.swift in Sources */,
