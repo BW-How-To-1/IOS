@@ -81,7 +81,7 @@ class NetworkController {
     
     ///get and sort all relevant how-to articles from back-end
     //TODO: REFACTOR FOR CORE DATA SUPPORT - update, sort, and save in the final do-block
-    func getTutorials(completion: @ escaping TutorialHandler) {
+    func getTutorials(completion: @escaping TutorialHandler) {
         let request = getRequest(for: getURL)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
