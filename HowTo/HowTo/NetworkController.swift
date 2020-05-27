@@ -13,6 +13,8 @@ class NetworkController {
     //MARK: - Enums & Type Aliases -
     enum NetworkError: Error {
         case badResponse
+        case noData
+        case noDecode
         case noEncode
         case otherError
     }
@@ -33,6 +35,7 @@ class NetworkController {
     
     let baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")!
     lazy var postURL = baseURL.appendingPathComponent("/posturl/") //TODO: NEEDS CORRECT ENDPOINT
+    lazy var getURL = baseURL.appendingPathComponent("/geturl") //TODO: NEEDS CORRECT ENDPOINT
     
     var jsonEncoder = JSONEncoder()
     var jsonDecoder = JSONDecoder()
@@ -47,7 +50,7 @@ class NetworkController {
         var request = postRequest(for: postURL)
         
         do {
-            let jsonRequest = try jsonEncoder.encode(tutorial)
+            let jsonRequest = try jsonEncoder.encode(tutorial) //TODO: This will be a codable .rep
             request.httpBody = jsonRequest
         } catch {
             NSLog("Error encoding tutorial: \(error) \(error.localizedDescription)")
@@ -73,7 +76,39 @@ class NetworkController {
     }
     
     ///get and sort all relevant how-to articles from back-end
-    func getTutorial() {
+    func getTutorials(completion: @ escaping TutorialHandler) {
+        let request = getRequest(for: getURL)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error when retrieving tutorials from server: \(error) \(error.localizedDescription)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error: Bad or no response when processing get request.")
+                    completion(.failure(.badResponse))
+                    return
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned from get request.")
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let 
+            } catch {
+                NSLog("Error decoding data from get request: \(error) \(error.localizedDescription)")
+                completion(.failure(.noDecode))
+                return
+            }
+        }.resume()
+        
+        
         
     }
     
