@@ -32,7 +32,7 @@ class NetworkController {
     //MARK: - Properties -
     lazy var bearer: Bearer? = LoginSignupController.shared.bearer
     
-    let baseURL = URL(string: "www.google.com")! //TODO: Add real URL from back-end
+    let baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")! //TODO: Add real URL from back-end
     
     
     
