@@ -18,6 +18,8 @@ class LoginSignupViewController: UIViewController {
     @IBOutlet weak var textFieldBackgroundView: UIView!
     // keep updating this text with errors or successes for the user to see what's going on
     @IBOutlet weak var statusLabel: UILabel!
+    
+    var loginSignupController = LoginSignupController.shared
         
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -40,6 +42,7 @@ class LoginSignupViewController: UIViewController {
         presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         NotificationCenter.default.post(name: notificationToUpdateViews, object: nil)
     }
+    
     @IBAction func rememberMeButtonPressed(_ sender: UIButton) {
         // save username and pass
         UserDefaults.standard.set(username.text, forKey: .usernameKey)
