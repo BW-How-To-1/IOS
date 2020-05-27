@@ -18,7 +18,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aCk-8R-tbF">
                                 <rect key="frame" x="37.666666666666657" y="246.33333333333334" width="300" height="319.33333333333326"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="3Xt-et-esV">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="3Xt-et-esV">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="EQb-l8-kas"/>
@@ -48,6 +48,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="500" height="500"/>
+        <image name="Logo" width="500" height="500"/>
     </resources>
 </document>
