@@ -20,6 +20,7 @@ class LoginSignupViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     
     var loginSignupController = LoginSignupController.shared
+    var isLoggingIn: Bool = false
         
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ class LoginSignupViewController: UIViewController {
         UserDefaults.standard.set(true, forKey: .isLoggedInKey)
         presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         NotificationCenter.default.post(name: notificationToUpdateViews, object: nil)
+        
     }
     
     @IBAction func rememberMeButtonPressed(_ sender: UIButton) {
