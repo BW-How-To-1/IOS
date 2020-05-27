@@ -15,6 +15,25 @@ extension Tutorial {
     
     
     //MARK: - Convenience Initializers -
+    @discardableResult convenience init(id: UUID = UUID(),
+                                        dateCreated: Date = Date(),
+                                        author: String,
+                                        title: String,
+                                        bodyText: String,
+                                        image: String?,
+                                        likes: Int64 = 0,
+                                        context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        self.init(context: context)
+        self.id = id
+        self.dateCreated = dateCreated
+        self.author = author
+        self.title = title
+        self.bodyText = bodyText
+        self.image = image
+        self.likes = likes
+    }
+    
+    
     
     
     
