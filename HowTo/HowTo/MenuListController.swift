@@ -87,6 +87,8 @@ class MenuListController: UITableViewController {
         let isLoggedIn = UserDefaults.standard.bool(forKey: .isLoggedInKey)
         self.title = isLoggedIn == false ? "Using as Guest" : "Hello" + " " + username + "!"
         updateMenuLabels()
+        let firstCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
+        firstCell?.accessibilityLabel = "firstMenuCell"
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
                                                             NSAttributedString.Key.font: UIFont(name: "Avenir Next", size: 21)!]
         tableView.backgroundColor = .systemBlue

@@ -58,6 +58,7 @@ class HomeViewController: UIViewController {
         // acessibility ID's
         menuButton.accessibilityIdentifier = "menuButton"
         menu?.accessibilityLabel = "menu"
+        refreshControl.accessibilityLabel = "refreshControl"
         // refreshControl
         tableView.refreshControl = refreshControl
     }

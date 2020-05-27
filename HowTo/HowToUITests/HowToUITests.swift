@@ -10,7 +10,7 @@ import XCTest
 @testable import HowTo
 
 class HowToUITests: XCTestCase {
-
+    
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch the application.
@@ -70,6 +70,42 @@ class HowToUITests: XCTestCase {
         // check to see if the onboarding scene has been returned to
         let signInButton = application.buttons["SignUpButton"]
         XCTAssert(signInButton.exists)
+    }
+    
+    // FIXME: - this needs to be watched until it can check itself
+    func testMenuOpensAndClosesWithSideSwipeGesture() {
+        // launch application
+        let application = XCUIApplication()
+        application.launch()
+        // check to see if on homeScreen <-- this will fail if it can't get to the screen and test will need to be added to so it can get here.
+        let navBarTitle = application.navigationBars.element.identifier
+        XCTAssertEqual(navBarTitle, "Home")
+        // grab first cell
+        let firstCell = application.tables.cells.element(boundBy: 0)
+        XCTAssert(firstCell.exists)
+        // test that swiping opens the menu
+        let rightOffset = CGVector(dx: 0.95, dy: 0.5)
+        let leftOffset = CGVector(dx: 0.05, dy: 0.5)
+        let cellFarRightCoordinate = firstCell.coordinate(withNormalizedOffset: rightOffset)
+        let cellFarLeftCoordinate = firstCell.coordinate(withNormalizedOffset: leftOffset)
+        cellFarRightCoordinate.press(forDuration: 0.1, thenDragTo: cellFarLeftCoordinate)
+//        let firstMenuCell = application.staticTexts["firstMenuCell"]
+//        XCTAssert(firstMenuCell.exists)
+        cellFarLeftCoordinate.press(forDuration: 0.1, thenDragTo: cellFarRightCoordinate)
+    }
+    
+    // FIXME: - this needs to be watched as there seems to be no way for it to check itself
+    func testRefreshControl() {
+        // launch app
+        let application = XCUIApplication()
+        application.launch()
+        // verify that we are on the home screen, if this fails, we probly need to rewrite the test to make sure that we are starting here
+        let currentNavigationBarTitle = application.navigationBars.element.identifier
+        XCTAssertEqual(currentNavigationBarTitle, "Home")
+        // grab first & second cell
+        let firstCell = application.tables.cells.element(boundBy: 0)
+        let secondCell = application.tables.cells.element(boundBy: 1)
+        firstCell.press(forDuration: 0.1, thenDragTo: secondCell)
     }
     
 }
