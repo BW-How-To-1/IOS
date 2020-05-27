@@ -22,6 +22,7 @@
 		1D565AF22478C05F007DD5EC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D565AF12478C05F007DD5EC /* Onboarding.storyboard */; };
 		1D565AF42478C52D007DD5EC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565AF32478C52D007DD5EC /* OnboardingViewController.swift */; };
 		1D7DC633247DBECB0001D01B /* Date+TimeAgoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DC632247DBECA0001D01B /* Date+TimeAgoDisplay.swift */; };
+		1D7DC635247E3E5A0001D01B /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DC634247E3E5A0001D01B /* Tutorial.swift */; };
 		1D90C0B92478E44C00CB3A67 /* MenuListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D90C0B82478E44C00CB3A67 /* MenuListController.swift */; };
 		1DC4D6CD2479C3F100E7BA74 /* String+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4D6CC2479C3F100E7BA74 /* String+Keys.swift */; };
 		1DC4D6D32479EFA500E7BA74 /* LoginSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4D6D22479EFA500E7BA74 /* LoginSignupViewController.swift */; };
@@ -78,6 +79,7 @@
 		1D565AF12478C05F007DD5EC /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		1D565AF32478C52D007DD5EC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		1D7DC632247DBECA0001D01B /* Date+TimeAgoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeAgoDisplay.swift"; sourceTree = "<group>"; };
+		1D7DC634247E3E5A0001D01B /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		1D90C0B82478E44C00CB3A67 /* MenuListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListController.swift; sourceTree = "<group>"; };
 		1DC4D6CC2479C3F100E7BA74 /* String+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Keys.swift"; sourceTree = "<group>"; };
 		1DC4D6D22479EFA500E7BA74 /* LoginSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		1DC4D6CA247904DA00E7BA74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1D7DC634247E3E5A0001D01B /* Tutorial.swift */,
 				5E399FBA247D74350081C3EA /* Bearer.swift */,
 				5E399FBC247D8A8D0081C3EA /* User.swift */,
 				1D565AEE2478BB48007DD5EC /* CoreData */,
@@ -558,6 +561,7 @@
 				1D90C0B92478E44C00CB3A67 /* MenuListController.swift in Sources */,
 				1D565AB92478BAA2007DD5EC /* SceneDelegate.swift in Sources */,
 				1DDD2641247C5DE100D53CC4 /* AddDescriptionViewController.swift in Sources */,
+				1D7DC635247E3E5A0001D01B /* Tutorial.swift in Sources */,
 				1D7DC633247DBECB0001D01B /* Date+TimeAgoDisplay.swift in Sources */,
 				1DC4D6D52479F39D00E7BA74 /* UIImage+RoundedImage.swift in Sources */,
 				5E399FBB247D74350081C3EA /* Bearer.swift in Sources */,
