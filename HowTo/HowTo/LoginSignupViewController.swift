@@ -43,6 +43,13 @@ class LoginSignupViewController: UIViewController {
         presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         NotificationCenter.default.post(name: notificationToUpdateViews, object: nil)
         
+        switch isLoggingIn {
+        case true:
+            loginSignupController.logIn(as: User(username: username.text, password: password.text)) { _ in }
+        case false:
+            loginSignupController.signUp(as: User(username: username.text, password: password.text)) { _ in }
+        }
+        
     }
     
     @IBAction func rememberMeButtonPressed(_ sender: UIButton) {
