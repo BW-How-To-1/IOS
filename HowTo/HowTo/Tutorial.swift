@@ -6,6 +6,7 @@
 //  Copyright © 2020 Shawn James. All rights reserved.
 //
 
+/*
 import Foundation
 
 /// These are the objects that hold the HowTo objects that users create and are displayed in the HomeTableViewController
@@ -77,4 +78,4 @@ Steps:
                                author: "AwesomeUsername4021",
                                dateCreated: Date(timeIntervalSinceNow: -170),
                                comments: [mockComment1, mockComment2])
-
+*/
