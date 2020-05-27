@@ -26,4 +26,5 @@ extension String {
     static let showNewPostSegueId = "ShowNewPost"
     static let goToSignUpSegueId = "GoToSignUp"
     static let goToLoginSegueId = "GoToLogin"
+    static let showDetailVCSegueId = "ShowDetail"
 }

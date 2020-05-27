@@ -25,8 +25,8 @@ class HomeViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     var menu: SideMenuNavigationController?
     let menuListController = MenuListController()
-    // this is temporary and should be deleted
-    var dummyCells = ["First", "Second", "Third"]
+    // FIXME: this is temporary and should be deleted
+    var mockCells = [mockDataObject1, mockDataObject2]
     
     // MARK: - Lifecycle & init's
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .black
         // nav bar
-//        self.title = ""
+        //        self.title = ""
         navigationController?.navigationBar.barTintColor = .systemBlue
         // add side menu to VC
         menu = SideMenuNavigationController(rootViewController: menuListController)
@@ -77,16 +77,25 @@ class HomeViewController: UIViewController {
         }
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == .showDetailVCSegueId {
+            guard let detailViewController = segue.destination as? DetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            detailViewController.tutorial = mockCells[indexPath.row]
+        }
+    }
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dummyCells.count
+        mockCells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .homeTableViewCellId, for: indexPath) as! HomeTableViewCell // FIXME: - crash this with a print or log if it fails
-        cell.titleLabel.text = dummyCells[indexPath.row]
+        cell.tutorial = mockCells[indexPath.row]
         cell.imageView1.image = UIImage(named: String(indexPath.row))
         cell.alertControllerDelegate = self
         return cell
@@ -101,11 +110,11 @@ extension HomeViewController: MenuListDelegate {
         case 0:
             // sort by...
             print("nothing yet...")
-            // TODO: present an alert with sorting options
+        // TODO: present an alert with sorting options
         case 1:
             // filter by...
             print("nothing yet...")
-            // TODO: present an alert with filter options
+        // TODO: present an alert with filter options
         case 2:
             // nothing yet...
             print("nothing yet...")

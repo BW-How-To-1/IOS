@@ -21,11 +21,15 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var commentsCount: UILabel!
     @IBOutlet weak var ageOfPost: UILabel!
     @IBOutlet weak var authorlabel: UILabel!
+    @IBOutlet weak var commentCount: UILabel!
     
     var userHasLikedThisPost: Bool = false
-    // TODO: dependancy inject for HowTo object
     var alertControllerDelegate: AlertControllerDelegate?
-    
+    var tutorial: Tutorial? {
+        didSet {
+            updateViews()
+        }
+    }
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -57,9 +61,14 @@ class HomeTableViewCell: UITableViewCell {
         // adds cell border
         layer.borderWidth = 0.3
         layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 0.85)
-        // TODO: unwrap injected object and assign it all it's properties
-        //        guard let <#HowTo object name#> = <#HowTo object name#> else { return }
-        //        ageOfPost.text = <#HowTo object name#>.datePosted.timeAgoDisplay()
+        
+        guard let tutorial = tutorial else { return }
+        titleLabel.text = tutorial.title
+        likesCount.text = String(tutorial.likes)
+        authorlabel.text = tutorial.author
+        ageOfPost.text = tutorial.dateCreated.timeAgoDisplay()
+        commentCount.text = String(tutorial.comments.count)
+        
     }
     
 }

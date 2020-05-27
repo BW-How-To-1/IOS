@@ -11,6 +11,8 @@ import UIKit
 class DetailViewController: UIViewController {
     
     // MARK: - Outlets & properties
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageBlur: UIVisualEffectView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -25,8 +27,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var editContentButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
-    var dummyComments = ["I burned my finger", "Nice tutorial, thanks!", "I couldn't figure out how to boil the water"]
-    var dummyUserNames = ["Billybob321", "Sallysprinkles", "Smartpants87"]
+    var tutorial: Tutorial?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -83,7 +84,8 @@ class DetailViewController: UIViewController {
             tutorialTextView.text = ""
             tutorialTextView.superview?.sendSubviewToBack(tutorialTextView)
             // format this with comment count
-            commentCountOrDescriptionLabel.text = "382 Comments"
+            guard let tutorial = tutorial else { return }
+            commentCountOrDescriptionLabel.text = "\(tutorial.comments.count) Comments"
         default:
             print("error: default value was triggered in toggleSegmentedControl() switch statement and shouldn't have been")
         }
@@ -100,46 +102,34 @@ class DetailViewController: UIViewController {
         }
         setUpTutorialView()
         tableView.dataSource = self
+        guard let tutorial = tutorial else { return }
+        titleLabel.text = tutorial.title
+        authorLabel.text = tutorial.author
     }
     
     private func setUpTutorialView() {
         // tutorial view
         tutorialTextView.alpha = 1
-        tutorialTextView.text = """
-        This will be built out with the description text and the steps text. It is a placeholder for now to show a description that somebody would have typed in. You should be sure to not cook the pasta too long or it won't taste good. Don't forget to use non stick pans. Don't use metal because it will scratch the pans.
-        
-        Steps:
-        1. Boil the water
-        2. Put the pasta in the water
-        3. Cook it the right time
-        4. Do a dance
-        5. Add some delicious sauce
-        6. Enjoy!
-        """
+        guard let tutorial = tutorial else { return }
+        tutorialTextView.text = tutorial.bodyText
         tutorialTextView.superview?.bringSubviewToFront(tutorialTextView)
         commentCountOrDescriptionLabel.text = "Description"
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 
+// for comments
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dummyComments.count
+        guard let comments = tutorial?.comments else { return 0 }
+        return comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .commentTableViewCellId, for: indexPath)
-        cell.textLabel?.text = dummyComments[indexPath.row]
-        cell.detailTextLabel?.text = dummyUserNames[indexPath.row]
+        guard let comment = tutorial?.comments[indexPath.row] else { return cell }
+        cell.textLabel?.text = comment.text
+        cell.detailTextLabel?.text = comment.author
         return cell
     }
     

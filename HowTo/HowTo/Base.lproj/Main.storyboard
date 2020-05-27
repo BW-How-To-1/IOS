@@ -175,11 +175,12 @@
                                                 <connections>
                                                     <outlet property="ageOfPost" destination="Y5d-lV-0ck" id="nDF-RQ-jUa"/>
                                                     <outlet property="authorlabel" destination="sWu-ym-8eV" id="q2E-OT-8QK"/>
+                                                    <outlet property="commentCount" destination="2WG-e0-CI1" id="8Ti-tM-7Ed"/>
                                                     <outlet property="commentsCount" destination="2WG-e0-CI1" id="YYU-dj-aGe"/>
                                                     <outlet property="imageView1" destination="nXH-of-n9O" id="eKG-ZS-6bP"/>
                                                     <outlet property="likesCount" destination="bhh-Ae-kfT" id="bdp-5P-Iso"/>
                                                     <outlet property="titleLabel" destination="ozX-uw-Cxc" id="F9N-rJ-hfH"/>
-                                                    <segue destination="1Ls-ZK-sMN" kind="show" id="Scf-Pb-kGo"/>
+                                                    <segue destination="1Ls-ZK-sMN" kind="show" identifier="ShowDetail" id="Scf-Pb-kGo"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -408,6 +409,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="K2S-WS-78D"/>
                     <connections>
+                        <outlet property="authorLabel" destination="LJM-c1-Ybc" id="RX3-6v-gdr"/>
                         <outlet property="commentCountOrDescriptionLabel" destination="Lo1-8w-rPA" id="SWn-AM-HTF"/>
                         <outlet property="commentTextField" destination="mI6-1J-fxe" id="j4h-cv-LpX"/>
                         <outlet property="deleteButton" destination="sEB-Uz-Afs" id="x9I-fY-LTt"/>
@@ -419,6 +421,7 @@
                         <outlet property="segmentedControl" destination="HhO-Qf-bSg" id="WKu-Cb-HUG"/>
                         <outlet property="sendCommentButton" destination="gu6-CY-iGe" id="7jZ-Wi-8Bo"/>
                         <outlet property="tableView" destination="qFz-Ya-WV9" id="BQD-qy-6g0"/>
+                        <outlet property="titleLabel" destination="4NX-e7-Zv0" id="uoc-3M-bKj"/>
                         <outlet property="tutorialTextView" destination="ynM-v5-myk" id="Ihq-sG-HjE"/>
                     </connections>
                 </viewController>
