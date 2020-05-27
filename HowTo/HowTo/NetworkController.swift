@@ -12,7 +12,9 @@ import CoreData
 class NetworkController {
     //MARK: - Enums & Type Aliases -
     enum NetworkError: Error {
+        case badResponse
         case noEncode
+        case otherError
     }
     
     enum HTTPMethod: String {
@@ -50,10 +52,24 @@ class NetworkController {
         } catch {
             NSLog("Error encoding tutorial: \(error) \(error.localizedDescription)")
             completion(.failure(.noEncode))
+            return
         }
         
-        
-        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error posting tutorial to server: \(error) \(error.localizedDescription)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else { //TODO: <- MAKE SURE THIS IS RIGHT
+                    NSLog("Error: Bad or no response from server when posting tutorial.")
+                    completion(.failure(.badResponse))
+                    return
+            }
+            completion(.success(true))
+        }.resume()
     }
     
     ///get and sort all relevant how-to articles from back-end
