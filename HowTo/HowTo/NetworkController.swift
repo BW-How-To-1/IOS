@@ -41,11 +41,11 @@ class NetworkController {
     let getURL = URL(string: "https://howto-56e14.firebaseio.com/")!
     let tutorialURL = URL(string: "https://howto-56e14.firebaseio.com/")!
     let commentURL = URL(string: "https://howto-56e14.firebaseio.com/")!
-    //    let baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")!
-    //    lazy var postURL = baseURL.appendingPathComponent("/posturl/") //TODO: NEEDS CORRECT ENDPOINT
-    //    lazy var getURL = baseURL.appendingPathComponent("/geturl") //TODO: NEEDS CORRECT ENDPOINT
-    //    lazy var tutorialURL = baseURL.appendingPathComponent("/tutorialID/") //TODO: NEEDS CORRECT ENDPOINT
-    //    lazy var commentURL = baseURL.appendingPathComponent("/tutorialID/commentID") //TODO: NEEDS CORRECT ENDPOINT
+    //    let baseURL = URL(string: "https://how-to-diy.herokuapp.com/")!
+        lazy var postTutorialURL = baseURL.appendingPathComponent("/projects/") //TODO: NEEDS CORRECT ENDPOINT
+        lazy var postCommentURL = baseURL.appendingPathComponent("/projects/comments/") //TODO: NEEDS CORRECT ENDPOINT
+    //    lazy var getURL = baseURL.appendingPathComponent("/projects/") //TODO: NEEDS CORRECT ENDPOINT
+    
     
     var jsonEncoder = JSONEncoder()
     var jsonDecoder = JSONDecoder()
@@ -67,7 +67,7 @@ class NetworkController {
             return
         }
         
-        var request = postRequest(for: postURL, with: bearer)
+        var request = putRequest(for: postURL, with: bearer)
         
         do {
             let jsonRequest = try jsonEncoder.encode(tutorial.representation)
@@ -356,7 +356,15 @@ class NetworkController {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(bearer.token)", forHTTPHeaderField: "Auth")
+        request.setValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+        return request
+    }
+    
+    private func putRequest(for url: URL, with bearer: Bearer) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.put.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
         return request
     }
     
@@ -364,9 +372,28 @@ class NetworkController {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(bearer.token)", forHTTPHeaderField: "Auth")
+        request.setValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
         return request
     }
     
+    
+    //MARK: - Methods -
+    private func tutorialURLHelper(_ tutorial: Tutorial) -> URL? {
+        if let tutorialIDString = tutorial.id?.uuidString {
+            let individualTutorialURL = postTutorialURL.appendingPathComponent("\(tutorialIDString)")
+            return individualTutorialURL
+        } else {
+            return nil
+        }
+    }
+    
+    private func commentURLHelper(_ comment: Comment) -> URL? {
+        if let tutorialIDString = comment.tutorial?.id?.uuidString {
+            let individualCommentURL = postCommentURL.appendingPathComponent("\(tutorialIDString)")
+            return individualCommentURL
+        } else {
+            return nil
+        }
+    }
     
 }
