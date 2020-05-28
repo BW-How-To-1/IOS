@@ -40,17 +40,17 @@ class NetworkController {
     let getURL = URL(string: "https://howto-56e14.firebaseio.com/")!
     let tutorialURL = URL(string: "https://howto-56e14.firebaseio.com/")!
     let commentURL = URL(string: "https://howto-56e14.firebaseio.com/")!
-//    let baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")!
-//    lazy var postURL = baseURL.appendingPathComponent("/posturl/") //TODO: NEEDS CORRECT ENDPOINT
-//    lazy var getURL = baseURL.appendingPathComponent("/geturl") //TODO: NEEDS CORRECT ENDPOINT
-//    lazy var tutorialURL = baseURL.appendingPathComponent("/tutorialID/") //TODO: NEEDS CORRECT ENDPOINT
-//    lazy var commentURL = baseURL.appendingPathComponent("/tutorialID/commentID") //TODO: NEEDS CORRECT ENDPOINT
+    //    let baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")!
+    //    lazy var postURL = baseURL.appendingPathComponent("/posturl/") //TODO: NEEDS CORRECT ENDPOINT
+    //    lazy var getURL = baseURL.appendingPathComponent("/geturl") //TODO: NEEDS CORRECT ENDPOINT
+    //    lazy var tutorialURL = baseURL.appendingPathComponent("/tutorialID/") //TODO: NEEDS CORRECT ENDPOINT
+    //    lazy var commentURL = baseURL.appendingPathComponent("/tutorialID/commentID") //TODO: NEEDS CORRECT ENDPOINT
     
     var jsonEncoder = JSONEncoder()
     var jsonDecoder = JSONDecoder()
     
     var networkDataLoader: NetworkDataLoader
-
+    
     // MARK: - Lifecycle
     init(networkDataLoader: NetworkDataLoader = URLSession.shared) {
         self.networkDataLoader = networkDataLoader
@@ -152,7 +152,7 @@ class NetworkController {
             
             for tutorial in existingTutorials {
                 let idAsString = tutorial.id!.uuidString
-//                let id = Int(idAsString)
+                //                let id = Int(idAsString)
                 guard let representation = representationsByID[idAsString] else { continue }
                 self.update(tutorial: tutorial, with: representation)
                 tutorialsToCreate.removeValue(forKey: idAsString)
@@ -179,14 +179,14 @@ class NetworkController {
         
         URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
-                NSLog("Error deleting task from server: \(error) \(error.localizedDescription)")
+                NSLog("Error deleting tutorial from server: \(error) \(error.localizedDescription)")
                 completion(.failure(.otherError))
                 return
             }
             
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200 else { //TODO: Make sure this is right
-                    NSLog("Error: Bad or no response when deleting task from server.")
+                    NSLog("Error: Bad or no response when deleting tutorial from server.")
                     completion(.failure(.badResponse))
                     return
             }
@@ -261,13 +261,68 @@ class NetworkController {
         try CoreDataStack.shared.mainContext.save()
     }
     
-    func postComment() {
-    
-    }
-    
-    func deleteComment() {
+    func postComment(for comment: Comment, completion: @escaping CompletionHandler) {
+        guard let bearer = bearer else {
+            NSLog("Error: No authentication token. Please log in.")
+            completion(.failure(.noToken))
+            return
+        }
+        
+        var request = postRequest(for: commentURL, with: bearer)
+        
+        do {
+            let jsonRequest = try jsonEncoder.encode(comment.representation)
+            request.httpBody = jsonRequest
+        } catch {
+            NSLog("Error encoding comment: \(error) \(error.localizedDescription)")
+            completion(.failure(.noEncode))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error posting comment to server: \(error) \(error.localizedDescription)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else { //TODO: <- MAKE SURE THIS IS RIGHT
+                    NSLog("Error: Bad or no response from server when posting comment.")
+                    completion(.failure(.badResponse))
+                    return
+            }
+            completion(.success(true))
+        }.resume()
         
     }
+    
+    func deleteComment(_ comment: Comment, completion: @escaping CompletionHandler) {
+        guard let bearer = bearer else {
+            NSLog("Error when deleting comment: No authorization token, please log in.")
+            completion(.failure(.noToken))
+            return
+        }
+        
+        let request = deleteRequest(for: commentURL, with: bearer)
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error deleting comment from server: \(error) \(error.localizedDescription)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else { //TODO: Make sure this is right
+                    NSLog("Error: Bad or no response when deleting comment from server.")
+                    completion(.failure(.badResponse))
+                    return
+            }
+            completion(.success(true))
+        }.resume()
+    }
+    
     
     
     //MARK: - Methods -
@@ -302,7 +357,7 @@ class NetworkController {
         request.setValue("\(bearer.token)", forHTTPHeaderField: "Auth")
         return request
     }
-
+    
     private func deleteRequest(for url: URL, with bearer: Bearer) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
