@@ -11,17 +11,50 @@ import CoreData
 
 class ModelController {
     //MARK: - Properties -
-    var shared = ModelController()
+    static let shared = ModelController()
+    
     
     
     //MARK: - Actions -
     ///This Controller only holds the methods for creation and deletion in Core Data. For read/synch methods, use the update functions of NetworkController.swift
-    func createTutorial() {
+    /// you may either initialize a new object before using these functions or do so in the arguments with the proper initializer. Combined with the convenience inits this means you can use them with a codable representation by calling the correct object convenience init.
+    func createTutorial(_ tutorial: Tutorial) {
+        guard let _ = tutorial.id else { return }
         
+        let context = CoreDataStack.shared.mainContext
+        
+        DispatchQueue.main.async {
+            context.perform {
+                NetworkController.shared.postTutorial(for: tutorial) { _ in }
+            }
+        }
+        
+        do {
+            try CoreDataStack.shared.save(context: CoreDataStack.shared.persistentContainer.newBackgroundContext())
+        } catch {
+            NSLog("Error saving new to persistent container: \(error) \(error.localizedDescription)")
+            return
+        }
     }
     
-    func createComment() {
+    func createComment(_ comment: Comment, for tutorial: Tutorial) {
+        let newComment = comment
+        tutorial.addToComments(newComment)
         
+        let context = CoreDataStack.shared.mainContext
+        
+        DispatchQueue.main.async {
+            context.perform {
+                NetworkController.shared.postComment(for: newComment) { _ in }
+            }
+        }
+        
+        do {
+            try CoreDataStack.shared.save(context: CoreDataStack.shared.persistentContainer.newBackgroundContext())
+        } catch {
+            NSLog("Error saving new comment to persistent container: \(error) \(error.localizedDescription)")
+            return
+        }
     }
     
     

@@ -33,6 +33,7 @@ class NetworkController {
     typealias CommentHandler = (Result<[Comment], NetworkError>) -> Void
     
     //MARK: - Properties -
+    static let shared = NetworkController()
     lazy var bearer: Bearer? = LoginSignupController.shared.bearer
     
     let baseURL = URL(string: "https://howto-56e14.firebaseio.com/")!
@@ -54,6 +55,7 @@ class NetworkController {
     // MARK: - Lifecycle
     init(networkDataLoader: NetworkDataLoader = URLSession.shared) {
         self.networkDataLoader = networkDataLoader
+        getTutorials(completion: { _ in })
     }
     
     //MARK: - Actions -
