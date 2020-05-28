@@ -14,7 +14,6 @@ class ModelController {
     static let shared = ModelController()
     
     
-    
     //MARK: - Actions -
     ///This Controller only holds the methods for creation and deletion in Core Data. For read/synch methods, use the update functions of NetworkController.swift
     /// you may either initialize a new object before using these functions or do so in the arguments with the proper initializer. Combined with the convenience inits this means you can use them with a codable representation by calling the correct object convenience init.
