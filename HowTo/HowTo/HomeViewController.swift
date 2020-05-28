@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     var menu: SideMenuNavigationController?
     let menuListController = MenuListController()
+    let networkController = NetworkController()
     
     private lazy var fetchedResultsController: NSFetchedResultsController<Tutorial> = {
         let fetchRequest: NSFetchRequest<Tutorial> = Tutorial.fetchRequest()
@@ -87,7 +88,13 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func fetchNewPosts() {
-        // TODO: delete the contents of this method. this is just a dummy setup for UI
+        networkController.getTutorials { _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
+        
         print("User has pulled to refresh, fetchNewPosts() method has been called but does nothing yet")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.refreshControl.endRefreshing()

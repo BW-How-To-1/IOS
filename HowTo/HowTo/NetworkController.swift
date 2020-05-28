@@ -123,6 +123,7 @@ class NetworkController {
                         allTutorials.append(newTutorial)
                     }
                 }
+                try self.updateTutorials(with: allTutorialReps) // syncing
                 completion(.success(allTutorials))
             } catch {
                 NSLog("Error decoding data from get request: \(error) \(error.localizedDescription)")
@@ -136,8 +137,34 @@ class NetworkController {
     }
     
     ///update local how-tos with server
-    func updateTutorials() {
+    private func updateTutorials(with representations: [TutorialRepresentation]) throws {        
+        let identifiersToFetch = representations.compactMap { $0.id }
+        let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
+        var tutorialsToCreate = representationsByID
         
+        // create fetch request
+        let fetchRequest: NSFetchRequest<Tutorial> = Tutorial.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id IN %@", identifiersToFetch)
+        let mainContext = CoreDataStack.shared.mainContext
+        
+        do {
+            let existingTutorials = try mainContext.fetch(fetchRequest)
+            
+            for tutorial in existingTutorials {
+                let idAsString = tutorial.id!.uuidString
+//                let id = Int(idAsString)
+                guard let representation = representationsByID[idAsString] else { continue }
+                self.update(tutorial: tutorial, with: representation)
+                tutorialsToCreate.removeValue(forKey: idAsString)
+            }
+            for representation in tutorialsToCreate.values {
+                Tutorial(representation: representation)
+            }
+        } catch {
+            NSLog("Error fetching tutorials with id's: \(identifiersToFetch), with error: \(error)")
+        }
+        // save to core data
+        try CoreDataStack.shared.mainContext.save()
     }
     
     ///delete how-to from server
@@ -170,8 +197,14 @@ class NetworkController {
     
     //MARK: - Methods -
     ///update helper
-    func update() {
-        
+    private func update(tutorial: Tutorial, with representation: TutorialRepresentation) {
+        tutorial.author = representation.author
+        tutorial.bodyText = representation.bodyText
+        tutorial.dateCreated = representation.dateCreated
+        tutorial.id = UUID(uuidString: representation.id)
+        tutorial.image = representation.image
+        tutorial.likes = representation.likes
+        tutorial.title = representation.title
     }
     
     ///create methods helpers
