@@ -47,6 +47,7 @@
 		5E399FC1247F128C0081C3EA /* TutorialRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FC0247F128C0081C3EA /* TutorialRepresentation.swift */; };
 		5E399FC5247F25A90081C3EA /* Comment+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FC4247F25A90081C3EA /* Comment+Convenience.swift */; };
 		5E399FC7247F2BC40081C3EA /* CommentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E399FC6247F2BC40081C3EA /* CommentRepresentation.swift */; };
+		5EF9508E2480373C00F66713 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF9508D2480373C00F66713 /* ModelController.swift */; };
 		9C135BF949731A78D7380221 /* Pods_HowTo_HowToUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */; };
 		EC45C767E70E23CF66CA5D4C /* Pods_HowTo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217BBB3EFA2D8C26D9D41E7D /* Pods_HowTo.framework */; };
 /* End PBXBuildFile section */
@@ -117,6 +118,7 @@
 		5E399FC0247F128C0081C3EA /* TutorialRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRepresentation.swift; sourceTree = "<group>"; };
 		5E399FC4247F25A90081C3EA /* Comment+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+Convenience.swift"; sourceTree = "<group>"; };
 		5E399FC6247F2BC40081C3EA /* CommentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepresentation.swift; sourceTree = "<group>"; };
+		5EF9508D2480373C00F66713 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		8F1A2A2B0B937979CFB663A1 /* Pods_HowTo_HowToUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowTo_HowToUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9223E716FC53A0AC440D82D2 /* Pods-HowTo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowTo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HowTo/Pods-HowTo.release.xcconfig"; sourceTree = "<group>"; };
 		AE97AAE46CC4AE7DA3C49D6B /* Pods-HowToTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowToTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HowToTests/Pods-HowToTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		1D565AB52478BAA2007DD5EC /* HowTo */ = {
 			isa = PBXGroup;
 			children = (
+				5EF9508C2480370300F66713 /* Model Controllers */,
 				1D565AE92478BAF1007DD5EC /* Application */,
 				1DC4D6C9247904BA00E7BA74 /* Views */,
 				1D565AED2478BB36007DD5EC /* ViewControllers */,
@@ -366,6 +369,14 @@
 				5E399FC6247F2BC40081C3EA /* CommentRepresentation.swift */,
 			);
 			name = Representations;
+			sourceTree = "<group>";
+		};
+		5EF9508C2480370300F66713 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5EF9508D2480373C00F66713 /* ModelController.swift */,
+			);
+			name = "Model Controllers";
 			sourceTree = "<group>";
 		};
 		E31C2B5E4063F11DEA5AEA56 /* Pods */ = {
@@ -635,6 +646,7 @@
 				5E399FBB247D74350081C3EA /* Bearer.swift in Sources */,
 				1D565AC12478BAA2007DD5EC /* HowTo.xcdatamodeld in Sources */,
 				1D034C302478EFCC007589EA /* HomeTableViewCell.swift in Sources */,
+				5EF9508E2480373C00F66713 /* ModelController.swift in Sources */,
 				1DC4D6CD2479C3F100E7BA74 /* String+Keys.swift in Sources */,
 				5E399FBD247D8A8D0081C3EA /* User.swift in Sources */,
 				1D798C292480299600C14413 /* CloudinaryController.swift in Sources */,
