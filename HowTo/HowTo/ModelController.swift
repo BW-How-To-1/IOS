@@ -38,6 +38,10 @@ class ModelController {
     }
     
     func createComment(_ comment: Comment, for tutorial: Tutorial) {
+        guard let _ = comment.id,
+            let _ = tutorial.id else {
+                return
+        }
         let newComment = comment
         tutorial.addToComments(newComment)
         
@@ -58,18 +62,33 @@ class ModelController {
     }
     
     
-    func deleteTutorial() {
+    func deleteTutorial(_ tutorial: Tutorial) {
+        let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
+        context.delete(tutorial)
+        do {
+            try context.save()
+        } catch {
+            NSLog("Error deleting tutorial from persistent stores, aborting deletion: \(error) \(error.localizedDescription)")
+            return
+        }
         
+        DispatchQueue.main.async {
+            NetworkController.shared.deleteTutorial(tutorial, completion: { _ in })
+        }
     }
     
-    func deleteComment() {
+    func deleteComment(_ comment: Comment) {
+        let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
+        context.delete(comment)
+        do {
+            try context.save()
+        } catch {
+            NSLog("Error deleting comment from persistent stores, aborting deletion: \(error) \(error.localizedDescription)")
+            return
+        }
         
+        DispatchQueue.main.async {
+            NetworkController.shared.deleteComment(comment) { _ in }
+        }
     }
-    
-    
-    
-    
-    
-    //MARK: - Methods -
-    
 }
