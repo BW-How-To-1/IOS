@@ -95,8 +95,10 @@ class AddImageViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let addDescriptionViewController = segue.destination as? AddDescriptionViewController,
-            let newTutorialTitle = newTutorialTitle else { return }
+            let newTutorialTitle = newTutorialTitle,
+        let newTutorialImageURL = newTutorialImageURL else { return }
         
+        addDescriptionViewController.newTutorialImageURL = newTutorialImageURL
         addDescriptionViewController.newTutorialTitle = newTutorialTitle
     }
     

@@ -19,6 +19,7 @@ class AddStepsViewController: UIViewController {
     var addedStepCount: Int = 1
     
     var newTutorialTitle: String?
+    var newTutorialImageURL: String?
     var newTutorialDescription: String?
     var newStepString = ""
     

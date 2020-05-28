@@ -13,6 +13,7 @@ class AddDescriptionViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     
     var newTutorialTitle: String?
+    var newTutorialImageURL: String?
     var newTutorialDescription: String?
     
     // MARK: - Lifecycle
@@ -35,6 +36,7 @@ class AddDescriptionViewController: UIViewController {
         guard let addStepsViewController = segue.destination as? AddStepsViewController,
             let newTutorialTitle = newTutorialTitle else { return }
         
+        addStepsViewController.newTutorialImageURL = newTutorialImageURL
         addStepsViewController.newTutorialTitle = newTutorialTitle
         addStepsViewController.newTutorialDescription = newTutorialDescription
     }
