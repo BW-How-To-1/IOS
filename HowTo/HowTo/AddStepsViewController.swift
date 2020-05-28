@@ -49,7 +49,11 @@ class AddStepsViewController: UIViewController {
                                          title: newTutorialTitle,
                                          bodyText: newTutorialDescription,
                                          image: "placeholder for url image")
-        // TODO: save to core data
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        } catch {
+            print("Error saving tutorial object into CoreData: \(error)")
+        }
         // send to server
         networkController.postTutorial(for: newTutorialObject) { _ in
             print("attempted to post to server")
