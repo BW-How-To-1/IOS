@@ -34,10 +34,14 @@ class NetworkController {
     //MARK: - Properties -
     lazy var bearer: Bearer? = LoginSignupController.shared.bearer
     
-    let baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")!
-    lazy var postURL = baseURL.appendingPathComponent("/posturl/") //TODO: NEEDS CORRECT ENDPOINT
-    lazy var getURL = baseURL.appendingPathComponent("/geturl") //TODO: NEEDS CORRECT ENDPOINT
-    lazy var tutorialURL = baseURL.appendingPathComponent("/tutorialID/") //TODO: NEEDS CORRECT ENDPOINT
+    let baseURL = URL(string: "https://howto-56e14.firebaseio.com/")!
+    let postURL = URL(string: "https://howto-56e14.firebaseio.com/")!
+    let getURL = URL(string: "https://howto-56e14.firebaseio.com/")!
+    let tutorialURL = URL(string: "https://howto-56e14.firebaseio.com/")!
+//    let baseURL = URL(string: "https://how-to-diy.herokuapp.com/api/")!
+//    lazy var postURL = baseURL.appendingPathComponent("/posturl/") //TODO: NEEDS CORRECT ENDPOINT
+//    lazy var getURL = baseURL.appendingPathComponent("/geturl") //TODO: NEEDS CORRECT ENDPOINT
+//    lazy var tutorialURL = baseURL.appendingPathComponent("/tutorialID/") //TODO: NEEDS CORRECT ENDPOINT
     
     var jsonEncoder = JSONEncoder()
     var jsonDecoder = JSONDecoder()

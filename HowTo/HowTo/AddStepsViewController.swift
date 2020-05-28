@@ -25,10 +25,8 @@ class AddStepsViewController: UIViewController {
     
     // MARK: - Actions & Methods
     
-    
     @IBAction func userStartingTryingToAddAStep(_ sender: UITextField) {
     }
-    
     
     @IBAction func clearButtonPressed(_ sender: UIButton) {
         // resets everything
@@ -40,6 +38,8 @@ class AddStepsViewController: UIViewController {
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         // TODO: save new post, send to coreData, send to database, update status label, dismiss to home screen, reload tableView to show new post
         // data is in the newStepString var
+        
+        
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

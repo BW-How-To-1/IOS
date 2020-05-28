@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Title View Controller-->
         <scene sceneID="RcC-fJ-Wrx">
             <objects>
-                <viewController id="GZO-wj-qsF" sceneMemberID="viewController">
+                <viewController id="GZO-wj-qsF" customClass="AddTitleViewController" customModule="HowTo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="494-6z-bTB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,6 +36,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="nextButtonPressed:" destination="GZO-wj-qsF" eventType="touchUpInside" id="KuC-8y-iWa"/>
                                             <segue destination="pgg-sc-Gcu" kind="show" id="RsD-TR-EKl"/>
                                         </connections>
                                     </button>
@@ -52,15 +53,18 @@
                         <viewLayoutGuide key="safeArea" id="8X7-X1-VVv"/>
                     </view>
                     <navigationItem key="navigationItem" id="tC0-4H-qMX"/>
+                    <connections>
+                        <outlet property="titleTextField" destination="czJ-vo-AeX" id="IjP-Cg-5Bz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w12-qd-v1y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1202.8985507246377" y="158.70535714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Image View Controller-->
         <scene sceneID="Wot-JM-lwW">
             <objects>
-                <viewController id="pgg-sc-Gcu" sceneMemberID="viewController">
+                <viewController id="pgg-sc-Gcu" customClass="AddImageViewController" customModule="HowTo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pr7-qC-UGx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,6 +102,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="nextButtonPressed:" destination="pgg-sc-Gcu" eventType="touchUpInside" id="53d-FE-8gh"/>
                                             <segue destination="byY-fl-Bn9" kind="show" id="zfs-KL-Xva"/>
                                         </connections>
                                     </button>
@@ -177,6 +182,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="nextButtonPressed:" destination="byY-fl-Bn9" eventType="touchUpInside" id="Onn-yi-mUc"/>
                                             <segue destination="Xgm-Qn-qLQ" kind="show" id="dQL-PX-teD"/>
                                         </connections>
                                     </button>

@@ -1,25 +1,25 @@
 //
-//  AddDescriptionViewController.swift
+//  AddTitleViewController.swift
 //  HowTo
 //
-//  Created by Shawn James on 5/25/20.
+//  Created by Shawn James on 5/27/20.
 //  Copyright © 2020 Shawn James. All rights reserved.
 //
 
 import UIKit
 
-class AddDescriptionViewController: UIViewController {
-    // MARK: - Outlets & properties
-    @IBOutlet weak var descriptionTextView: UITextView!
+class AddTitleViewController: UIViewController {
+
+    @IBOutlet weak var titleTextField: UITextField!
     
-    // MARK: - Lifecycle
+    var tutorialObjectBeingBuilt: Tutorial?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
     
-    // MARK: - Actions & methods
-    // TODO: find way to clear "add a description..." placeholder when user wants to edit
-
     @IBAction func nextButtonPressed(_ sender: UIButton) {
     }
     

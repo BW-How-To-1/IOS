@@ -21,6 +21,8 @@
 		1D565AF02478BB8E007DD5EC /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565AEF2478BB8E007DD5EC /* CoreDataStack.swift */; };
 		1D565AF22478C05F007DD5EC /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D565AF12478C05F007DD5EC /* Onboarding.storyboard */; };
 		1D565AF42478C52D007DD5EC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565AF32478C52D007DD5EC /* OnboardingViewController.swift */; };
+		1D798C25247F355000C14413 /* AddTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D798C24247F355000C14413 /* AddTitleViewController.swift */; };
+		1D798C27247F35F000C14413 /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D798C26247F35F000C14413 /* AddImageViewController.swift */; };
 		1D7DC633247DBECB0001D01B /* Date+TimeAgoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DC632247DBECA0001D01B /* Date+TimeAgoDisplay.swift */; };
 		1D7DC635247E3E5A0001D01B /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DC634247E3E5A0001D01B /* Tutorial.swift */; };
 		1D7DC638247ED2930001D01B /* MockNetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DC637247ED2930001D01B /* MockNetworkDataLoader.swift */; };
@@ -83,6 +85,8 @@
 		1D565AEF2478BB8E007DD5EC /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		1D565AF12478C05F007DD5EC /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		1D565AF32478C52D007DD5EC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		1D798C24247F355000C14413 /* AddTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTitleViewController.swift; sourceTree = "<group>"; };
+		1D798C26247F35F000C14413 /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		1D7DC632247DBECA0001D01B /* Date+TimeAgoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeAgoDisplay.swift"; sourceTree = "<group>"; };
 		1D7DC634247E3E5A0001D01B /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		1D7DC637247ED2930001D01B /* MockNetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkDataLoader.swift; sourceTree = "<group>"; };
@@ -296,6 +300,8 @@
 		1DDD263D247C55E600D53CC4 /* NewPost */ = {
 			isa = PBXGroup;
 			children = (
+				1D798C24247F355000C14413 /* AddTitleViewController.swift */,
+				1D798C26247F35F000C14413 /* AddImageViewController.swift */,
 				1DDD2640247C5DE100D53CC4 /* AddDescriptionViewController.swift */,
 				1DDD263E247C564400D53CC4 /* AddStepsViewController.swift */,
 			);
@@ -579,6 +585,7 @@
 			files = (
 				5E399FB9247D717B0081C3EA /* NetworkController.swift in Sources */,
 				1D565AF02478BB8E007DD5EC /* CoreDataStack.swift in Sources */,
+				1D798C27247F35F000C14413 /* AddImageViewController.swift in Sources */,
 				1D565ABB2478BAA2007DD5EC /* HomeViewController.swift in Sources */,
 				1D565AB72478BAA2007DD5EC /* AppDelegate.swift in Sources */,
 				1DDD263F247C564400D53CC4 /* AddStepsViewController.swift in Sources */,
@@ -589,6 +596,7 @@
 				1DDD2641247C5DE100D53CC4 /* AddDescriptionViewController.swift in Sources */,
 				1D7DC635247E3E5A0001D01B /* Tutorial.swift in Sources */,
 				1D7DC633247DBECB0001D01B /* Date+TimeAgoDisplay.swift in Sources */,
+				1D798C25247F355000C14413 /* AddTitleViewController.swift in Sources */,
 				1D7DC63C247ED4680001D01B /* URLSession+NetworkDataLoader.swift in Sources */,
 				1DC4D6D52479F39D00E7BA74 /* UIImage+RoundedImage.swift in Sources */,
 				5E399FBB247D74350081C3EA /* Bearer.swift in Sources */,
