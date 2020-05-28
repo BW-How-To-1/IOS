@@ -227,6 +227,17 @@ extension HomeViewController: UISearchBarDelegate {
             do {
                 try fetchedResultsController.performFetch()
                 tableView.reloadData()
+                self.resignFirstResponder() // FIXME: - why doesn't this dismiss the keyboard
+            } catch let err as NSError {
+                print(err)
+            }
+        }
+        if searchBar.text == "" {
+            fetchedResultsController.fetchRequest.predicate = nil
+            
+            do {
+                try fetchedResultsController.performFetch()
+                tableView.reloadData()
             } catch let err as NSError {
                 print(err)
             }
