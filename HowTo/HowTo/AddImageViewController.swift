@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import Cloudinary
 
 class AddImageViewController: UIViewController {
     
     @IBOutlet weak var selectedImage: UIImageView!
     @IBOutlet weak var pickAnImageButton: UIButton!
     @IBOutlet weak var uploadAnImageButton: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
     
     var newTutorialTitle: String?
+    var newTutorialImageURL: String?
     public var imagePicker: UIImagePickerController? // save reference to it
     
     override func viewDidLoad() {
@@ -26,8 +29,25 @@ class AddImageViewController: UIViewController {
     }
     
     @IBAction func uploadAnImageButtonPressed(_ sender: UIButton) {
+        guard let imageData: Data = selectedImage.image?.jpeg else { return }
+        
+        self.statusLabel.text = "Uploading..."
+        
+        let cloudinaryConfiguration = CLDConfiguration(cloudName: "dehqhte0i", apiKey: "959718959598545", secure: true)
+        let cloudinaryControl = CLDCloudinary(configuration: cloudinaryConfiguration)
+        
+        cloudinaryControl.createUploader().upload(data: imageData, uploadPreset: "y1v3bbv4", progress: { (progress) in
+            // handle progress
+        }) { (uploadResult, error) in
+            if let error = error { print(error) }
+            if let imageURL = uploadResult?.secureUrl {
+                print("image was uploaded to \(imageURL)")
+                self.newTutorialImageURL = imageURL
+                self.statusLabel.text = "Upload Successful!"
+            }
+        }
     }
-    
+
     @IBAction func nextButtonPressed(_ sender: UIButton) {
     }
     

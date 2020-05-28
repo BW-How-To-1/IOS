@@ -1,16 +1,22 @@
 PODS:
+  - Cloudinary (2.9.0):
+    - Cloudinary/ios (= 2.9.0)
+  - Cloudinary/ios (2.9.0)
   - SideMenu (6.4.8)
 
 DEPENDENCIES:
+  - Cloudinary
   - SideMenu
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Cloudinary
     - SideMenu
 
 SPEC CHECKSUMS:
+  Cloudinary: 8e9511826bd58df6b14f0c6c042f2c5a034081f4
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
 
-PODFILE CHECKSUM: b887ae2f8df51dcaad08607106577f97687c90a6
+PODFILE CHECKSUM: 1a53d12728f7a19ff6ca0b74b07e85b6f1a6bcff
 
 COCOAPODS: 1.5.2

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Cloudinary
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

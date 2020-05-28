@@ -134,6 +134,7 @@
                     <connections>
                         <outlet property="pickAnImageButton" destination="vUE-uK-Sni" id="MTU-pa-yGg"/>
                         <outlet property="selectedImage" destination="9np-Mk-M30" id="O59-S1-Od1"/>
+                        <outlet property="statusLabel" destination="Y5g-hv-co9" id="A4I-f1-n8y"/>
                         <outlet property="uploadAnImageButton" destination="7Sy-hN-yKZ" id="6At-Ne-v2I"/>
                     </connections>
                 </viewController>

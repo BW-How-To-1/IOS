@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		02608DC8870081EDE9A6A65F /* Pods_HowToTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B6D8B6AB06D53CCA5DFC0F3 /* Pods_HowToTests.framework */; };
 		1D034C302478EFCC007589EA /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D034C2F2478EFCC007589EA /* HomeTableViewCell.swift */; };
+		1D54BFB22480662D00A7C4CB /* UIImage+JPEGData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D54BFB12480662D00A7C4CB /* UIImage+JPEGData.swift */; };
 		1D565AB72478BAA2007DD5EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565AB62478BAA2007DD5EC /* AppDelegate.swift */; };
 		1D565AB92478BAA2007DD5EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565AB82478BAA2007DD5EC /* SceneDelegate.swift */; };
 		1D565ABB2478BAA2007DD5EC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565ABA2478BAA2007DD5EC /* HomeViewController.swift */; };
@@ -23,7 +24,6 @@
 		1D565AF42478C52D007DD5EC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D565AF32478C52D007DD5EC /* OnboardingViewController.swift */; };
 		1D798C25247F355000C14413 /* AddTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D798C24247F355000C14413 /* AddTitleViewController.swift */; };
 		1D798C27247F35F000C14413 /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D798C26247F35F000C14413 /* AddImageViewController.swift */; };
-		1D798C292480299600C14413 /* CloudinaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D798C282480299600C14413 /* CloudinaryController.swift */; };
 		1D7DC633247DBECB0001D01B /* Date+TimeAgoDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DC632247DBECA0001D01B /* Date+TimeAgoDisplay.swift */; };
 		1D7DC635247E3E5A0001D01B /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DC634247E3E5A0001D01B /* Tutorial.swift */; };
 		1D7DC638247ED2930001D01B /* MockNetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DC637247ED2930001D01B /* MockNetworkDataLoader.swift */; };
@@ -73,6 +73,7 @@
 		0F3A040951B5B1D19F755258 /* Pods-HowTo-HowToUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowTo-HowToUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HowTo-HowToUITests/Pods-HowTo-HowToUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1B6D8B6AB06D53CCA5DFC0F3 /* Pods_HowToTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowToTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D034C2F2478EFCC007589EA /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		1D54BFB12480662D00A7C4CB /* UIImage+JPEGData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+JPEGData.swift"; sourceTree = "<group>"; };
 		1D565AB32478BAA2007DD5EC /* HowTo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowTo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D565AB62478BAA2007DD5EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D565AB82478BAA2007DD5EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		1D565AF32478C52D007DD5EC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		1D798C24247F355000C14413 /* AddTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTitleViewController.swift; sourceTree = "<group>"; };
 		1D798C26247F35F000C14413 /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
-		1D798C282480299600C14413 /* CloudinaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudinaryController.swift; sourceTree = "<group>"; };
 		1D7DC632247DBECA0001D01B /* Date+TimeAgoDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeAgoDisplay.swift"; sourceTree = "<group>"; };
 		1D7DC634247E3E5A0001D01B /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		1D7DC637247ED2930001D01B /* MockNetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkDataLoader.swift; sourceTree = "<group>"; };
@@ -308,6 +308,7 @@
 				1DC4D6CC2479C3F100E7BA74 /* String+Keys.swift */,
 				1DC4D6D42479F39D00E7BA74 /* UIImage+RoundedImage.swift */,
 				1D7DC632247DBECA0001D01B /* Date+TimeAgoDisplay.swift */,
+				1D54BFB12480662D00A7C4CB /* UIImage+JPEGData.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -348,7 +349,6 @@
 				5E399FB8247D717B0081C3EA /* NetworkController.swift */,
 				1D7DC639247ED31E0001D01B /* NetworkDataLoader.swift */,
 				1D7DC63B247ED4680001D01B /* URLSession+NetworkDataLoader.swift */,
-				1D798C282480299600C14413 /* CloudinaryController.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -535,10 +535,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HowTo-HowToUITests/Pods-HowTo-HowToUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cloudinary/Cloudinary.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cloudinary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,10 +573,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HowTo/Pods-HowTo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cloudinary/Cloudinary.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cloudinary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,13 +647,13 @@
 				1D798C25247F355000C14413 /* AddTitleViewController.swift in Sources */,
 				1D7DC63C247ED4680001D01B /* URLSession+NetworkDataLoader.swift in Sources */,
 				1DC4D6D52479F39D00E7BA74 /* UIImage+RoundedImage.swift in Sources */,
+				1D54BFB22480662D00A7C4CB /* UIImage+JPEGData.swift in Sources */,
 				5E399FBB247D74350081C3EA /* Bearer.swift in Sources */,
 				1D565AC12478BAA2007DD5EC /* HowTo.xcdatamodeld in Sources */,
 				1D034C302478EFCC007589EA /* HomeTableViewCell.swift in Sources */,
 				5EF9508E2480373C00F66713 /* ModelController.swift in Sources */,
 				1DC4D6CD2479C3F100E7BA74 /* String+Keys.swift in Sources */,
 				5E399FBD247D8A8D0081C3EA /* User.swift in Sources */,
-				1D798C292480299600C14413 /* CloudinaryController.swift in Sources */,
 				5E399FB7247D714A0081C3EA /* LoginSignupController.swift in Sources */,
 				1DC4D6D32479EFA500E7BA74 /* LoginSignupViewController.swift in Sources */,
 				5E399FBF247F0A870081C3EA /* Tutorial+Convenience.swift in Sources */,
