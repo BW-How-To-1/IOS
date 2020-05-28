@@ -65,11 +65,13 @@ class ModelController {
     func deleteTutorial(_ tutorial: Tutorial) {
         let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
         context.delete(tutorial)
-        do {
-            try context.save()
-        } catch {
-            NSLog("Error deleting tutorial from persistent stores, aborting deletion: \(error) \(error.localizedDescription)")
-            return
+        context.performAndWait {
+            do {
+                try context.save()
+            } catch {
+                NSLog("Error deleting tutorial from persistent stores, aborting deletion: \(error) \(error.localizedDescription)")
+                return
+            }
         }
         
         DispatchQueue.main.async {
@@ -80,11 +82,13 @@ class ModelController {
     func deleteComment(_ comment: Comment) {
         let context = CoreDataStack.shared.persistentContainer.newBackgroundContext()
         context.delete(comment)
-        do {
-            try context.save()
-        } catch {
-            NSLog("Error deleting comment from persistent stores, aborting deletion: \(error) \(error.localizedDescription)")
-            return
+        context.performAndWait {
+            do {
+                try context.save()
+            } catch {
+                NSLog("Error deleting comment from persistent stores, aborting deletion: \(error) \(error.localizedDescription)")
+                return
+            }
         }
         
         DispatchQueue.main.async {
