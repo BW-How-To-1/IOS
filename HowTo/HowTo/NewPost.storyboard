@@ -89,11 +89,17 @@
                                         <rect key="frame" x="0.0" y="185" width="374" height="22"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Pick an Image to Use" image="plus.rectangle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="pickAnImageButtonpressed:" destination="pgg-sc-Gcu" eventType="touchUpInside" id="pxc-XL-PwI"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sy-hN-yKZ">
                                         <rect key="frame" x="0.0" y="215" width="374" height="22"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Upload This Image " image="icloud.and.arrow.up.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="uploadAnImageButtonPressed:" destination="pgg-sc-Gcu" eventType="touchUpInside" id="zmu-3w-fDE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fug-IW-vB1">
                                         <rect key="frame" x="0.0" y="245" width="374" height="22"/>
@@ -125,6 +131,11 @@
                         <viewLayoutGuide key="safeArea" id="bUH-P8-YET"/>
                     </view>
                     <navigationItem key="navigationItem" id="uGL-Td-Hoe"/>
+                    <connections>
+                        <outlet property="pickAnImageButton" destination="vUE-uK-Sni" id="MTU-pa-yGg"/>
+                        <outlet property="selectedImage" destination="9np-Mk-M30" id="O59-S1-Od1"/>
+                        <outlet property="uploadAnImageButton" destination="7Sy-hN-yKZ" id="6At-Ne-v2I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1h-Z5-ULb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
