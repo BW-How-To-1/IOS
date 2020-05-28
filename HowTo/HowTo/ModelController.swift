@@ -31,7 +31,7 @@ class ModelController {
         do {
             try CoreDataStack.shared.save(context: CoreDataStack.shared.persistentContainer.newBackgroundContext())
         } catch {
-            NSLog("Error saving new to persistent container: \(error) \(error.localizedDescription)")
+            NSLog("Error saving new tutorial to persistent container: \(error) \(error.localizedDescription)")
             return
         }
     }
