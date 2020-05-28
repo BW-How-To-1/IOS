@@ -12,6 +12,9 @@ class AddDescriptionViewController: UIViewController {
     // MARK: - Outlets & properties
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    var newTutorialTitle: String?
+    var newTutorialDescription: String?
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +24,19 @@ class AddDescriptionViewController: UIViewController {
     // TODO: find way to clear "add a description..." placeholder when user wants to edit
 
     @IBAction func nextButtonPressed(_ sender: UIButton) {
+        guard let description = descriptionTextView.text, !description.isEmpty else { return }
+        newTutorialDescription = description
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let addStepsViewController = segue.destination as? AddStepsViewController,
+            let newTutorialTitle = newTutorialTitle else { return }
+        
+        addStepsViewController.newTutorialTitle = newTutorialTitle
+        addStepsViewController.newTutorialDescription = newTutorialDescription
     }
 
 }

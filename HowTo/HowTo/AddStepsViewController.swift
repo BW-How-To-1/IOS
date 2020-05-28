@@ -15,8 +15,12 @@ class AddStepsViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var addThisStepButton: UIButton!
     
-    var newStepString = ""
+    let networkController = NetworkController()
     var addedStepCount: Int = 1
+    
+    var newTutorialTitle: String?
+    var newTutorialDescription: String?
+    var newStepString = ""
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -38,7 +42,23 @@ class AddStepsViewController: UIViewController {
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         // TODO: save new post, send to coreData, send to database, update status label, dismiss to home screen, reload tableView to show new post
         // data is in the newStepString var
+        // create object
+        guard let newTutorialTitle = newTutorialTitle,
+        let newTutorialDescription = newTutorialDescription else { return }
+        let newTutorialObject = Tutorial(id: UUID().uuidString,
+                                         title: newTutorialTitle,
+                                         bodyText: newTutorialDescription + "\n" + newStepString,
+                                         image: URL(string: "http://www.google.com/")!,
+                                         likes: 0,
+                                         author: UserDefaults.standard.string(forKey: .usernameKey)!, // we really want to make sure this exists, so we'll crash so we know something happened to it
+                                         dateCreated: Date(),
+                                         comments: [Comment(text: "", author: "")])
         
+        // send to server
+        networkController.postTutorial(for: newTutorialObject) { _ in
+            print("attempted to post to server")
+        }
+            // maybe we want the tableView to reload here in completion handler? maybe not?
         
         navigationController?.dismiss(animated: true, completion: nil)
     }
