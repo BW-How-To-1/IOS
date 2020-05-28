@@ -85,7 +85,7 @@ class DetailViewController: UIViewController {
             tutorialTextView.superview?.sendSubviewToBack(tutorialTextView)
             // format this with comment count
             guard let tutorial = tutorial else { return }
-            commentCountOrDescriptionLabel.text = "\(tutorial.comments.count) Comments"
+            commentCountOrDescriptionLabel.text = "\(tutorial.comments?.count ?? 0) Comments"
         default:
             print("error: default value was triggered in toggleSegmentedControl() switch statement and shouldn't have been")
         }
@@ -127,9 +127,11 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .commentTableViewCellId, for: indexPath)
-        guard let comment = tutorial?.comments[indexPath.row] else { return cell }
-        cell.textLabel?.text = comment.text
-        cell.detailTextLabel?.text = comment.author
+        guard let commentArray = tutorial?.comments?.anyObject() as? NSArray else { return cell }
+        let commentAtIndexPath = commentArray[indexPath.row]
+        // FIXME: - is this working? NSSets are confusing
+        cell.textLabel?.text = (commentAtIndexPath as AnyObject).text
+        cell.detailTextLabel?.text = (commentAtIndexPath as AnyObject).author
         return cell
     }
     

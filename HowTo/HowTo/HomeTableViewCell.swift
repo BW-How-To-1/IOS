@@ -66,8 +66,8 @@ class HomeTableViewCell: UITableViewCell {
         titleLabel.text = tutorial.title
         likesCount.text = String(tutorial.likes)
         authorlabel.text = tutorial.author
-        ageOfPost.text = tutorial.dateCreated.timeAgoDisplay()
-        commentCount.text = String(tutorial.comments.count)
+        ageOfPost.text = tutorial.dateCreated!.timeAgoDisplay() // this shouldn't crash, all tutorial should have a creationDate given when created
+        commentCount.text = String(tutorial.comments?.count ?? 0)
         
     }
     

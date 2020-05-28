@@ -42,18 +42,14 @@ class AddStepsViewController: UIViewController {
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         // TODO: save new post, send to coreData, send to database, update status label, dismiss to home screen, reload tableView to show new post
         // data is in the newStepString var
-        // create object
         guard let newTutorialTitle = newTutorialTitle,
         let newTutorialDescription = newTutorialDescription else { return }
-        let newTutorialObject = Tutorial(id: UUID().uuidString,
+        // create object
+        let newTutorialObject = Tutorial(author: UserDefaults.standard.string(forKey: .usernameKey)!, // this should definitely be here or they should be on this screen
                                          title: newTutorialTitle,
-                                         bodyText: newTutorialDescription + "\n" + newStepString,
-                                         image: URL(string: "http://www.google.com/")!,
-                                         likes: 0,
-                                         author: UserDefaults.standard.string(forKey: .usernameKey)!, // we really want to make sure this exists, so we'll crash so we know something happened to it
-                                         dateCreated: Date(),
-                                         comments: [Comment(text: "", author: "")])
-        
+                                         bodyText: newTutorialDescription,
+                                         image: "placeholder for url image")
+        // TODO: save to core data
         // send to server
         networkController.postTutorial(for: newTutorialObject) { _ in
             print("attempted to post to server")

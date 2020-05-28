@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import CoreData
 
 class HomeViewController: UIViewController {
     
@@ -25,14 +26,30 @@ class HomeViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     var menu: SideMenuNavigationController?
     let menuListController = MenuListController()
-    // FIXME: this is temporary and should be deleted
-    var mockCells = [mockDataObject1, mockDataObject2]
+    
+    private lazy var fetchedResultsController: NSFetchedResultsController<Tutorial> = {
+        let fetchRequest: NSFetchRequest<Tutorial> = Tutorial.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateCreated", ascending: false)]
+        let mainContext = CoreDataStack.shared.mainContext
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                  managedObjectContext: mainContext,
+                                                                  sectionNameKeyPath: nil,
+                                                                  cacheName: nil)
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error Fetching -> HomeViewController in fetchedResultsController: \(error)")
+        }
+        return fetchedResultsController
+    }()
     
     // MARK: - Lifecycle & init's
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
         menuListController.menuListDelegate = self
+        searchControl.delegate = self
         onboardTheUserIfFirstLaunch()
     }
     
@@ -82,7 +99,7 @@ class HomeViewController: UIViewController {
         if segue.identifier == .showDetailVCSegueId {
             guard let detailViewController = segue.destination as? DetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
-            detailViewController.tutorial = mockCells[indexPath.row]
+            detailViewController.tutorial = fetchedResultsController.object(at: indexPath)
         }
     }
     
@@ -90,17 +107,15 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        mockCells.count
+        fetchedResultsController.sections![section].numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .homeTableViewCellId, for: indexPath) as! HomeTableViewCell // FIXME: - crash this with a print or log if it fails
-        cell.tutorial = mockCells[indexPath.row]
-        cell.imageView1.image = UIImage(named: String(indexPath.row))
+        cell.tutorial = fetchedResultsController.object(at: indexPath)
         cell.alertControllerDelegate = self
         return cell
     }
-    
     
 }
 
@@ -136,6 +151,73 @@ extension HomeViewController: AlertControllerDelegate {
         let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true)
+    }
+    
+}
+
+extension HomeViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+        default:
+            break
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            guard let newIndexPath = newIndexPath else { return }
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .update:
+            guard let indexPath = indexPath else { return }
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        case .move:
+            guard let oldIndexPath = indexPath,
+                let newIndexPath = newIndexPath else { return }
+            tableView.deleteRows(at: [oldIndexPath], with: .automatic)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .delete:
+            guard let indexPath = indexPath else { return }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        @unknown default:
+            break
+        }
+    }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchTerm = searchBar.text {
+            
+            let predicate = NSPredicate(format: "(title contains[cd] %@)", searchTerm)
+            fetchedResultsController.fetchRequest.predicate = predicate
+            
+            do {
+                try fetchedResultsController.performFetch()
+                tableView.reloadData()
+            } catch let err as NSError {
+                print(err)
+            }
+        }
     }
     
 }
