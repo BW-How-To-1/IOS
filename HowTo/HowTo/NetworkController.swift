@@ -41,10 +41,10 @@ class NetworkController {
     let getURL = URL(string: "https://howto-56e14.firebaseio.com/")!
     let tutorialURL = URL(string: "https://howto-56e14.firebaseio.com/")!
     let commentURL = URL(string: "https://howto-56e14.firebaseio.com/")!
-    //    let baseURL = URL(string: "https://how-to-diy.herokuapp.com/")!
-        lazy var postTutorialURL = baseURL.appendingPathComponent("/projects/") //TODO: NEEDS CORRECT ENDPOINT
-        lazy var postCommentURL = baseURL.appendingPathComponent("/projects/comments/") //TODO: NEEDS CORRECT ENDPOINT
-    //    lazy var getURL = baseURL.appendingPathComponent("/projects/") //TODO: NEEDS CORRECT ENDPOINT
+    //   let baseURL = URL(string: "https://how-to-diy.herokuapp.com/")!
+    //   lazy var postTutorialURL = baseURL.appendingPathComponent("/projects/") //TODO: NEEDS CORRECT ENDPOINT
+    //   lazy var postCommentURL = baseURL.appendingPathComponent("/projects/comments/") //TODO: NEEDS CORRECT ENDPOINT
+    //   lazy var getURL = baseURL.appendingPathComponent("/projects/") //TODO: NEEDS CORRECT ENDPOINT
     
     
     var jsonEncoder = JSONEncoder()
@@ -378,6 +378,9 @@ class NetworkController {
     
     
     //MARK: - Methods -
+    //Uncomment these helper methods to get project backend URLs
+    
+    /*
     private func tutorialURLHelper(_ tutorial: Tutorial) -> URL? {
         if let tutorialIDString = tutorial.id?.uuidString {
             let individualTutorialURL = postTutorialURL.appendingPathComponent("\(tutorialIDString)")
@@ -388,12 +391,13 @@ class NetworkController {
     }
     
     private func commentURLHelper(_ comment: Comment) -> URL? {
-        if let tutorialIDString = comment.tutorial?.id?.uuidString {
-            let individualCommentURL = postCommentURL.appendingPathComponent("\(tutorialIDString)")
+        if let commentIDString = comment.id?.uuidString {
+            let individualCommentURL = postCommentURL.appendingPathComponent("\(commentIDString)")
             return individualCommentURL
         } else {
             return nil
         }
     }
+    */
     
 }
