@@ -65,7 +65,7 @@ class NetworkController {
         var request = postRequest(for: postURL, with: bearer)
         
         do {
-            let jsonRequest = try jsonEncoder.encode(tutorial) //TODO: This will be a codable .rep
+            let jsonRequest = try jsonEncoder.encode(tutorial.representation)
             request.httpBody = jsonRequest
         } catch {
             NSLog("Error encoding tutorial: \(error) \(error.localizedDescription)")
@@ -116,7 +116,13 @@ class NetworkController {
             }
             
             do {
-                let allTutorials = try self.jsonDecoder.decode([Tutorial].self, from: data)
+                let allTutorialReps = try self.jsonDecoder.decode([TutorialRepresentation].self, from: data)
+                var allTutorials: [Tutorial] = []
+                for rep in allTutorialReps {
+                    if let newTutorial = Tutorial(representation: rep) {
+                        allTutorials.append(newTutorial)
+                    }
+                }
                 completion(.success(allTutorials))
             } catch {
                 NSLog("Error decoding data from get request: \(error) \(error.localizedDescription)")
