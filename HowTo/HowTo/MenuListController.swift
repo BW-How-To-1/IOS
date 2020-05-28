@@ -52,12 +52,12 @@ class MenuListController: UITableViewController {
         // FIXME: - this should all be refactored. it doesn't need a switch statement, it just needs to pass the index path.row into the buttonNumber parameter
         switch indexPath.row {
         case 0:
-            // sort by...
+            // sort by likes
             dismiss(animated: true) {
                 self.menuListDelegate?.menuItemPressed(buttonNumber: 0)
             }
         case 1:
-            // filter by...
+            // sort by creationDate
             dismiss(animated: true) {
                 self.menuListDelegate?.menuItemPressed(buttonNumber: 1)
             }
@@ -98,9 +98,9 @@ class MenuListController: UITableViewController {
     private func updateMenuLabels() {
         menuLabels = []
         // menuLabel 0
-        menuLabels.append("Sort By...") // most commented / most liked etc...
+        menuLabels.append("Trending") // most most liked etc...
         // menuLabel 1
-        menuLabels.append("Filter By...")
+        menuLabels.append("Recent") // most recently posted
         // menuLabel 2
         menuLabels.append("Placeholder...")
         // menuLabel 3

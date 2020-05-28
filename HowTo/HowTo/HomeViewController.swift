@@ -101,6 +101,16 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func sortBy(_ keyToSortBy: String) {
+        self.fetchedResultsController.fetchRequest.sortDescriptors = [NSSortDescriptor(key: keyToSortBy, ascending: false)]
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            print("Error Fetching -> HomeViewController in sortBy method: \(error)")
+        }
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == .showDetailVCSegueId {
@@ -130,13 +140,9 @@ extension HomeViewController: MenuListDelegate {
     func menuItemPressed(buttonNumber: Int) {
         switch buttonNumber {
         case 0:
-            // sort by...
-            print("nothing yet...")
-        // TODO: present an alert with sorting options
+            sortBy("likes")
         case 1:
-            // filter by...
-            print("nothing yet...")
-        // TODO: present an alert with filter options
+            sortBy("dateCreated")
         case 2:
             // nothing yet...
             print("nothing yet...")
