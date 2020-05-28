@@ -42,9 +42,8 @@ class ModelController {
                 return
         }
         let newComment = comment
-        tutorial.addToComments(newComment)
-        
         let context = CoreDataStack.shared.mainContext
+        tutorial.addToComments(newComment)
         
         DispatchQueue.main.async {
             context.perform {
