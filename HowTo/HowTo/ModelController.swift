@@ -54,7 +54,6 @@ class ModelController {
         }
     }
     
-    
     func deleteTutorial(_ tutorial: Tutorial) {
         let context = CoreDataStack.shared.persistentContainer.viewContext
         context.delete(tutorial)
@@ -88,4 +87,7 @@ class ModelController {
             NetworkController.shared.deleteComment(comment) { _ in }
         }
     }
+    
+    // TODO: updateTutorial(_ tutorial: Tutorial) {
+    //       }
 }

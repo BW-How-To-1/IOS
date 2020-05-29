@@ -61,6 +61,23 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func editContentButtonPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Enter a New Title", message: nil, preferredStyle: .alert)
+        alert.addTextField { (newTitle) in
+            newTitle.placeholder = "enter your new title"
+        }
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
+            guard let editedTutorial = self.tutorial,
+                let newTitle = alert.textFields?[0].text,
+                newTitle != "" else { return }
+            editedTutorial.title = newTitle
+            self.titleLabel.text = newTitle
+            // FIXME: - this would look cleaner with an update method
+            self.modelController.deleteTutorial(editedTutorial)
+            // FIXME: - this is broken, it just deletes
+            self.modelController.createTutorial(editedTutorial)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
