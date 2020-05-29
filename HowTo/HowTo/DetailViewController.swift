@@ -64,6 +64,7 @@ class DetailViewController: UIViewController {
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
         guard let tutorial = tutorial else { return }
         modelController.deleteTutorial(tutorial)
+        titleLabel.text = "This Post Has Been Deleted"
     }
     
     @IBAction func sendCommentButtonTapped(_ sender: UIButton) {
