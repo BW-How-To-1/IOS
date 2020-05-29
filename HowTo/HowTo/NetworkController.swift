@@ -397,12 +397,16 @@ class NetworkController {
     //MARK: - Methods -
     ///update helpers
     private func update(tutorial: Tutorial, with representation: TutorialRepresentation) {
+        guard let likes = Int64(representation.likes) else {
+            return
+        }
+        
         tutorial.author = representation.author
         tutorial.bodyText = representation.bodyText
         tutorial.dateCreated = representation.dateCreated
         tutorial.id = Int64(representation.id)
         tutorial.image = representation.image
-        tutorial.likes = representation.likes
+        tutorial.likes = likes
         tutorial.title = representation.title
     }
     

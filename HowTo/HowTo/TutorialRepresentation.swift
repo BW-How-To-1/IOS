@@ -23,7 +23,7 @@ struct TutorialRepresentation: Codable {
     var title: String
     var bodyText: String
     var image: String?
-    var likes: Int64
+    var likes: String
     let author: String
     let dateCreated: Date
 }

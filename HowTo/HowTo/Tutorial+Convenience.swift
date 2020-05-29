@@ -22,7 +22,7 @@ extension Tutorial {
                                       title: title,
                                       bodyText: bodyText,
                                       image: image,
-                                      likes: likes,
+                                      likes: String(likes),
                                       author: author,
                                       dateCreated: dateCreated)
     }
@@ -49,13 +49,17 @@ extension Tutorial {
     
     @discardableResult convenience init?(representation: TutorialRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        guard let likes = Int64(representation.likes) else {
+            return nil
+        }
+        
         self.init(id: Int64(representation.id),
                       dateCreated: representation.dateCreated,
                       author: representation.author,
                       title: representation.author,
                       bodyText: representation.bodyText,
                       image: representation.image,
-                      likes: representation.likes,
+                      likes: likes,
                       context: context)
     }
     
