@@ -47,6 +47,8 @@ class DetailViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.editPostPopOver.alpha = 1
             self.imageBlur.alpha = 1
+            self.imageBlur.superview?.bringSubviewToFront(self.imageBlur)
+            self.editPostPopOver.superview?.bringSubviewToFront(self.editPostPopOver)
         }
         // set location
         editPostPopOver.center = editPostButton.center
