@@ -60,12 +60,12 @@
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Cook Pasta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-uw-Cxc">
                                                             <rect key="frame" x="20" y="11" width="374" height="23.5"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3kl-wh-hrc">
-                                                            <rect key="frame" x="20" y="268" width="236.5" height="19"/>
+                                                            <rect key="frame" x="20" y="268" width="142" height="19"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keK-jI-aez">
                                                                     <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
@@ -121,19 +121,21 @@
                                                                     <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By: DaChef716" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWu-ym-8eV">
-                                                                    <rect key="frame" x="150" y="0.0" width="86.5" height="19"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="19" id="fOh-Tl-v0k"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
                                                             </subviews>
                                                         </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By: DaChef716" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWu-ym-8eV">
+                                                            <rect key="frame" x="307.5" y="268" width="86.5" height="19"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="19" id="fOh-Tl-v0k"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="sWu-ym-8eV" secondAttribute="trailing" constant="20" id="7Hw-JF-hLq"/>
+                                                        <constraint firstAttribute="bottom" secondItem="sWu-ym-8eV" secondAttribute="bottom" constant="10" id="BN9-Zb-hC8"/>
                                                         <constraint firstItem="3kl-wh-hrc" firstAttribute="leading" secondItem="8rh-ox-CN1" secondAttribute="leading" constant="20" id="N6x-mG-qEB"/>
                                                         <constraint firstItem="ozX-uw-Cxc" firstAttribute="top" secondItem="8rh-ox-CN1" secondAttribute="topMargin" id="QZe-oA-X6w"/>
                                                         <constraint firstAttribute="bottom" secondItem="3kl-wh-hrc" secondAttribute="bottom" constant="10" id="UPk-sM-GD9"/>
