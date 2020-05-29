@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cloudinary
 
 class DetailViewController: UIViewController {
     
@@ -105,6 +106,7 @@ class DetailViewController: UIViewController {
         guard let tutorial = tutorial else { return }
         titleLabel.text = tutorial.title
         authorLabel.text = tutorial.author
+        loadImage(for: tutorial.image)
     }
     
     private func setUpTutorialView() {
@@ -114,6 +116,25 @@ class DetailViewController: UIViewController {
         tutorialTextView.text = tutorial.bodyText
         tutorialTextView.superview?.bringSubviewToFront(tutorialTextView)
         commentCountOrDescriptionLabel.text = "Description"
+    }
+    
+    private func loadImage(for tutorialImagePath: String?) {
+        guard let imageURL = tutorialImagePath else { return }
+        
+        let cloudinaryConfiguration = CLDConfiguration(cloudName: "dehqhte0i", apiKey: "959718959598545", secure: true)
+        let cloudinaryControl = CLDCloudinary(configuration: cloudinaryConfiguration)
+        
+        cloudinaryControl.createDownloader().fetchImage(imageURL, { _ in
+            // Handle progress
+        }) { (responseImage, error) in
+            if let error = error { print(error) }
+            if let responseImage = responseImage {
+                DispatchQueue.main.async {
+                    self.imageView.image = responseImage
+                    print("Image Was Returned To Detail View")
+                }
+            }
+        }
     }
     
 }

@@ -49,7 +49,7 @@ class AddStepsViewController: UIViewController {
         let newTutorialObject = Tutorial(author: UserDefaults.standard.string(forKey: .usernameKey)!, // this should definitely be here or they should be on this screen
                                          title: newTutorialTitle,
                                          bodyText: newTutorialDescription + "\n" + "\n" + addedStepsTextView.text,
-                                         image: "placeholder for url image")
+                                         image: newTutorialImageURL)
         do {
             try CoreDataStack.shared.mainContext.save()
         } catch {

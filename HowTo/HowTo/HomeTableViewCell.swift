@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cloudinary
 
 protocol AlertControllerDelegate {
     func presentAlert(with text: String)
@@ -25,6 +26,7 @@ class HomeTableViewCell: UITableViewCell {
     
     var userHasLikedThisPost: Bool = false
     var alertControllerDelegate: AlertControllerDelegate?
+    var cellImage: UIImage?
     var tutorial: Tutorial? {
         didSet {
             updateViews()
@@ -68,7 +70,26 @@ class HomeTableViewCell: UITableViewCell {
         authorlabel.text = tutorial.author
         ageOfPost.text = tutorial.dateCreated!.timeAgoDisplay() // this shouldn't crash, all tutorial should have a creationDate given when created
         commentCount.text = String(tutorial.comments?.count ?? 0)
+        loadImage(for: tutorial.image)
+    }
+    
+    private func loadImage(for tutorialImagePath: String?) {
+        guard let imageURL = tutorialImagePath else { return }
         
+        let cloudinaryConfiguration = CLDConfiguration(cloudName: "dehqhte0i", apiKey: "959718959598545", secure: true)
+        let cloudinaryControl = CLDCloudinary(configuration: cloudinaryConfiguration)
+        
+        cloudinaryControl.createDownloader().fetchImage(imageURL, { _ in
+            // Handle progress
+        }) { (responseImage, error) in
+            if let error = error { print(error) }
+            if let responseImage = responseImage {
+                DispatchQueue.main.async {
+                    self.imageView1.image = responseImage
+                    print("Image Was Returned To Cell")
+                }
+            }
+        }
     }
     
 }
