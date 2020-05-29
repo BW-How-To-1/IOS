@@ -11,6 +11,7 @@ import UIKit
 class AddDescriptionViewController: UIViewController {
     // MARK: - Outlets & properties
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var nextButton: UIButton!
     
     var newTutorialTitle: String?
     var newTutorialImageURL: String?
@@ -19,11 +20,15 @@ class AddDescriptionViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.descriptionTextView.text = ""
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.nextButton.alpha = 1
+        }
     }
     
     // MARK: - Actions & methods
-    // TODO: find way to clear "add a description..." placeholder when user wants to edit
-
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         guard let description = descriptionTextView.text, !description.isEmpty else { return }
         newTutorialDescription = description

@@ -15,6 +15,7 @@ class AddImageViewController: UIViewController {
     @IBOutlet weak var pickAnImageButton: UIButton!
     @IBOutlet weak var uploadAnImageButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
     var newTutorialTitle: String?
     var newTutorialImageURL: String?
@@ -22,6 +23,9 @@ class AddImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        statusLabel.text = ""
+        uploadAnImageButton.alpha = 0
+        nextButton.alpha = 0
     }
     
     @IBAction func pickAnImageButtonpressed(_ sender: UIButton) {
@@ -44,6 +48,8 @@ class AddImageViewController: UIViewController {
                 print("image was uploaded to \(imageURL)")
                 self.newTutorialImageURL = imageURL
                 self.statusLabel.text = "Upload Successful!"
+                self.statusLabel.textColor = .systemGreen
+                self.nextButton.alpha = 1
             }
         }
     }
@@ -115,6 +121,7 @@ extension AddImageViewController: UIImagePickerControllerDelegate, UINavigationC
             picker.delegate = nil
             self.imagePicker = nil
         }
+        self.uploadAnImageButton.alpha = 1
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

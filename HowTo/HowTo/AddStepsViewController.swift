@@ -14,6 +14,8 @@ class AddStepsViewController: UIViewController {
     @IBOutlet weak var addedStepsTextView: UITextView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var addThisStepButton: UIButton!
+    @IBOutlet weak var clearAllButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
     
     let networkController = NetworkController()
     var addedStepCount: Int = 1
@@ -26,6 +28,9 @@ class AddStepsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearAllButton.alpha = 0
+        doneButton.alpha = 0
+        statusLabel.text = ""
     }
     
     // MARK: - Actions & Methods
@@ -41,10 +46,9 @@ class AddStepsViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
-        // TODO: save new post, send to coreData, send to database, update status label, dismiss to home screen, reload tableView to show new post
-        // data is in the newStepString var
         guard let newTutorialTitle = newTutorialTitle,
         let newTutorialDescription = newTutorialDescription else { return }
+        self.statusLabel.text = "Creating..."
         // create object
         let newTutorialObject = Tutorial(author: UserDefaults.standard.string(forKey: .usernameKey)!, // this should definitely be here or they should be on this screen
                                          title: newTutorialTitle,
@@ -58,9 +62,9 @@ class AddStepsViewController: UIViewController {
         // send to server
         networkController.postTutorial(for: newTutorialObject) { _ in
             print("attempted to post to server")
+            self.statusLabel.text = "Success!"
+            self.statusLabel.textColor = .systemGreen
         }
-            // maybe we want the tableView to reload here in completion handler? maybe not?
-        
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
@@ -75,6 +79,8 @@ class AddStepsViewController: UIViewController {
         // flash scroll indicators to show something was added and view can be scrolled
         // FIXME: - why doesn't this work?
         addedStepsTextView.flashScrollIndicators()
+        clearAllButton.alpha = 1
+        doneButton.alpha = 1
     }
     
     /*

@@ -11,18 +11,24 @@ import UIKit
 class AddTitleViewController: UIViewController {
 
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var nextButton: UIButton!
     
     var newTutorialTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nextButton.alpha = 0
     }
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         guard let title = titleTextField.text, !title.isEmpty else { return }
         newTutorialTitle = title
+    }
+    
+    @IBAction func textEditingDidBegin(_ sender: UITextField) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.nextButton.alpha = 1
+        }
     }
     
     // MARK: - Navigation
