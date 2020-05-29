@@ -29,6 +29,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     
     var tutorial: Tutorial?
+    let modelController = ModelController()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -61,11 +62,20 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
+        guard let tutorial = tutorial else { return }
+        modelController.deleteTutorial(tutorial)
     }
     
     @IBAction func sendCommentButtonTapped(_ sender: UIButton) {
         if UserDefaults.standard.bool(forKey: .isLoggedInKey) {
-            // TODO: "send" a comment to the post with matching post.id
+            guard let tutorial = tutorial,
+                let text = commentTextField.text,
+                !text.isEmpty else { return }
+            
+            modelController.createComment(Comment(author: UserDefaults.standard.string(forKey: .usernameKey)!,
+                                                  text: text,
+                                                  title: nil), for: tutorial)
+            commentTextField.text = ""
         } else {
             // present alert because user is a guest and can't post
             let alert = UIAlertController(title: "You Must Be Logged in to Post Comments", message: nil, preferredStyle: .alert)
@@ -148,7 +158,7 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .commentTableViewCellId, for: indexPath)
-        guard let commentArray = tutorial?.comments?.anyObject() as? NSArray else { return cell }
+        guard let commentArray = tutorial?.comments?.allObjects as? [Comment] else { return cell }
         let commentAtIndexPath = commentArray[indexPath.row]
         // FIXME: - is this working? NSSets are confusing
         cell.textLabel?.text = (commentAtIndexPath as AnyObject).text

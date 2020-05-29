@@ -52,7 +52,8 @@ class ModelController {
         }
         
         do {
-            try CoreDataStack.shared.save(context: CoreDataStack.shared.persistentContainer.newBackgroundContext())
+//            try CoreDataStack.shared.save(context: CoreDataStack.shared.persistentContainer.newBackgroundContext())
+            try CoreDataStack.shared.save()
         } catch {
             NSLog("Error saving new comment to persistent container: \(error) \(error.localizedDescription)")
             return
