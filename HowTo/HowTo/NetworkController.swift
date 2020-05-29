@@ -41,7 +41,7 @@ class NetworkController {
     static let shared = NetworkController()
     var bearer: Bearer? = LoginSignupController.shared.bearer {
         didSet {
-            getTutorials { _ in }
+            print("bearer recieved")
         }
     }
     let guestToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJ1c2VybmFtZSI6Imd1ZXN0IiwiaWF0IjoxNTkwNzM0MjEwLCJleHAiOjE1OTA4MjA2MTB9.jijfAc1mGMYaKbNiuRmyE_V7GwAfJXx57tznd75aghs"
@@ -55,18 +55,27 @@ class NetworkController {
     
     ///project back-end endpoints
     let baseURL = URL(string: "https://how-to-diy.herokuapp.com/")!
-    lazy var tutorialsURL = baseURL.appendingPathComponent("/projects")
-    lazy var commentsURL = baseURL.appendingPathComponent("/comments")
+    lazy var tutorialsURL = baseURL.appendingPathComponent("projects/")
+    lazy var commentsURL = baseURL.appendingPathComponent("comments/")
     
     var jsonEncoder = JSONEncoder()
     var jsonDecoder = JSONDecoder()
     
+    var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(abbreviation: "GMT")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        return formatter
+    }()
+
     var networkDataLoader: NetworkDataLoader
     
     
     // MARK: - Lifecycle
     init(networkDataLoader: NetworkDataLoader = URLSession.shared) {
         self.networkDataLoader = networkDataLoader
+        getTutorials { _ in }
     }
     
     
@@ -180,6 +189,7 @@ class NetworkController {
             }
             
             do {
+                self.jsonDecoder.dateDecodingStrategy = .formatted(self.dateFormatter)
                 let allTutorialReps = try self.jsonDecoder.decode([TutorialRepresentation].self, from: data)
                 var allTutorials: [Tutorial] = []
                 for rep in allTutorialReps {
@@ -397,7 +407,14 @@ class NetworkController {
     //MARK: - Methods -
     ///update helpers
     private func update(tutorial: Tutorial, with representation: TutorialRepresentation) {
-        guard let likes = Int64(representation.likes) else {
+        var likesString: String
+        if let likes = representation.likes {
+            likesString = likes
+        } else {
+            likesString = "0"
+        }
+        
+        guard let likes64 = Int64(likesString) else {
             return
         }
         
@@ -406,7 +423,7 @@ class NetworkController {
         tutorial.dateCreated = representation.dateCreated
         tutorial.id = Int64(representation.id)
         tutorial.image = representation.image
-        tutorial.likes = likes
+        tutorial.likes = likes64
         tutorial.title = representation.title
     }
     
@@ -449,20 +466,20 @@ class NetworkController {
     ///URL Helpers
     private func singleTutorialURL(_ tutorial: Tutorial) -> URL {
         let tutorialIDString = String(describing: tutorial.id)
-        let individualTutorialURL = baseURL.appendingPathComponent("/projects/\(tutorialIDString)/")
+        let individualTutorialURL = baseURL.appendingPathComponent("projects/\(tutorialIDString)/")
         return individualTutorialURL
     }
     
     private func singleCommentURL(_ comment: Comment) -> URL {
         let commentIDString = String(describing: comment.id)
-        let individualCommentURL = baseURL.appendingPathComponent("/comments/\(commentIDString)/")
+        let individualCommentURL = baseURL.appendingPathComponent("comments/\(commentIDString)/")
         return individualCommentURL
         
     }
     
     private func postCommentURL(_ comment: Comment) -> URL {
         let newCommentTutorialString = String(describing: comment.tutorial?.id)
-        let postCommentURL = baseURL.appendingPathComponent("/projects/comments/\(newCommentTutorialString)/")
+        let postCommentURL = baseURL.appendingPathComponent("projects/comments/\(newCommentTutorialString)/")
         return postCommentURL
     }
     

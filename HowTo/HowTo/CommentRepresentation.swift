@@ -11,7 +11,7 @@ import Foundation
 struct CommentRepresentation: Codable {
     enum CodingKeys: String, CodingKey {
         case id
-        case dateCreated
+        case dateCreated = "date"
         case author
         case title
         case text = "comments"

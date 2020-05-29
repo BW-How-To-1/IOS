@@ -43,6 +43,7 @@ extension Comment {
     @discardableResult convenience init?(representation: CommentRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(id: Int64(representation.id),
+                  dateCreated: representation.dateCreated,
                   author: representation.author,
                   text: representation.text,
                   title: representation.title,

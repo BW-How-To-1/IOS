@@ -49,17 +49,24 @@ extension Tutorial {
     
     @discardableResult convenience init?(representation: TutorialRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let likes = Int64(representation.likes) else {
+        var likesString: String
+        if let likes = representation.likes {
+            likesString = likes
+        } else {
+            likesString = "0"
+        }
+        
+        guard let likes64 = Int64(likesString) else {
             return nil
         }
         
         self.init(id: Int64(representation.id),
-                      dateCreated: representation.dateCreated,
-                      author: representation.author,
-                      title: representation.author,
-                      bodyText: representation.bodyText,
+                      dateCreated: representation.dateCreated ?? Date(),
+                      author: representation.author ?? "anonymous",
+                      title: representation.title ?? "untitled",
+                      bodyText: representation.bodyText ?? " ",
                       image: representation.image,
-                      likes: likes,
+                      likes: likes64,
                       context: context)
     }
     

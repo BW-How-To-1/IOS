@@ -20,10 +20,10 @@ struct TutorialRepresentation: Codable {
     }
     
     let id: Int
-    var title: String
-    var bodyText: String
+    var title: String?
+    var bodyText: String?
     var image: String?
-    var likes: String
-    let author: String
-    let dateCreated: Date
+    var likes: String?
+    let author: String?
+    let dateCreated: Date?
 }

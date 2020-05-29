@@ -74,7 +74,7 @@ class HomeTableViewCell: UITableViewCell {
         titleLabel.text = tutorial.title
         likesCount.text = String(tutorial.likes)
         authorlabel.text = "Posted By: \(tutorial.author!)"
-        ageOfPost.text = tutorial.dateCreated!.timeAgoDisplay() // this shouldn't crash, all tutorial should have a creationDate given when created
+        ageOfPost.text = tutorial.dateCreated?.timeAgoDisplay() // this shouldn't crash, all tutorial should have a creationDate given when created
         commentCount.text = String(tutorial.comments?.count ?? 0)
         loadImage(for: tutorial.image)
     }
