@@ -330,7 +330,7 @@ class NetworkController {
             }
             
             guard let response = response as? HTTPURLResponse,
-                response.statusCode == 200 else { //TODO: <- MAKE SURE THIS IS RIGHT
+                response.statusCode == 201 else { //TODO: <- MAKE SURE THIS IS RIGHT
                     NSLog("Error: Bad or no response from server when posting comment.")
                     completion(.failure(.badResponse))
                     return
@@ -413,7 +413,6 @@ class NetworkController {
     private func deleteRequest(for url: URL, with bearer: Bearer) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
         return request
     }
@@ -443,7 +442,7 @@ class NetworkController {
     
     private func postCommentURL(_ comment: Comment) -> URL? {
         if let newCommentTutorialString = comment.tutorial?.id?.uuidString {
-            let postCommentURL = baseURL.appendingPathComponent("/projects/comments/\(newCommentTutorialString)")
+            let postCommentURL = baseURL.appendingPathComponent("/projects/comments/\(newCommentTutorialString)/")
             return postCommentURL
         } else {
             return nil
