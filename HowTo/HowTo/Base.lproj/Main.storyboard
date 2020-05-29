@@ -54,12 +54,11 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="297"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="makingPasta" translatesAutoresizingMaskIntoConstraints="NO" id="nXH-of-n9O">
-                                                            <rect key="frame" x="20" y="36" width="374" height="226"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="makingPasta" translatesAutoresizingMaskIntoConstraints="NO" id="nXH-of-n9O">
+                                                            <rect key="frame" x="20" y="35" width="374" height="227"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Cook Pasta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-uw-Cxc">
-                                                            <rect key="frame" x="20" y="11" width="374" height="23.5"/>
+                                                            <rect key="frame" x="20" y="11" width="374" height="22.5"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -134,12 +133,17 @@
                                                         </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="nXH-of-n9O" secondAttribute="trailing" constant="20" id="3ck-pZ-0SA"/>
                                                         <constraint firstAttribute="trailing" secondItem="sWu-ym-8eV" secondAttribute="trailing" constant="20" id="7Hw-JF-hLq"/>
                                                         <constraint firstAttribute="bottom" secondItem="sWu-ym-8eV" secondAttribute="bottom" constant="10" id="BN9-Zb-hC8"/>
+                                                        <constraint firstItem="nXH-of-n9O" firstAttribute="centerY" secondItem="8rh-ox-CN1" secondAttribute="centerY" id="Mcq-9B-By6"/>
                                                         <constraint firstItem="3kl-wh-hrc" firstAttribute="leading" secondItem="8rh-ox-CN1" secondAttribute="leading" constant="20" id="N6x-mG-qEB"/>
                                                         <constraint firstItem="ozX-uw-Cxc" firstAttribute="top" secondItem="8rh-ox-CN1" secondAttribute="topMargin" id="QZe-oA-X6w"/>
                                                         <constraint firstAttribute="bottom" secondItem="3kl-wh-hrc" secondAttribute="bottom" constant="10" id="UPk-sM-GD9"/>
+                                                        <constraint firstItem="nXH-of-n9O" firstAttribute="top" secondItem="ozX-uw-Cxc" secondAttribute="bottom" constant="1.5" id="awz-ya-g4M"/>
+                                                        <constraint firstItem="3kl-wh-hrc" firstAttribute="top" secondItem="nXH-of-n9O" secondAttribute="bottom" constant="6" id="gSx-gx-zUR"/>
                                                         <constraint firstItem="ozX-uw-Cxc" firstAttribute="leading" secondItem="8rh-ox-CN1" secondAttribute="leadingMargin" id="leK-1C-7qu"/>
+                                                        <constraint firstItem="nXH-of-n9O" firstAttribute="leading" secondItem="8rh-ox-CN1" secondAttribute="leading" constant="20" id="tBy-c8-5T9"/>
                                                         <constraint firstItem="ozX-uw-Cxc" firstAttribute="trailing" secondItem="8rh-ox-CN1" secondAttribute="trailingMargin" id="v9T-zI-5oR"/>
                                                     </constraints>
                                                 </tableViewCellContentView>

@@ -45,9 +45,19 @@ class LoginSignupViewController: UIViewController {
         
         switch isLoggingIn {
         case true:
-            loginSignupController.logIn(as: User(username: username.text, password: password.text)) { _ in }
+            statusLabel.text = "Logging In"
+            loginSignupController.logIn(as: User(username: username.text, password: password.text)) { _ in
+                // can add status updates
+//                self.statusLabel.text = "Success!"
+//                self.statusLabel.textColor = .systemGreen
+            }
         case false:
-            loginSignupController.signUp(as: User(username: username.text, password: password.text)) { _ in }
+            statusLabel.text = "Logging In"
+            loginSignupController.signUp(as: User(username: username.text, password: password.text)) { _ in
+                // can add status updates
+//                self.statusLabel.text = "Success!"
+//                self.statusLabel.textColor = .systemGreen
+            }
         }
         
     }
@@ -63,6 +73,13 @@ class LoginSignupViewController: UIViewController {
         updateRememberMeButton()
     }
     
+    @IBAction func textBeganEdited(_ sender: UITextField) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.rememberMeButton.alpha = 1
+        })
+    }
+    
+    
     private func updateViews() {
         navigationController?.isNavigationBarHidden = true
         autofillTextFields()
@@ -75,6 +92,8 @@ class LoginSignupViewController: UIViewController {
         textFieldBackgroundView.layer.shadowOpacity = 1
         textFieldBackgroundView.layer.shadowOffset = .zero
         textFieldBackgroundView.layer.shadowRadius = 10
+        rememberMeButton.alpha = 0
+        statusLabel.text = ""
     }
     
     private func autofillTextFields() {
