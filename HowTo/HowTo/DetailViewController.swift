@@ -74,13 +74,22 @@ class DetailViewController: UIViewController {
             
             modelController.createComment(Comment(author: UserDefaults.standard.string(forKey: .usernameKey)!,
                                                   text: text,
-                                                  title: nil), for: tutorial)
+                                                  title: "\(tutorial.comments?.count ?? 0 + 1)"),
+                                          for: tutorial)
             commentTextField.text = ""
         } else {
             // present alert because user is a guest and can't post
             let alert = UIAlertController(title: "You Must Be Logged in to Post Comments", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alert, animated: true)
+        }
+        self.resignFirstResponder()
+        self.view.endEditing(true)
+        self.tableView.reloadData()
+        if tutorial?.comments?.count != 1 {
+            commentCountOrDescriptionLabel.text = "\(tutorial?.comments?.count ?? 0) Comments"
+        } else {
+            commentCountOrDescriptionLabel.text = "1 Comment"
         }
     }
     
@@ -159,7 +168,8 @@ extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .commentTableViewCellId, for: indexPath)
         guard let commentArray = tutorial?.comments?.allObjects as? [Comment] else { return cell }
-        let commentAtIndexPath = commentArray[indexPath.row]
+        let sortedNewestFirst = commentArray.sorted { $0.title! > $1.title! }
+        let commentAtIndexPath = sortedNewestFirst[indexPath.row]
         cell.textLabel?.text = (commentAtIndexPath as AnyObject).text
         cell.detailTextLabel?.text = (commentAtIndexPath as AnyObject).author
         return cell
