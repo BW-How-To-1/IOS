@@ -151,7 +151,9 @@ extension HomeViewController: MenuListDelegate {
         case 1:
             sortBy("dateCreated")
         case 2:
-            guard let numberOfRows = fetchedResultsController.fetchedObjects?.count else { return }
+            guard let numberOfRows = fetchedResultsController.fetchedObjects?.count,
+                numberOfRows != 0,
+                numberOfRows != 1 else { return }
             let randomCellRow = Int.random(in: 0..<numberOfRows)
             let indexPath = IndexPath(row: randomCellRow, section: 0)
             self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
