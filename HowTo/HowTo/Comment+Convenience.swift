@@ -12,13 +12,12 @@ import CoreData
 extension Comment {
     //MARK: - Properties -
     var representation: CommentRepresentation? {
-        guard let id = id,
-        let author = author,
+        guard let author = author,
             let date = dateCreated,
             let text = text else {
                 return nil
         }
-        return CommentRepresentation(id: id.uuidString,
+        return CommentRepresentation(id: Int(id),
                                      dateCreated: date,
                                      author: author,
                                      title: title,
@@ -27,7 +26,7 @@ extension Comment {
     
     
     //MARK: - Convenience Initializers -
-    @discardableResult convenience init(id: UUID = UUID(),
+    @discardableResult convenience init(id: Int64 = Int64.random(in: 5120...20480),
                                         dateCreated: Date = Date(),
                                         author: String,
                                         text: String,
@@ -43,11 +42,7 @@ extension Comment {
     
     @discardableResult convenience init?(representation: CommentRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let identifier = UUID(uuidString: representation.id) else {
-            return nil
-        }
-        
-        self.init(id: identifier,
+        self.init(id: Int64(representation.id),
                   author: representation.author,
                   text: representation.text,
                   title: representation.title,

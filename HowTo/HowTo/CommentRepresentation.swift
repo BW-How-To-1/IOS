@@ -14,10 +14,10 @@ struct CommentRepresentation: Codable {
         case dateCreated
         case author
         case title
-        case text
+        case text = "comments"
     }
     
-    let id: String
+    let id: Int
     let dateCreated: Date
     let author: String
     var title: String?

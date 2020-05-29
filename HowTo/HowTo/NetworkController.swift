@@ -106,7 +106,7 @@ class NetworkController {
             return
         }
         
-        let requestURL = singleTutorialURL(tutorial)!
+        let requestURL = singleTutorialURL(tutorial)
         var request = postRequest(for: requestURL, with: bearer)
         
         do {
@@ -216,7 +216,7 @@ class NetworkController {
             completion(.failure(.noToken))
             return
         }
-        let requestURL = singleTutorialURL(tutorial)!
+        let requestURL = singleTutorialURL(tutorial)
         let request = deleteRequest(for: requestURL, with: bearer)
         
         URLSession.shared.dataTask(with: request) { _, response, error in
@@ -289,7 +289,7 @@ class NetworkController {
         do {
             let existingComments = try context.fetch(fetchRequest)
             for comment in existingComments {
-                let idString = comment.id!.uuidString
+                let idString = comment.id.uuidString
                 guard let representation = representationsByID[idString] else { continue }
                 self.editComment(comment: comment, with: representation)
                 commentsToCreate.removeValue(forKey: idString)
@@ -310,7 +310,7 @@ class NetworkController {
             return
         }
         
-        let requestURL = postCommentURL(comment)!
+        let requestURL = postCommentURL(comment)
         var request = postRequest(for: requestURL, with: bearer)
         
         do {
@@ -347,7 +347,7 @@ class NetworkController {
             return
         }
         
-        let requestURL = singleCommentURL(comment)!
+        let requestURL = singleCommentURL(comment)
         let request = deleteRequest(for: requestURL, with: bearer)
         
         URLSession.shared.dataTask(with: request) { _, response, error in
@@ -375,7 +375,7 @@ class NetworkController {
         tutorial.author = representation.author
         tutorial.bodyText = representation.bodyText
         tutorial.dateCreated = representation.dateCreated
-        tutorial.id = UUID(uuidString: representation.id)
+        tutorial.id = Int64(representation.id)
         tutorial.image = representation.image
         tutorial.likes = representation.likes
         tutorial.title = representation.title
@@ -422,31 +422,23 @@ class NetworkController {
     //Uncomment these helper methods to get project backend URLs
     
     
-    private func singleTutorialURL(_ tutorial: Tutorial) -> URL? {
-        if let tutorialIDString = tutorial.id?.uuidString {
-            let individualTutorialURL = baseURL.appendingPathComponent("/projects/\(tutorialIDString)/")
-            return individualTutorialURL
-        } else {
-            return nil
-        }
+    private func singleTutorialURL(_ tutorial: Tutorial) -> URL {
+        let tutorialIDString = String(describing: tutorial.id)
+        let individualTutorialURL = baseURL.appendingPathComponent("/projects/\(tutorialIDString)/")
+        return individualTutorialURL
     }
     
-    private func singleCommentURL(_ comment: Comment) -> URL? {
-        if let commentIDString = comment.id?.uuidString {
-            let individualCommentURL = baseURL.appendingPathComponent("/comments/\(commentIDString)/")
-            return individualCommentURL
-        } else {
-            return nil
-        }
+    private func singleCommentURL(_ comment: Comment) -> URL {
+        let commentIDString = String(describing: comment.id)
+        let individualCommentURL = baseURL.appendingPathComponent("/comments/\(commentIDString)/")
+        return individualCommentURL
+        
     }
     
-    private func postCommentURL(_ comment: Comment) -> URL? {
-        if let newCommentTutorialString = comment.tutorial?.id?.uuidString {
-            let postCommentURL = baseURL.appendingPathComponent("/projects/comments/\(newCommentTutorialString)/")
-            return postCommentURL
-        } else {
-            return nil
-        }
+    private func postCommentURL(_ comment: Comment) -> URL {
+        let newCommentTutorialString = String(describing: comment.tutorial?.id)
+        let postCommentURL = baseURL.appendingPathComponent("/projects/comments/\(newCommentTutorialString)")
+        return postCommentURL
     }
     
 }

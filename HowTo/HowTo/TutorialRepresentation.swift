@@ -16,10 +16,10 @@ struct TutorialRepresentation: Codable {
         case image
         case likes
         case author
-        case dateCreated
+        case dateCreated = "date"
     }
     
-    let id: String
+    let id: Int
     var title: String
     var bodyText: String
     var image: String?

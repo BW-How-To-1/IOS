@@ -12,14 +12,13 @@ import CoreData
 extension Tutorial {
     //MARK: - Properties -
     var representation: TutorialRepresentation? {
-        guard let identifier = id,
-            let title = title,
+        guard let title = title,
             let bodyText = bodyText,
             let author = author,
             let dateCreated = dateCreated else {
                 return nil
         }
-        return TutorialRepresentation(id: identifier.uuidString,
+        return TutorialRepresentation(id: Int(id),
                                       title: title,
                                       bodyText: bodyText,
                                       image: image,
@@ -30,7 +29,7 @@ extension Tutorial {
     
     
     //MARK: - Convenience Initializers -
-    @discardableResult convenience init(id: UUID = UUID(),
+    @discardableResult convenience init(id: Int64 = Int64.random(in: 256...4096),
                                         dateCreated: Date = Date(),
                                         author: String,
                                         title: String,
@@ -50,21 +49,15 @@ extension Tutorial {
     
     @discardableResult convenience init?(representation: TutorialRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let identifier = UUID(uuidString: representation.id) else {
-            return nil
-        }
-        
-        self.init(id: identifier,
-                  dateCreated: representation.dateCreated,
-                  author: representation.author,
-                  title: representation.author,
-                  bodyText: representation.bodyText,
-                  image: representation.image,
-                  likes: representation.likes,
-                  context: context)
+        self.init(id: Int64(representation.id),
+                      dateCreated: representation.dateCreated,
+                      author: representation.author,
+                      title: representation.author,
+                      bodyText: representation.bodyText,
+                      image: representation.image,
+                      likes: representation.likes,
+                      context: context)
     }
     
     
-    //MARK: - Photo methods -
-    /// method for coercing photos from URL Strings.
 }
