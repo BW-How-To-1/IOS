@@ -24,6 +24,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var authorlabel: UILabel!
     @IBOutlet weak var commentCount: UILabel!
     
+    let modelController = ModelController()
     var userHasLikedThisPost: Bool = false
     var alertControllerDelegate: AlertControllerDelegate?
     var cellImage: UIImage?
@@ -45,14 +46,19 @@ class HomeTableViewCell: UITableViewCell {
     
     // MARK: - Actions & methods
     @IBAction func likeButtonPressed(_ sender: UIButton) {
-        // this checks to see if the user is logged in and doesn't like the same post more than once.
         if UserDefaults.standard.bool(forKey: .isLoggedInKey) {
             guard !userHasLikedThisPost else {
-                alertControllerDelegate?.presentAlert(with: "You have already liked this post!")
+                alertControllerDelegate?.presentAlert(with: "We get it... you really like this one.")
                 return
             }
             userHasLikedThisPost = true
-            // TODO: increment likeCount by one here
+            tutorial?.likes += 1
+            // save changes
+            do {
+                try CoreDataStack.shared.mainContext.save()
+            } catch {
+                print("Error saving new like for tutorial object -> CoreData: \(error)")
+            }
         } else {
             // present alert because user is a guest and can't like posts
             alertControllerDelegate?.presentAlert(with: "You Must Be Logged in to Like This Post.")
