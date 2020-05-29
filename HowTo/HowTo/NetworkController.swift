@@ -48,18 +48,18 @@ class NetworkController {
     lazy var tutorialsURL = baseURL.appendingPathComponent("/projects/")
     lazy var commentsURL = baseURL.appendingPathComponent("/comments/")
     
-    
-    
     var jsonEncoder = JSONEncoder()
     var jsonDecoder = JSONDecoder()
     
     var networkDataLoader: NetworkDataLoader
+    
     
     // MARK: - Lifecycle
     init(networkDataLoader: NetworkDataLoader = URLSession.shared) {
         self.networkDataLoader = networkDataLoader
         getTutorials(completion: { _ in })
     }
+    
     
     //MARK: - Actions -
     ///post how-to to server
@@ -193,11 +193,11 @@ class NetworkController {
             let existingTutorials = try mainContext.fetch(fetchRequest)
             
             for tutorial in existingTutorials {
-                let idAsString = tutorial.id!.uuidString
+                let idAsInt = Int(tutorial.id)
                 //                let id = Int(idAsString)
-                guard let representation = representationsByID[idAsString] else { continue }
+                guard let representation = representationsByID[idAsInt] else { continue }
                 self.update(tutorial: tutorial, with: representation)
-                tutorialsToCreate.removeValue(forKey: idAsString)
+                tutorialsToCreate.removeValue(forKey: idAsInt)
             }
             for representation in tutorialsToCreate.values {
                 Tutorial(representation: representation)
@@ -289,10 +289,10 @@ class NetworkController {
         do {
             let existingComments = try context.fetch(fetchRequest)
             for comment in existingComments {
-                let idString = comment.id.uuidString
-                guard let representation = representationsByID[idString] else { continue }
+                let idInt = Int(comment.id)
+                guard let representation = representationsByID[idInt] else { continue }
                 self.editComment(comment: comment, with: representation)
-                commentsToCreate.removeValue(forKey: idString)
+                commentsToCreate.removeValue(forKey: idInt)
             }
             for representation in commentsToCreate.values {
                 Comment(representation: representation)
@@ -416,12 +416,8 @@ class NetworkController {
         request.setValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
         return request
     }
-    
-    
-    //MARK: - Methods -
-    //Uncomment these helper methods to get project backend URLs
-    
-    
+   
+    ///URL Helpers
     private func singleTutorialURL(_ tutorial: Tutorial) -> URL {
         let tutorialIDString = String(describing: tutorial.id)
         let individualTutorialURL = baseURL.appendingPathComponent("/projects/\(tutorialIDString)/")
