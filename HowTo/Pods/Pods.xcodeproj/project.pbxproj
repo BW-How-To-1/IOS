@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -187,7 +187,7 @@
 		088BA2D34E91969AFF66D80958463490 /* CLDNetworkDataRequestImpl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDNetworkDataRequestImpl.swift; path = Cloudinary/Classes/Core/Network/NetworkRequest/CLDNetworkDataRequestImpl.swift; sourceTree = "<group>"; };
 		0B2C7B59D07084B5618F22892A764086 /* CLDRequestParamsHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDRequestParamsHelpers.swift; path = Cloudinary/Classes/Core/Features/Helpers/RequestParams/Helpers/CLDRequestParamsHelpers.swift; sourceTree = "<group>"; };
 		0D57FCB4A44D1830D9CC0A8A13F4FDE2 /* Pods-HowToTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HowToTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		131209FABF4AF6BDC649E5D24748D3C2 /* Pods_HowTo_HowToUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HowTo_HowToUITests.framework; path = "Pods-HowTo-HowToUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		131209FABF4AF6BDC649E5D24748D3C2 /* Pods_HowTo_HowToUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowTo_HowToUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		161C5E3B1B956C009D1737BC6812943B /* SideMenuPushCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuPushCoordinator.swift; path = Pod/Classes/SideMenuPushCoordinator.swift; sourceTree = "<group>"; };
 		174DDD895A6CA6D3306519020096EAB9 /* Cloudinary.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Cloudinary.modulemap; sourceTree = "<group>"; };
 		17F9B7FA44DF295F15B68A67CA631A87 /* CLDExplodeRequestParams.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDExplodeRequestParams.swift; path = Cloudinary/Classes/Core/Features/ManagementApi/RequestsParams/CLDExplodeRequestParams.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 		420EDCA19CB30DCF9788987F25DBF519 /* CLDNValidation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDNValidation.swift; path = Cloudinary/Classes/Core/BaseNetwork/CLDNValidation.swift; sourceTree = "<group>"; };
 		422F9DF17E1DBB0CD5ECD6ACA8625DF0 /* CLDSpriteRequestParams.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDSpriteRequestParams.swift; path = Cloudinary/Classes/Core/Features/ManagementApi/RequestsParams/CLDSpriteRequestParams.swift; sourceTree = "<group>"; };
 		45415E5B06D076E6BAFAE5C69EB54CE9 /* CLDGenericNetworkRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDGenericNetworkRequest.swift; path = Cloudinary/Classes/Core/Network/NetworkRequest/CLDGenericNetworkRequest.swift; sourceTree = "<group>"; };
-		4545FA0422B10413C3A0AB7967BEC46A /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SideMenu.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4545FA0422B10413C3A0AB7967BEC46A /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		497FDCE50B0C1F174717C53C87C6164B /* Pods-HowTo-HowToUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HowTo-HowToUITests.modulemap"; sourceTree = "<group>"; };
 		4B3A2907E298D24967E79EF2CCEB378F /* CLDNetworkDownloadRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDNetworkDownloadRequest.swift; path = Cloudinary/Classes/Core/Network/NetworkRequest/CLDNetworkDownloadRequest.swift; sourceTree = "<group>"; };
 		4C43FD8896BC86FE506FB299ADFCD71E /* CLDUploadRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDUploadRequest.swift; path = Cloudinary/Classes/Core/Features/Uploader/Requests/CLDUploadRequest.swift; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 		747BF0E23A5A9FC24C04DA37745C55DE /* Print.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Print.swift; path = Pod/Classes/Print.swift; sourceTree = "<group>"; };
 		75386AC42BED9AABDFB6543B39411D7D /* Pods-HowTo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HowTo-frameworks.sh"; sourceTree = "<group>"; };
 		76AB2959FD18AE446C1A747ED820A36C /* Pods-HowTo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowTo.debug.xcconfig"; sourceTree = "<group>"; };
-		787F47269903824702655C5274861F76 /* Pods_HowTo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HowTo.framework; path = "Pods-HowTo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		787F47269903824702655C5274861F76 /* Pods_HowTo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowTo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6C2560B05FF29544A601F600172FE7 /* CLDCryptoUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDCryptoUtils.swift; path = Cloudinary/Classes/Core/Utils/CLDCryptoUtils.swift; sourceTree = "<group>"; };
 		7B6AB0FBE8B765F73742F4D7293B53F6 /* CLDExplodeRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDExplodeRequest.swift; path = Cloudinary/Classes/Core/Features/ManagementApi/Requests/CLDExplodeRequest.swift; sourceTree = "<group>"; };
 		7B8E20DBB261172D562C9629AB2A13B3 /* CLDNConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDNConvertible.swift; path = Cloudinary/Classes/Core/BaseNetwork/CLDNConvertible.swift; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 		80F25F2E6C001C582B2F7ECEC275F97F /* Pods-HowTo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HowTo-acknowledgements.plist"; sourceTree = "<group>"; };
 		816434A6BFA556F23F1F2EC8B6A06EFD /* CLDNResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDNResult.swift; path = Cloudinary/Classes/Core/BaseNetwork/CLDNResult.swift; sourceTree = "<group>"; };
 		824A4CA0CC795652FE0BB340BF243F82 /* CLDTransformation+Ios.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CLDTransformation+Ios.swift"; path = "Cloudinary/Classes/ios/Extensions/CLDTransformation+Ios.swift"; sourceTree = "<group>"; };
-		84EE69DFAA60219A3C79627F1AEA2390 /* Cloudinary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cloudinary.framework; path = Cloudinary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84EE69DFAA60219A3C79627F1AEA2390 /* Cloudinary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cloudinary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D334A68DF3F95B37D97C6008F796FB /* CLDDeleteResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDDeleteResult.swift; path = Cloudinary/Classes/Core/Features/ManagementApi/Results/CLDDeleteResult.swift; sourceTree = "<group>"; };
 		86BF87D07444AD2B649E0B632050C443 /* CLDCloudinary.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDCloudinary.swift; path = Cloudinary/Classes/Core/CLDCloudinary.swift; sourceTree = "<group>"; };
 		87853CC700CA3800F193C4DACE6C2131 /* Pods-HowTo-HowToUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HowTo-HowToUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 		8D6F7D3208A1589E6F17CEEEA0B6C2F3 /* SideMenuAnimationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuAnimationController.swift; path = Pod/Classes/SideMenuAnimationController.swift; sourceTree = "<group>"; };
 		908E902E026C5C22904CF9014A5604AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		919CC3B56ED1B9AE1EADBC67B9E0C4BB /* CLDFileUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDFileUtils.swift; path = Cloudinary/Classes/Core/Utils/CLDFileUtils.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		972E808FD1798310EFE221655573C42E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		987F19E8FD71E0DE8CD275BB39DA3ED6 /* CLDNetworkAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDNetworkAdapter.swift; path = Cloudinary/Classes/Core/Network/Adapter/CLDNetworkAdapter.swift; sourceTree = "<group>"; };
 		9C856EE56E4D0FF431C4A81C71CCBF59 /* Pods-HowTo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HowTo-umbrella.h"; sourceTree = "<group>"; };
@@ -316,7 +316,7 @@
 		D1CD80954ED03F075B0FC6B4603605A7 /* CLDPreprocessHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDPreprocessHelpers.swift; path = Cloudinary/Classes/ios/Uploader/CLDPreprocessHelpers.swift; sourceTree = "<group>"; };
 		D44E177CF62713C8D741BD67E8313266 /* CLDDefaultUploadRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDDefaultUploadRequest.swift; path = Cloudinary/Classes/Core/Features/Uploader/Requests/CLDDefaultUploadRequest.swift; sourceTree = "<group>"; };
 		D5B3EE82DD1F6097707901F5798063A8 /* CLDNMultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDNMultipartFormData.swift; path = Cloudinary/Classes/Core/BaseNetwork/CLDNMultipartFormData.swift; sourceTree = "<group>"; };
-		D69B66556AECB3BC47B3CC5E26CA738B /* Pods_HowToTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HowToTests.framework; path = "Pods-HowToTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D69B66556AECB3BC47B3CC5E26CA738B /* Pods_HowToTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowToTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D95634CE0A995FF9C4AEC8B3C378AA /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
 		DA35EC9A713E5039638E1FC562E7E8A8 /* CLDRekognitionFace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDRekognitionFace.swift; path = Cloudinary/Classes/Core/Features/Helpers/Results/Helpers/CLDRekognitionFace.swift; sourceTree = "<group>"; };
 		DA36EECBF4862364111C8C66DDAF6348 /* CLDPreprocessChain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CLDPreprocessChain.swift; path = Cloudinary/Classes/Core/Features/Uploader/Preupload/CLDPreprocessChain.swift; sourceTree = "<group>"; };
@@ -464,7 +464,6 @@
 				C3EED61C8C4E7B4A77E29FD72C9F28B6 /* ios */,
 				3A730CA3A0B73AF698C806D05C4C9D88 /* Support Files */,
 			);
-			name = Cloudinary;
 			path = Cloudinary;
 			sourceTree = "<group>";
 		};
@@ -646,7 +645,6 @@
 				2B49B8550A9FFAF63DBAFC485A28924E /* UITableViewVibrantCell.swift */,
 				FB572477CC2E12FECD57B051DA0E2BB1 /* Support Files */,
 			);
-			name = SideMenu;
 			path = SideMenu;
 			sourceTree = "<group>";
 		};
@@ -817,14 +815,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1140;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
 			productRefGroup = A6A5D8CD23794A85600264858652CACD /* Products */;
@@ -1049,11 +1048,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-HowToTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-HowToTests/Pods-HowToTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1087,11 +1082,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-HowTo/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-HowTo/Pods-HowTo.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1127,11 +1118,7 @@
 				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
 				PRODUCT_MODULE_NAME = SideMenu;
 				PRODUCT_NAME = SideMenu;
@@ -1165,11 +1152,7 @@
 				INFOPLIST_FILE = "Target Support Files/SideMenu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
 				PRODUCT_MODULE_NAME = SideMenu;
 				PRODUCT_NAME = SideMenu;
@@ -1201,11 +1184,7 @@
 				INFOPLIST_FILE = "Target Support Files/Cloudinary/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Cloudinary/Cloudinary.modulemap";
 				PRODUCT_MODULE_NAME = Cloudinary;
 				PRODUCT_NAME = Cloudinary;
@@ -1239,11 +1218,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-HowTo-HowToUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-HowTo-HowToUITests/Pods-HowTo-HowToUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1279,11 +1254,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-HowTo/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-HowTo/Pods-HowTo.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1319,11 +1290,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-HowTo-HowToUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-HowTo-HowToUITests/Pods-HowTo-HowToUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1359,11 +1326,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-HowToTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-HowToTests/Pods-HowToTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1384,6 +1347,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1434,6 +1398,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -1442,6 +1407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1518,11 +1484,7 @@
 				INFOPLIST_FILE = "Target Support Files/Cloudinary/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Cloudinary/Cloudinary.modulemap";
 				PRODUCT_MODULE_NAME = Cloudinary;
 				PRODUCT_NAME = Cloudinary;
