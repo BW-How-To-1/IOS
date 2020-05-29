@@ -18,8 +18,6 @@ class ModelController {
     ///This Controller only holds the methods for creation and deletion in Core Data. For read/synch methods, use the update functions of NetworkController.swift
     /// you may either initialize a new object before using these functions or do so in the arguments with the proper initializer. Combined with the convenience inits this means you can use them with a codable representation by calling the correct object convenience init.
     func createTutorial(_ tutorial: Tutorial) {
-        guard let _ = tutorial.id else { return }
-        
         let context = CoreDataStack.shared.mainContext
         
         DispatchQueue.main.async {
@@ -37,10 +35,6 @@ class ModelController {
     }
     
     func createComment(_ comment: Comment, for tutorial: Tutorial) {
-        guard let _ = comment.id,
-            let _ = tutorial.id else {
-                return
-        }
         let newComment = comment
         let context = CoreDataStack.shared.mainContext
         tutorial.addToComments(newComment)
