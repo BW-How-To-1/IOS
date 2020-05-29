@@ -39,8 +39,12 @@ class NetworkController {
     
     //MARK: - Properties -
     static let shared = NetworkController()
-    lazy var bearer: Bearer? = LoginSignupController.shared.bearer
-    let guestToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJ1c2VybmFtZSI6IkdVRVNUQUNDRVNTIiwiaWF0IjoxNTkwNzMwOTY3LCJleHAiOjE1OTA4MTczNjd9.MWmG0ZXMj6AY4eLFUN-ghICr1TVhPWgoidnW6UVEOss"
+    var bearer: Bearer? = LoginSignupController.shared.bearer {
+        didSet {
+            getTutorials { _ in }
+        }
+    }
+    let guestToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJ1c2VybmFtZSI6Imd1ZXN0IiwiaWF0IjoxNTkwNzM0MjEwLCJleHAiOjE1OTA4MjA2MTB9.jijfAc1mGMYaKbNiuRmyE_V7GwAfJXx57tznd75aghs"
     
     ///firebase endpoints
 //    let baseURL = URL(string: "https://howto-56e14.firebaseio.com/")!
@@ -63,7 +67,6 @@ class NetworkController {
     // MARK: - Lifecycle
     init(networkDataLoader: NetworkDataLoader = URLSession.shared) {
         self.networkDataLoader = networkDataLoader
-        getTutorials(completion: { _ in })
     }
     
     
@@ -144,6 +147,12 @@ class NetworkController {
     ///get and sort all relevant how-to articles from back-end
     //TODO: REFACTOR FOR CORE DATA SUPPORT - update, sort, and save in the final do-block
     func getTutorials(completion: @escaping TutorialHandler) {
+//        guard let bearer = bearer else {
+//            NSLog("Error could not fetch tutorials from server. Not logged in.")
+//            completion(.failure(.noToken))
+//            return
+//        }
+        
         let request = getRequest(for: tutorialsURL)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -153,11 +162,15 @@ class NetworkController {
                 return
             }
             
-            guard let response = response as? HTTPURLResponse,
-                response.statusCode == 200 else {
-                    NSLog("Error: Bad or no response when processing get request.")
-                    completion(.failure(.badResponse))
-                    return
+//            guard let response = response as? HTTPURLResponse,
+//                response.statusCode == 200 else {
+//                    NSLog("Error: Bad or no response when processing get request.")
+//                    completion(.failure(.badResponse))
+//                    return
+//            }
+            
+            if let response = response as? HTTPURLResponse {
+                print(response.statusCode)
             }
             
             guard let data = data else {
@@ -243,6 +256,12 @@ class NetworkController {
     }
     
     func getComments(completion: @escaping CommentHandler) {
+//        guard let bearer = bearer else {
+//            NSLog("Error: cannot fetch tutorials from server.")
+//            completion(.failure(.noToken))
+//            return
+//        }
+        
         let request = getRequest(for: commentsURL)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -396,7 +415,7 @@ class NetworkController {
     private func getRequest(for url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
-        request.setValue("\(self.guestToken)", forHTTPHeaderField: "\(HTTPHeaderField.authorization.rawValue)")
+        request.setValue(self.guestToken, forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
         return request
     }
     
