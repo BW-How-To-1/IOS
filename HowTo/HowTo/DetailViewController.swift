@@ -160,7 +160,6 @@ extension DetailViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: .commentTableViewCellId, for: indexPath)
         guard let commentArray = tutorial?.comments?.allObjects as? [Comment] else { return cell }
         let commentAtIndexPath = commentArray[indexPath.row]
-        // FIXME: - is this working? NSSets are confusing
         cell.textLabel?.text = (commentAtIndexPath as AnyObject).text
         cell.detailTextLabel?.text = (commentAtIndexPath as AnyObject).author
         return cell
