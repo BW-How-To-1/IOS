@@ -433,7 +433,7 @@ class NetworkController {
     
     private func postCommentURL(_ comment: Comment) -> URL {
         let newCommentTutorialString = String(describing: comment.tutorial?.id)
-        let postCommentURL = baseURL.appendingPathComponent("/projects/comments/\(newCommentTutorialString)")
+        let postCommentURL = baseURL.appendingPathComponent("/projects/comments/\(newCommentTutorialString)/")
         return postCommentURL
     }
     
