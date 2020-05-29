@@ -31,11 +31,13 @@ class AddStepsViewController: UIViewController {
         clearAllButton.alpha = 0
         doneButton.alpha = 0
         statusLabel.text = ""
+        addThisStepButton.alpha = 0
     }
     
     // MARK: - Actions & Methods
     
     @IBAction func userStartingTryingToAddAStep(_ sender: UITextField) {
+        addThisStepButton.alpha = 1
     }
     
     @IBAction func clearButtonPressed(_ sender: UIButton) {
