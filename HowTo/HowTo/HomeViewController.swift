@@ -131,9 +131,16 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: .homeTableViewCellId, for: indexPath) as! HomeTableViewCell // FIXME: - crash this with a print or log if it fails
         cell.tutorial = fetchedResultsController.object(at: indexPath)
         cell.alertControllerDelegate = self
+        // change selected color
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.systemYellow
+        cell.selectedBackgroundView = backgroundView
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension HomeViewController: MenuListDelegate {
@@ -144,8 +151,11 @@ extension HomeViewController: MenuListDelegate {
         case 1:
             sortBy("dateCreated")
         case 2:
-            // nothing yet...
-            print("nothing yet...")
+            guard let numberOfRows = fetchedResultsController.fetchedObjects?.count else { return }
+            let randomCellRow = Int.random(in: 0..<numberOfRows)
+            let indexPath = IndexPath(row: randomCellRow, section: 0)
+            self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
+            self.tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
         case 3:
             // login / signup
             self.performSegue(withIdentifier: .showOnboardingSegueId, sender: self)

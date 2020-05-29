@@ -62,7 +62,7 @@ class MenuListController: UITableViewController {
                 self.menuListDelegate?.menuItemPressed(buttonNumber: 1)
             }
         case 2:
-            // nothing yet...
+            // jump to random
             dismiss(animated: true) {
                 self.menuListDelegate?.menuItemPressed(buttonNumber: 2)
             }
@@ -102,7 +102,7 @@ class MenuListController: UITableViewController {
         // menuLabel 1
         menuLabels.append("Recent") // most recently posted
         // menuLabel 2
-        menuLabels.append("Placeholder...")
+        menuLabels.append("Random")
         // menuLabel 3
         menuLabels.append(UserDefaults.standard.bool(forKey: .isLoggedInKey) == true ? "Logout" : "Create an Account")
         // last (optional) menu label #4 - if logged in
