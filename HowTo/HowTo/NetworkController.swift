@@ -70,7 +70,7 @@ class NetworkController {
             return
         }
         
-        var request = putRequest(for: tutorialsURL, with: bearer)
+        var request = postRequest(for: tutorialsURL, with: bearer)
         
         do {
             let jsonRequest = try jsonEncoder.encode(tutorial.representation)
@@ -89,8 +89,45 @@ class NetworkController {
             }
             
             guard let response = response as? HTTPURLResponse,
-                response.statusCode == 200 else { //TODO: <- MAKE SURE THIS IS RIGHT
+                response.statusCode == 201 else { //TODO: <- MAKE SURE THIS IS RIGHT
                     NSLog("Error: Bad or no response from server when posting tutorial.")
+                    completion(.failure(.badResponse))
+                    return
+            }
+            completion(.success(true))
+        }.resume()
+    }
+    
+    ///edit a tutorial on the server
+    func editTutorial (for tutorial: Tutorial, completion: @escaping CompletionHandler) {
+        guard let bearer = bearer else {
+            NSLog("Error: No authentication token. Please log in.")
+            completion(.failure(.noToken))
+            return
+        }
+        
+        let requestURL = singleTutorialURL(tutorial)!
+        var request = postRequest(for: requestURL, with: bearer)
+        
+        do {
+            let jsonRequest = try jsonEncoder.encode(tutorial.representation)
+            request.httpBody = jsonRequest
+        } catch {
+            NSLog("Error encoding edited tutorial: \(error) \(error.localizedDescription)")
+            completion(.failure(.noEncode))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error posting edited tutorial to server: \(error) \(error.localizedDescription)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else { //TODO: <- MAKE SURE THIS IS RIGHT
+                    NSLog("Error: Bad or no response from server when posting edited tutorial.")
                     completion(.failure(.badResponse))
                     return
             }
