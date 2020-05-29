@@ -36,15 +36,18 @@ class NetworkController {
     static let shared = NetworkController()
     lazy var bearer: Bearer? = LoginSignupController.shared.bearer
     
-    let baseURL = URL(string: "https://howto-56e14.firebaseio.com/")!
-    let postURL = URL(string: "https://howto-56e14.firebaseio.com/")!
-    let getURL = URL(string: "https://howto-56e14.firebaseio.com/")!
-    let tutorialURL = URL(string: "https://howto-56e14.firebaseio.com/")!
-    let commentURL = URL(string: "https://howto-56e14.firebaseio.com/")!
-    //   let baseURL = URL(string: "https://how-to-diy.herokuapp.com/")!
-    //   lazy var postTutorialURL = baseURL.appendingPathComponent("/projects/") //TODO: NEEDS CORRECT ENDPOINT
-    //   lazy var postCommentURL = baseURL.appendingPathComponent("/projects/comments/") //TODO: NEEDS CORRECT ENDPOINT
-    //   lazy var getURL = baseURL.appendingPathComponent("/projects/") //TODO: NEEDS CORRECT ENDPOINT
+    ///firebase endpoints
+//    let baseURL = URL(string: "https://howto-56e14.firebaseio.com/")!
+//    let postURL = URL(string: "https://howto-56e14.firebaseio.com/")!
+//    let getURL = URL(string: "https://howto-56e14.firebaseio.com/")!
+//    let tutorialURL = URL(string: "https://howto-56e14.firebaseio.com/")!
+//    let commentURL = URL(string: "https://howto-56e14.firebaseio.com/")!
+    
+    ///project back-end endpoints
+    let baseURL = URL(string: "https://how-to-diy.herokuapp.com/")!
+    lazy var tutorialsURL = baseURL.appendingPathComponent("/projects/")
+    lazy var commentsURL = baseURL.appendingPathComponent("/comments/")
+    
     
     
     var jsonEncoder = JSONEncoder()
@@ -67,7 +70,7 @@ class NetworkController {
             return
         }
         
-        var request = putRequest(for: postURL, with: bearer)
+        var request = putRequest(for: tutorialsURL, with: bearer)
         
         do {
             let jsonRequest = try jsonEncoder.encode(tutorial.representation)
@@ -98,7 +101,7 @@ class NetworkController {
     ///get and sort all relevant how-to articles from back-end
     //TODO: REFACTOR FOR CORE DATA SUPPORT - update, sort, and save in the final do-block
     func getTutorials(completion: @escaping TutorialHandler) {
-        let request = getRequest(for: getURL)
+        let request = getRequest(for: tutorialsURL)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -176,8 +179,8 @@ class NetworkController {
             completion(.failure(.noToken))
             return
         }
-        
-        let request = deleteRequest(for: tutorialURL, with: bearer)
+        let requestURL = singleTutorialURL(tutorial)!
+        let request = deleteRequest(for: requestURL, with: bearer)
         
         URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
@@ -197,7 +200,7 @@ class NetworkController {
     }
     
     func getComments(completion: @escaping CommentHandler) {
-        let request = getRequest(for: commentURL)
+        let request = getRequest(for: commentsURL)
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -270,7 +273,8 @@ class NetworkController {
             return
         }
         
-        var request = postRequest(for: commentURL, with: bearer)
+        let requestURL = postCommentURL(comment)!
+        var request = postRequest(for: requestURL, with: bearer)
         
         do {
             let jsonRequest = try jsonEncoder.encode(comment.representation)
@@ -306,7 +310,8 @@ class NetworkController {
             return
         }
         
-        let request = deleteRequest(for: commentURL, with: bearer)
+        let requestURL = singleCommentURL(comment)!
+        let request = deleteRequest(for: requestURL, with: bearer)
         
         URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
@@ -380,24 +385,32 @@ class NetworkController {
     //MARK: - Methods -
     //Uncomment these helper methods to get project backend URLs
     
-    /*
-    private func tutorialURLHelper(_ tutorial: Tutorial) -> URL? {
+    
+    private func singleTutorialURL(_ tutorial: Tutorial) -> URL? {
         if let tutorialIDString = tutorial.id?.uuidString {
-            let individualTutorialURL = postTutorialURL.appendingPathComponent("\(tutorialIDString)")
+            let individualTutorialURL = baseURL.appendingPathComponent("/projects/\(tutorialIDString)/")
             return individualTutorialURL
         } else {
             return nil
         }
     }
     
-    private func commentURLHelper(_ comment: Comment) -> URL? {
+    private func singleCommentURL(_ comment: Comment) -> URL? {
         if let commentIDString = comment.id?.uuidString {
-            let individualCommentURL = postCommentURL.appendingPathComponent("\(commentIDString)")
+            let individualCommentURL = baseURL.appendingPathComponent("/comments/\(commentIDString)/")
             return individualCommentURL
         } else {
             return nil
         }
     }
-    */
+    
+    private func postCommentURL(_ comment: Comment) -> URL? {
+        if let newCommentTutorialString = comment.tutorial?.id?.uuidString {
+            let postCommentURL = baseURL.appendingPathComponent("/projects/comments/\(newCommentTutorialString)")
+            return postCommentURL
+        } else {
+            return nil
+        }
+    }
     
 }
