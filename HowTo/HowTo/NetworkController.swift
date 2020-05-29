@@ -28,6 +28,11 @@ class NetworkController {
         case patch = "PATCH"
     }
     
+    enum HTTPHeaderField: String {
+        case contentType = "Content-Type"
+        case authorization = "Authorization"
+    }
+    
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     typealias TutorialHandler = (Result<[Tutorial], NetworkError>) -> Void
     typealias CommentHandler = (Result<[Comment], NetworkError>) -> Void
@@ -35,6 +40,7 @@ class NetworkController {
     //MARK: - Properties -
     static let shared = NetworkController()
     lazy var bearer: Bearer? = LoginSignupController.shared.bearer
+    let guestToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJ1c2VybmFtZSI6IkdVRVNUQUNDRVNTIiwiaWF0IjoxNTkwNzMwOTY3LCJleHAiOjE1OTA4MTczNjd9.MWmG0ZXMj6AY4eLFUN-ghICr1TVhPWgoidnW6UVEOss"
     
     ///firebase endpoints
 //    let baseURL = URL(string: "https://howto-56e14.firebaseio.com/")!
@@ -45,8 +51,8 @@ class NetworkController {
     
     ///project back-end endpoints
     let baseURL = URL(string: "https://how-to-diy.herokuapp.com/")!
-    lazy var tutorialsURL = baseURL.appendingPathComponent("/projects/")
-    lazy var commentsURL = baseURL.appendingPathComponent("/comments/")
+    lazy var tutorialsURL = baseURL.appendingPathComponent("/projects")
+    lazy var commentsURL = baseURL.appendingPathComponent("/comments")
     
     var jsonEncoder = JSONEncoder()
     var jsonDecoder = JSONDecoder()
@@ -390,30 +396,30 @@ class NetworkController {
     private func getRequest(for url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("\(self.guestToken)", forHTTPHeaderField: "\(HTTPHeaderField.authorization.rawValue)")
         return request
     }
     
     private func postRequest(for url: URL, with bearer: Bearer) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "\(HTTPHeaderField.contentType.rawValue)")
+        request.setValue("\(bearer.token)", forHTTPHeaderField: "\(HTTPHeaderField.authorization.rawValue)")
         return request
     }
     
     private func putRequest(for url: URL, with bearer: Bearer) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.put.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "\(HTTPHeaderField.contentType.rawValue)")
+        request.setValue("\(bearer.token)", forHTTPHeaderField: "\(HTTPHeaderField.authorization.rawValue)")
         return request
     }
     
     private func deleteRequest(for url: URL, with bearer: Bearer) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
-        request.setValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+        request.setValue("\(bearer.token)", forHTTPHeaderField: "\(HTTPHeaderField.authorization.rawValue)")
         return request
     }
    
