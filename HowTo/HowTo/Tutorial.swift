@@ -6,6 +6,8 @@
 //  Copyright © 2020 Shawn James. All rights reserved.
 //
 
+//THIS IS DUMMY DATA FOR AN EARLY VERSION OF THIS PROJECT. IT'S HERE IN CASE IT NEEDS TO BE USED LATER.
+
 /*
 import Foundation
 
